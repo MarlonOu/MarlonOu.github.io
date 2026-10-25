@@ -1,0 +1,112 @@
+/* 去處：照片整理與傳輸｜官網共用樣式（與 App 的「Beam」設計系統一致：咖啡底、琥珀色重點） */
+:root {
+  --canvas: #FBF7F1;
+  --surface: #FFFFFF;
+  --ink: #1F1712;
+  --ink-muted: #6B5D52;
+  --line: #E8DFD4;
+  --accent: #B45309;
+  --accent-soft: #FDF0DC;
+  --amber: #F59E0B;
+  --coral: #F97355;
+  --hero-top: #2E2016;
+  --hero-bottom: #110C09;
+  --hero-ink: #FBF7F1;
+  --radius: 18px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #15100C;
+    --surface: #1F1813;
+    --ink: #F5EEE6;
+    --ink-muted: #B8A99B;
+    --line: #3A2E25;
+    --accent: #F5A524;
+    --accent-soft: #33240F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: #15100C;
+  --surface: #1F1813;
+  --ink: #F5EEE6;
+  --ink-muted: #B8A99B;
+  --line: #3A2E25;
+  --accent: #F5A524;
+  --accent-soft: #33240F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font: 17px/1.7 -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+/* 頁首 */
+.topbar { border-bottom: 1px solid var(--line); background: var(--surface); }
+.topbar .wrap { display: flex; align-items: center; gap: 12px; min-height: 60px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 700; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+.topbar nav { margin-left: auto; display: flex; gap: 18px; font-size: 15px; }
+.topbar nav a { color: var(--ink-muted); text-decoration: none; padding: 10px 0; }
+.topbar nav a[aria-current="page"], .topbar nav a:hover { color: var(--accent); }
+
+/* 首頁 hero */
+.hero {
+  background: radial-gradient(circle at 85% 10%, rgba(245, 158, 11, .30), transparent 55%),
+              linear-gradient(135deg, var(--hero-top), var(--hero-bottom));
+  color: var(--hero-ink);
+  text-align: center;
+  padding: 64px 0 56px;
+}
+.hero img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 18px 50px rgba(245, 158, 11, .35); }
+.hero h1 { font-size: clamp(32px, 7vw, 48px); line-height: 1.2; margin: 24px 0 8px; letter-spacing: .04em; }
+.hero p { margin: 0 auto; max-width: 30em; color: rgba(251, 247, 241, .8); }
+.badge {
+  display: inline-block; margin-top: 24px; padding: 12px 26px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--amber), var(--coral)); color: #1A1208; font-weight: 700;
+}
+
+/* 內容 */
+main { padding: 40px 0 64px; }
+h1.page { font-size: clamp(28px, 6vw, 36px); line-height: 1.3; margin: 0 0 4px; }
+.meta { color: var(--ink-muted); font-size: 15px; margin: 0 0 32px; }
+h2 { font-size: 22px; margin: 40px 0 12px; }
+h3 { font-size: 18px; margin: 24px 0 8px; }
+p, li { color: var(--ink); }
+.muted { color: var(--ink-muted); }
+
+.cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-top: 8px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+.card .icon { font-size: 15px; font-weight: 700; color: var(--accent); background: var(--accent-soft);
+  display: inline-block; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+.card h3 { margin: 0 0 6px; }
+.card p { margin: 0; color: var(--ink-muted); font-size: 16px; }
+
+.note { background: var(--accent-soft); border-radius: var(--radius); padding: 16px 20px; margin: 24px 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 16px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+th { color: var(--ink-muted); font-weight: 600; white-space: nowrap; }
+.table-scroll { overflow-x: auto; }
+
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 4px 18px; margin: 10px 0; }
+summary { cursor: pointer; font-weight: 600; padding: 12px 0; min-height: 44px; }
+details p { margin: 0 0 14px; color: var(--ink-muted); }
+
+.contact { display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 999px; border: 1px solid var(--accent);
+  text-decoration: none; font-weight: 600; }
+
+footer { border-top: 1px solid var(--line); color: var(--ink-muted); font-size: 14px; padding: 24px 0 40px; }
+footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--ink-muted); }
