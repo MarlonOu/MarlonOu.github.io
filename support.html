@@ -5,18 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>支援｜去處 Whereto</title>
 <meta name="description" content="「去處 Whereto」常見問題與聯絡方式。">
-<link rel="icon" href="favicon.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="alternate" hreflang="zh-Hant" href="https://marlonou.github.io/support.html">
+<link rel="alternate" hreflang="en" href="https://marlonou.github.io/en/support.html">
+<link rel="alternate" hreflang="ja" href="https://marlonou.github.io/ja/support.html">
+<link rel="alternate" hreflang="x-default" href="https://marlonou.github.io/en/support.html">
 </head>
 <body>
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="./"><img src="icon.png" alt="">去處 Whereto</a>
+    <a class="brand" href="/"><img src="/icon.png" alt="">去處 Whereto</a>
     <nav aria-label="網站">
-      <a href="./">首頁</a>
-      <a href="support.html" aria-current="page">支援</a>
-      <a href="privacy.html">隱私權</a>
+      <a href="/">首頁</a>
+      <a href="/support.html" aria-current="page">支援</a>
+      <a href="/privacy.html">隱私權</a>
     </nav>
+    <div class="lang" role="group" aria-label="語言"><a href="/support.html" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh" aria-current="true">繁中</a><a href="/en/support.html" hreflang="en" lang="en" data-lang="en">English</a><a href="/ja/support.html" hreflang="ja" lang="ja" data-lang="ja">日本語</a></div>
   </div>
 </header>
 
@@ -90,9 +95,10 @@
 <footer>
   <div class="wrap">
     <span>© 2026 去處 Whereto</span>
-    <a href="./">首頁</a>
-    <a href="privacy.html">隱私權政策</a>
+    <a href="/support.html">支援</a>
+    <a href="/privacy.html">隱私權政策</a>
   </div>
 </footer>
+<script>document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})})</script>
 </body>
 </html>

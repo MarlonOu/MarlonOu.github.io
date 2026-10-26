@@ -110,3 +110,13 @@ details p { margin: 0 0 14px; color: var(--ink-muted); }
 footer { border-top: 1px solid var(--line); color: var(--ink-muted); font-size: 14px; padding: 24px 0 40px; }
 footer .wrap { display: flex; gap: 16px; flex-wrap: wrap; }
 footer a { color: var(--ink-muted); }
+
+/* 語言切換 */
+.lang { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; }
+.lang a { color: var(--ink-muted); text-decoration: none; padding: 6px 10px; border-radius: 999px; min-height: 32px; display: inline-flex; align-items: center; }
+.lang a[aria-current="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.lang a:hover { color: var(--accent); }
+@media (max-width: 560px) {
+  .topbar nav { margin-left: 0; order: 3; width: 100%; gap: 16px; }
+  .lang { margin-left: auto; }
+}
