@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>寵寵欲動｜全家一起照顧毛孩</title>
+<meta name="description" content="寵寵欲動：全家共用的毛孩照護檔案。誰餵過、誰散步、疫苗何時到期，一個 App 全家同步。資料只存在你的 iCloud。">
+<meta name="theme-color" content="#FFF7ED" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1917" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="寵寵欲動｜全家一起照顧毛孩">
+<meta property="og:description" content="誰餵過、誰散步、疫苗何時到期，全家同步。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F97316'/%3E%3Cpath d='M32 34c-7 0-13 6-13 12 0 4 3 6 7 6 2 0 4-1 6-1s4 1 6 1c4 0 7-2 7-6 0-6-6-12-13-12z' fill='%23431407'/%3E%3Ccircle cx='19' cy='29' r='5' fill='%23431407'/%3E%3Ccircle cx='27' cy='20' r='5' fill='%23431407'/%3E%3Ccircle cx='38' cy='18' r='5' fill='%23431407'/%3E%3Ccircle cx='46' cy='27' r='5' fill='%23431407'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+/* Tokens mirror docs/04-design-system.md; site-only additions are marked. */
+:root{
+  --brand:#F97316; --on-brand:#0F172A; --accent:#2563EB;
+  --surface:#FFF7ED; --card:#FFFFFF; --text:#431407;
+  --done:#15803D; --overdue:#B91C1C;
+  /* site-only */
+  --muted:#7C2D12; --line:#FED7AA; --ink:#1C1917; --on-ink:#FFF7ED; --band:#1C1917; --band-line:transparent;
+  --tint:#FFEDD5; --accent-tint:#DBEAFE; --shadow:0 1px 0 rgba(67,20,7,.06),0 18px 40px -18px rgba(67,20,7,.28);
+  --r-s:12px; --r-m:20px; --r-l:32px;
+  --font-display:"Huninn","PingFang TC","Noto Sans TC",system-ui,sans-serif;
+  --font-body:"Nunito","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+  --ease-out:cubic-bezier(.22,1,.36,1); --ease-spring:cubic-bezier(.34,1.56,.64,1);
+  --gutter:clamp(16px,4vw,48px); --maxw:1200px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --brand:#FB923C; --accent:#60A5FA; --surface:#1C1917; --card:#292524; --text:#FFF7ED;
+    --done:#4ADE80; --overdue:#F87171; --muted:#FED7AA; --line:#44403C; --ink:#FFF7ED; --on-ink:#1C1917; --band:#0C0A09; --band-line:#44403C;
+    --tint:#3A2A1E; --accent-tint:#1E2A44; --shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -18px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --brand:#FB923C; --accent:#60A5FA; --surface:#1C1917; --card:#292524; --text:#FFF7ED;
+  --done:#4ADE80; --overdue:#F87171; --muted:#FED7AA; --line:#44403C; --ink:#FFF7ED; --on-ink:#1C1917; --band:#0C0A09; --band-line:#44403C;
+  --tint:#3A2A1E; --accent-tint:#1E2A44; --shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -18px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface);color:var(--text);font-family:var(--font-body);font-size:17px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"palt" 0}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--on-ink);padding:10px 16px;border-radius:999px;text-decoration:none}
+.skip:focus{top:12px}
+
+/* ---------- progress + nav ---------- */
+.progress{position:fixed;inset:0 0 auto 0;height:3px;z-index:60;background:var(--brand);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.nav{position:sticky;top:0;z-index:50;transition:background .3s,box-shadow .3s}
+.nav.is-stuck{background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-size:20px;letter-spacing:.04em}
+.brand .mark{width:34px;height:34px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{text-decoration:none;font-weight:600;font-size:15px;padding:10px 14px;border-radius:999px;transition:background .2s}
+.nav-links a:hover{background:var(--tint)}
+.nav-links .hide-sm{display:inline-block}
+.theme-btn{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);display:grid;place-items:center;cursor:pointer;transition:transform .3s var(--ease-spring)}
+.theme-btn:hover{transform:rotate(-20deg)}
+.theme-btn svg{width:20px;height:20px}
+@media (max-width:640px){.nav-links .hide-sm{display:none}}
+
+/* ---------- buttons ---------- */
+.btn{--bg:var(--brand);--fg:var(--on-brand);display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;border:0;
+  background:var(--bg);color:var(--fg);font:800 16px/1 var(--font-body);text-decoration:none;cursor:pointer;
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.14),0 10px 24px -12px color-mix(in srgb,var(--brand) 80%,transparent);
+  transition:transform .2s var(--ease-out),box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px) scale(.98);box-shadow:inset 0 -1px 0 rgba(0,0,0,.14)}
+.btn.ghost{--bg:transparent;--fg:var(--text);box-shadow:inset 0 0 0 2px var(--line)}
+.btn svg{width:20px;height:20px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);font-size:14px;font-weight:600}
+.pill .dot{width:22px;height:22px;border-radius:50%;background:var(--tint);display:grid;place-items:center}
+.pill .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--done);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--done) 60%,transparent)}70%,100%{box-shadow:0 0 0 8px transparent}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-block:clamp(40px,7vw,96px) clamp(64px,9vw,128px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px);align-items:center}
+.eyebrow{font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.title{font-family:var(--font-display);font-weight:400;font-size:clamp(64px,10vw,156px);line-height:.92;letter-spacing:-.01em;margin:22px 0 28px;
+  display:flex;flex-wrap:nowrap;white-space:nowrap;gap:0 .02em}
+.title .ch{display:inline-block;transform-origin:50% 90%;cursor:default;will-change:transform}
+.title .ch:nth-child(1),.title .ch:nth-child(2){color:var(--brand)}
+.title .ch.wiggle{animation:wiggle 3.6s var(--ease-out) infinite}
+.title .ch:nth-child(2).wiggle{animation-delay:.18s}
+.title .ch:nth-child(3).wiggle{animation-delay:.36s}
+.title .ch:nth-child(4).wiggle{animation-delay:.54s}
+@keyframes wiggle{0%,72%,100%{transform:none}78%{transform:translateY(-6%) rotate(-4deg)}84%{transform:translateY(0) rotate(3deg)}90%{transform:rotate(-1deg)}}
+.title .ch.hop{animation:hop .55s var(--ease-spring)}
+@keyframes hop{0%{transform:none}40%{transform:translateY(-18%) scale(1.06,.96) rotate(-6deg)}100%{transform:none}}
+.lede{font-size:clamp(18px,1.6vw,21px);max-width:30em;margin:0 0 36px}
+.lede b{font-weight:800;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--brand) 32%,transparent) 0)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.note{font-size:14px;color:var(--muted);margin-top:18px}
+
+/* blob behind phone */
+.stage{position:relative;display:grid;place-items:center;min-height:620px}
+.stage::before{content:"";position:absolute;width:min(520px,100%);aspect-ratio:1;border-radius:46% 54% 58% 42%/48% 44% 56% 52%;
+  background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--brand) 55%,transparent),transparent 62%),radial-gradient(circle at 75% 70%,color-mix(in srgb,var(--accent) 35%,transparent),transparent 60%);
+  filter:blur(8px);animation:morph 14s ease-in-out infinite alternate}
+@keyframes morph{to{border-radius:58% 42% 44% 56%/52% 58% 42% 48%;transform:rotate(18deg) scale(1.04)}}
+
+/* ---------- phone mock ---------- */
+.phone{position:relative;width:min(340px,86vw);aspect-ratio:9/19.2;border-radius:52px;padding:12px;background:#0C0A09;
+  box-shadow:0 0 0 2px #292524,0 40px 80px -30px rgba(67,20,7,.55),inset 0 0 0 1px #44403C;transform:rotate(3deg);transition:transform .8s var(--ease-out)}
+.phone:hover{transform:rotate(0)}
+.screen{position:relative;height:100%;border-radius:40px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column;font-size:14px;line-height:1.4}
+.island{position:absolute;top:10px;left:50%;translate:-50% 0;width:96px;height:28px;border-radius:20px;background:#0C0A09;z-index:3}
+.status{display:flex;justify-content:space-between;padding:14px 26px 0;font:800 13px var(--font-body)}
+.app-head{padding:22px 18px 10px}
+.app-head small{font-weight:700;color:var(--muted);font-size:12px}
+.app-head h3{margin:2px 0 0;font:400 28px/1.1 var(--font-display)}
+.pets{display:flex;gap:8px;padding:6px 18px 12px}
+.chip{display:flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);font-weight:700;font-size:12px}
+.avatar{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:400 12px var(--font-display);color:#0F172A}
+.tasks{display:flex;flex-direction:column;gap:10px;padding:0 14px;flex:1}
+.task{position:relative;background:var(--card);border-radius:18px;padding:12px 12px 12px 18px;box-shadow:var(--shadow);overflow:hidden}
+.task::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:5px;border-radius:0 4px 4px 0;background:var(--c)}
+.task .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.task .name{font-weight:800}
+.task .meta{font-size:12px;color:var(--muted)}
+.task .done-line{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--done);font-size:13px}
+.task .done-line svg{width:18px;height:18px}
+.mini-btn{min-height:44px;min-width:76px;border-radius:14px;border:0;background:var(--brand);color:var(--on-brand);font:800 15px var(--font-body);cursor:pointer;
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.15);transition:transform .15s var(--ease-out)}
+.mini-btn:active{transform:scale(.94)}
+.link-btn{min-height:44px;padding:0 8px;border:0;background:none;color:var(--accent);font:700 13px var(--font-body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.due{display:flex;align-items:center;gap:10px}
+.due .ic{width:36px;height:36px;border-radius:12px;background:var(--accent-tint);display:grid;place-items:center;color:var(--accent);flex:none}
+.due .ic svg{width:20px;height:20px}
+.tabbar{display:flex;justify-content:space-around;padding:10px 8px 22px;border-top:1px solid var(--line);background:color-mix(in srgb,var(--card) 70%,transparent);font-size:10px;font-weight:700}
+.tabbar span{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--muted)}
+.tabbar span.on{color:var(--brand)}
+.tabbar svg{width:22px;height:22px}
+.burst{position:absolute;pointer-events:none;width:8px;height:8px;border-radius:50%;background:var(--brand)}
+.done-anim{animation:pop .5s var(--ease-spring)}
+@keyframes pop{0%{transform:scale(.8);opacity:0}100%{transform:none;opacity:1}}
+
+/* sheet (duplicate confirm, R01) */
+.sheet-scrim{position:absolute;inset:0;background:rgba(12,10,9,.38);opacity:0;pointer-events:none;transition:opacity .25s;z-index:4}
+.sheet{position:absolute;left:8px;right:8px;bottom:8px;z-index:5;background:var(--card);border-radius:28px;padding:18px 16px 14px;transform:translateY(110%);transition:transform .38s var(--ease-out);box-shadow:0 -10px 40px rgba(0,0,0,.2)}
+.screen.sheet-open .sheet-scrim{opacity:1;pointer-events:auto}
+.screen.sheet-open .sheet{transform:none}
+.sheet p{margin:0 0 4px;text-align:center;font-weight:800}
+.sheet small{display:block;text-align:center;color:var(--muted);margin-bottom:12px}
+.sheet button{width:100%;min-height:48px;border-radius:14px;border:0;font:800 15px var(--font-body);cursor:pointer;margin-top:8px}
+.sheet .confirm{background:var(--tint);color:var(--text)}
+.sheet .cancel{background:var(--brand);color:var(--on-brand)}
+
+/* ---------- section scaffolding ---------- */
+section{position:relative}
+.chapter{padding-block:clamp(88px,12vw,168px)}
+.kicker{display:flex;align-items:center;gap:14px;font-weight:800;font-size:13px;letter-spacing:.18em;color:var(--muted)}
+.kicker::before{content:attr(data-n);font:900 13px var(--font-body);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 2px var(--line);letter-spacing:0;color:var(--text)}
+.h2{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,6.4vw,84px);line-height:1.08;margin:22px 0 24px;text-wrap:balance}
+.h2 em{font-style:normal;color:var(--brand)}
+.sub{font-size:clamp(17px,1.4vw,20px);max-width:34em;margin:0}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);transition-delay:calc(var(--i,0) * 90ms)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- chapter 1: chat ---------- */
+.problem{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.chat{background:var(--card);border-radius:var(--r-l);padding:22px;box-shadow:var(--shadow);max-width:460px;justify-self:end;width:100%}
+.chat-head{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line);font-weight:800}
+.chat-head .avatar{width:36px;height:36px;font-size:16px}
+.chat-head small{display:block;font-weight:600;color:var(--muted);font-size:12px}
+.msg{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:12px;max-width:85%}
+.msg b{font-size:12px;color:var(--muted);margin:0 0 2px 12px}
+.msg span{background:var(--tint);padding:10px 14px;border-radius:18px 18px 18px 6px}
+.msg.me{align-self:flex-end;align-items:flex-end;margin-left:auto}
+.msg.me b{margin:0 12px 2px 0}
+.msg.me span{background:var(--brand);color:var(--on-brand);border-radius:18px 18px 6px 18px}
+.chat-body{display:flex;flex-direction:column}
+.chat .verdict{margin-top:6px;text-align:center;font-size:13px;font-weight:800;color:var(--overdue);display:flex;align-items:center;justify-content:center;gap:6px}
+.chat .verdict svg{width:18px;height:18px}
+
+/* ---------- chapter 2: bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:clamp(40px,6vw,72px)}
+.tile{position:relative;background:var(--card);border-radius:var(--r-l);padding:28px;box-shadow:var(--shadow);overflow:hidden;
+  transition:transform .4s var(--ease-out),box-shadow .4s;display:flex;flex-direction:column;gap:14px;min-height:280px}
+.tile:hover{transform:translateY(-4px)}
+.tile h3{font:400 clamp(24px,2.4vw,30px)/1.2 var(--font-display);margin:0}
+.tile p{margin:0;color:var(--text);opacity:.86}
+.tile .tag{align-self:flex-start;font-size:12px;font-weight:800;letter-spacing:.08em;padding:4px 10px;border-radius:999px;background:var(--tint);color:var(--muted)}
+.t-a{grid-column:span 4}.t-b{grid-column:span 2}.t-c{grid-column:span 2}.t-d{grid-column:span 2}.t-e{grid-column:span 2}.t-f{grid-column:span 6}
+.t-a{background:var(--band);color:#FFF7ED;box-shadow:inset 0 0 0 1px var(--band-line),var(--shadow)}
+.t-a p{color:#FFF7ED}
+.t-a .tag{background:rgba(255,247,237,.14);color:#FFF7ED}
+.vis{margin-top:auto}
+/* timeline in t-a */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.who div{border-radius:18px;padding:14px;background:rgba(255,247,237,.08)}
+.who strong{display:block;font:400 22px var(--font-display)}
+.who small{font-size:13px;opacity:.8}
+.who .ok{color:#4ADE80;display:flex;align-items:center;gap:4px;font-weight:800;font-size:13px}
+.who .ok svg{width:16px;height:16px}
+.who .wait{color:#FDBA74;font-weight:800;font-size:13px}
+/* due ring */
+.ring{width:136px;height:136px;position:relative;align-self:center}
+.ring svg{transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:12}
+.ring .bg{stroke:var(--accent-tint)}
+.ring .fg{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:314;stroke-dashoffset:314;transition:stroke-dashoffset 1.6s var(--ease-out)}
+.in .ring .fg{stroke-dashoffset:var(--off,90)}
+.ring > span{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-weight:800;line-height:1.1}
+.ring span b{display:block;font:900 36px/1 var(--font-body);color:var(--accent);margin-bottom:2px}
+.ring > span > span{display:block;font-size:13px}
+/* weight chart */
+.chart path.line{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.8s var(--ease-out)}
+.in .chart path.line{stroke-dashoffset:0}
+.chart path.area{fill:color-mix(in srgb,var(--accent) 14%,transparent)}
+.chart circle{fill:var(--card);stroke:var(--accent);stroke-width:3}
+.big-num{font:900 44px/1 var(--font-body);letter-spacing:-.02em}
+.big-num small{font-size:18px;font-weight:800;margin-left:4px}
+/* meds */
+.doses{display:flex;gap:8px}
+.doses i{flex:1;height:44px;border-radius:12px;background:var(--tint);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800}
+.doses i.ok{background:color-mix(in srgb,var(--done) 16%,transparent);color:var(--done)}
+.doses i.miss{background:color-mix(in srgb,var(--overdue) 14%,transparent);color:var(--overdue);box-shadow:inset 0 0 0 2px var(--overdue)}
+/* sitter card */
+.handover{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.card-stack{position:relative;height:220px}
+.hcard{position:absolute;inset:0 auto auto 0;width:min(100%,340px);min-height:196px;background:var(--surface);border-radius:24px;padding:20px;box-shadow:inset 0 0 0 1px var(--line)}
+.hcard:nth-child(1){transform:rotate(-4deg) translate(18px,14px);opacity:.7}
+.hcard:nth-child(2){transform:rotate(2deg)}
+.hcard dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:14px}
+.hcard dt{color:var(--muted);font-weight:700}
+.hcard dd{margin:0;font-weight:700}
+.hcard .locked{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.hcard .locked svg{width:16px;height:16px}
+.icon-lg{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:var(--tint);color:var(--brand)}
+.icon-lg svg{width:26px;height:26px}
+
+/* ---------- chapter 3: privacy marquee ---------- */
+.dark-band{background:var(--band);color:#FFF7ED;box-shadow:inset 0 0 0 1px var(--band-line);border-radius:clamp(28px,4vw,56px);margin-inline:clamp(8px,1.5vw,20px)}
+.dark-band .kicker{color:rgba(255,247,237,.78)}
+.dark-band .kicker::before{color:#FFF7ED;box-shadow:inset 0 0 0 2px rgba(255,247,237,.28)}
+.dark-band .h2 em{color:#FDBA74}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.fact{border-radius:24px;padding:26px;box-shadow:inset 0 0 0 1px rgba(255,247,237,.18)}
+.fact strong{display:block;font:400 26px/1.25 var(--font-display);margin:14px 0 8px}
+.fact p{margin:0;opacity:.82}
+.fact svg{width:28px;height:28px}
+.marquee{overflow:hidden;margin-top:72px;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:scroll 40s linear infinite;font:400 clamp(28px,4vw,48px) var(--font-display);white-space:nowrap;opacity:.9}
+.marquee-track span{display:flex;align-items:center;gap:48px}
+.marquee-track span::after{content:"";width:14px;height:14px;border-radius:50%;background:var(--brand)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- name story ---------- */
+.name-story{text-align:center}
+.pun{font-family:var(--font-display);font-size:clamp(76px,16vw,220px);line-height:1;margin:40px 0;display:flex;justify-content:center;gap:.02em}
+.pun .sw{position:relative;display:inline-block;width:1em;height:1em}
+.pun .sw span{position:absolute;inset:0;transition:transform .9s var(--ease-spring),opacity .6s}
+.pun .sw .old{color:color-mix(in srgb,var(--text) 35%,transparent)}
+.pun .sw .new{color:var(--brand);transform:translateY(60%) rotate(-12deg);opacity:0}
+.pun.flip .sw .old{transform:translateY(-70%) rotate(10deg);opacity:0}
+.pun.flip .sw .new{transform:none;opacity:1}
+.pun.flip .sw:nth-child(2) span{transition-delay:.15s}
+.pun-cap{font-size:clamp(17px,1.4vw,20px);margin:-12px auto 48px;max-width:30em}
+.meaning{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin-top:24px}
+.meaning div{padding:24px;border-radius:24px;background:var(--card);box-shadow:var(--shadow)}
+.meaning b{font:400 40px/1 var(--font-display);color:var(--brand);display:block;margin-bottom:10px}
+
+/* ---------- final CTA ---------- */
+.final{text-align:center;padding-block:clamp(80px,10vw,140px)}
+.final .h2{max-width:14em;margin-inline:auto}
+.final .cta-row{justify-content:center}
+.paw-trail{display:flex;justify-content:center;gap:22px;margin-bottom:28px;color:var(--brand)}
+.paw-trail svg{width:28px;height:28px;opacity:0;transform:translateY(10px) rotate(var(--r))}
+.in .paw-trail svg{animation:step .5s var(--ease-out) forwards;animation-delay:calc(var(--i)*160ms)}
+@keyframes step{to{opacity:1;transform:rotate(var(--r))}}
+.paw-trail svg:nth-child(odd){margin-top:18px}
+
+/* ---------- privacy policy ---------- */
+.policy{padding-block:clamp(64px,8vw,112px);border-top:1px solid var(--line)}
+.policy-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,96px)}
+.policy h2{font:400 clamp(32px,4vw,48px)/1.15 var(--font-display);margin:0 0 12px;position:sticky;top:96px}
+.policy h3{font-size:18px;margin:32px 0 6px}
+.policy h3:first-child{margin-top:0}
+.policy p,.policy li{max-width:40em}
+.policy ul{padding-left:1.2em}
+.updated{font-size:14px;color:var(--muted)}
+
+footer{padding-block:40px 56px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+footer p{margin:0;max-width:44em}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .title{font-size:clamp(64px,19vw,160px)}
+  .hero-grid,.problem,.handover,.policy-grid{grid-template-columns:1fr}
+  .stage{min-height:auto;padding-block:24px}
+  .chat{justify-self:start}
+  .t-a{grid-column:span 6}.t-b,.t-c{grid-column:span 3}.t-d,.t-e{grid-column:span 3}
+  .facts{grid-template-columns:1fr}
+  .policy h2{position:static}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .t-b,.t-c,.t-d,.t-e{grid-column:span 6}
+  .tile{min-height:0;padding:24px}
+  .who{grid-template-columns:1fr}
+  .meaning{grid-template-columns:1fr}
+  .phone{transform:none}
+  .btn{width:100%;justify-content:center}
+  .card-stack{height:240px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
+  .rv{opacity:1;transform:none}
+  .marquee-track{animation:none}
+  .paw-trail svg{opacity:1;transform:rotate(var(--r))}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="progress" aria-hidden="true"></div>
+
+<!-- shared icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="paw" viewBox="0 0 64 64"><path d="M32 30c-8 0-15 7-15 14 0 5 3.5 8 8 8 2.6 0 4.6-1.2 7-1.2s4.4 1.2 7 1.2c4.5 0 8-3 8-8 0-7-7-14-15-14z" fill="currentColor"/><ellipse cx="15" cy="27" rx="5.5" ry="6.5" transform="rotate(-20 15 27)" fill="currentColor"/><ellipse cx="25" cy="15" rx="5.5" ry="7" transform="rotate(-8 25 15)" fill="currentColor"/><ellipse cx="40" cy="13" rx="5.5" ry="7" transform="rotate(12 40 13)" fill="currentColor"/><ellipse cx="50" cy="25" rx="5.5" ry="6.5" transform="rotate(24 50 25)" fill="currentColor"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.5 3 3 6-6.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="syringe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4M17 7l3-3M19 9 8.7 19.3a2.4 2.4 0 0 1-3.4 0l-.6-.6a2.4 2.4 0 0 1 0-3.4L15 5M9 11l4 4M5 19l-3 3M14 4l6 6"/></g></symbol>
+  <symbol id="alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></g></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></g></symbol>
+  <symbol id="cloud" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.3 12 3.5 3.5 0 0 0 6.5 19h11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="eye-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.7 5.1A10 10 0 0 1 12 5c7 0 10 7 10 7a13 13 0 0 1-1.7 2.7M6.6 6.6A13 13 0 0 0 2 12s3 7 10 7a9.7 9.7 0 0 0 5.4-1.6M2 2l20 20M9.9 9.9a3 3 0 0 0 4.2 4.2"/></g></symbol>
+  <symbol id="bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></g></symbol>
+  <symbol id="handover" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h6M7 17h4"/></g></symbol>
+  <symbol id="home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9-9.2C1.6 7.4 3.8 4 7.2 4c2 0 3.6 1.1 4.8 2.8C13.2 5.1 14.8 4 16.8 4c3.4 0 5.6 3.4 4.2 6.8C19 15.6 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></g></symbol>
+  <symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+  <symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="寵寵欲動 回到頂端">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="var(--brand)"/><use href="#paw" x="12" y="12" width="40" height="40" style="color:var(--on-brand)"/></svg>
+      寵寵欲動
+    </a>
+    <nav class="nav-links" aria-label="主要">
+      <a class="hide-sm" href="#features">功能</a>
+      <a class="hide-sm" href="#privacy-promise">隱私</a>
+      <a class="hide-sm" href="#name">名字由來</a>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深色模式">
+        <svg aria-hidden="true"><use href="#moon"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill rv"><span class="dot" aria-hidden="true"></span>iOS App・2027 上架準備中</span>
+        <h1 class="title" aria-label="寵寵欲動">
+          <span class="ch" aria-hidden="true">寵</span><span class="ch" aria-hidden="true">寵</span><span class="ch" aria-hidden="true">欲</span><span class="ch" aria-hidden="true">動</span>
+        </h1>
+        <p class="lede rv" style="--i:1">全家共用一份毛孩檔案。<b>誰餵過、誰散步、疫苗何時到期</b>，打開就知道，到期前先提醒你。</p>
+        <div class="cta-row rv" style="--i:2">
+          <a class="btn" href="#features">看看怎麼用 <svg aria-hidden="true"><use href="#arrow"/></svg></a>
+          <a class="btn ghost" href="#privacy">隱私權政策</a>
+        </div>
+        <p class="note rv" style="--i:3">免帳號・資料存在你的 iCloud・不追蹤、不放廣告</p>
+      </div>
+
+      <div class="stage rv" style="--i:2">
+        <div class="phone" role="group" aria-label="App 畫面示範：今天分頁，可以點按試用">
+          <div class="screen" id="screen">
+            <div class="island" aria-hidden="true"></div>
+            <div class="status" aria-hidden="true"><span>08:05</span><span>●●●</span></div>
+            <div class="app-head">
+              <small>11 月 2 日 星期一</small>
+              <h3>今天</h3>
+            </div>
+            <div class="pets" aria-hidden="true">
+              <span class="chip"><span class="avatar" style="background:#FDBA74">麻</span>麻糬</span>
+              <span class="chip"><span class="avatar" style="background:#93C5FD">豆</span>豆花</span>
+            </div>
+            <div class="tasks">
+              <div class="task" style="--c:#F97316">
+                <div class="row">
+                  <div><div class="name">麻糬・早餐</div><div class="meta">07:00–09:00</div></div>
+                  <div class="done-line"><svg aria-hidden="true"><use href="#check"/></svg>已餵</div>
+                </div>
+                <div class="row"><span class="meta">爸爸 07:42</span><button class="link-btn" type="button" id="dupBtn">我也餵了？</button></div>
+              </div>
+              <div class="task" style="--c:#60A5FA" id="feedTask">
+                <div class="row">
+                  <div><div class="name">豆花・早餐</div><div class="meta">07:00–09:00</div></div>
+                  <button class="mini-btn" type="button" id="feedBtn">餵了</button>
+                </div>
+              </div>
+              <div class="task" style="--c:#F97316">
+                <div class="due">
+                  <span class="ic" aria-hidden="true"><svg><use href="#syringe"/></svg></span>
+                  <div><div class="name">麻糬・狂犬病疫苗</div><div class="meta">依預設週期，23 天後到期</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="tabbar" aria-hidden="true">
+              <span class="on"><svg><use href="#home"/></svg>今天</span>
+              <span><svg><use href="#paw"/></svg>毛孩</span>
+              <span><svg><use href="#heart"/></svg>健康</span>
+              <span><svg><use href="#users"/></svg>家人</span>
+            </div>
+            <div class="sheet-scrim" id="scrim"></div>
+            <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+              <p id="sheetTitle">爸爸 07:42 已經餵過了</p>
+              <small>還要再記一筆嗎？兩筆都會保留。</small>
+              <button class="cancel" type="button" id="sheetCancel">不用了，謝謝提醒</button>
+              <button class="confirm" type="button" id="sheetConfirm">仍要記錄</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 1 -->
+  <section class="chapter" aria-labelledby="c1">
+    <div class="wrap problem">
+      <div>
+        <p class="kicker rv" data-n="01">每個家都有的問題</p>
+        <h2 class="h2 rv" id="c1" style="--i:1">「今天到底<br><em>餵了沒？</em>」</h2>
+        <p class="sub rv" style="--i:2">照顧一隻毛孩的是一整家人。訊息散在群組、疫苗卡收在抽屜、藥單記在誰的腦袋裡。漏一次是空肚子，重複一次是第三餐。</p>
+      </div>
+      <div class="chat rv" style="--i:2" aria-label="家庭群組對話示意">
+        <div class="chat-head"><span class="avatar" style="background:#FDBA74" aria-hidden="true">家</span><div>相親相愛一家人<small>4 位成員</small></div></div>
+        <div class="chat-body">
+          <div class="msg"><b>媽媽</b><span>麻糬早上有吃嗎？</span></div>
+          <div class="msg"><b>爸爸</b><span>我以為妳餵了</span></div>
+          <div class="msg me"><b>你</b><span>我出門前餵了⋯⋯</span></div>
+          <div class="msg"><b>妹妹</b><span>我剛剛也餵了耶</span></div>
+        </div>
+        <p class="verdict"><svg aria-hidden="true"><use href="#alert"/></svg>麻糬今天吃了三頓早餐</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 2 -->
+  <section class="chapter" id="features" aria-labelledby="c2" style="padding-top:0">
+    <div class="wrap">
+      <p class="kicker rv" data-n="02">寵寵欲動怎麼幫忙</p>
+      <h2 class="h2 rv" id="c2" style="--i:1">一份檔案，<em>全家同步</em>。</h2>
+      <p class="sub rv" style="--i:2">日常交接和長期健康放在同一個地方。不必建帳號，用 iCloud 邀請家人就能一起記。</p>
+
+      <div class="bento">
+        <article class="tile t-a rv">
+          <span class="tag">每日打卡</span>
+          <h3>按一下「餵了」，全家都看得到是誰、幾點。</h3>
+          <p>同一個時段有人記過，再按會先問你一聲，不會悄悄覆蓋。</p>
+          <div class="vis who">
+            <div><small>早餐</small><strong>爸爸</strong><span class="ok"><svg aria-hidden="true"><use href="#check"/></svg>07:42</span></div>
+            <div><small>散步</small><strong>妹妹</strong><span class="ok"><svg aria-hidden="true"><use href="#check"/></svg>17:30</span></div>
+            <div><small>晚餐</small><strong>還沒有人</strong><span class="wait">18:00–20:00</span></div>
+          </div>
+        </article>
+
+        <article class="tile t-b rv" style="--i:1">
+          <span class="tag">疫苗・驅蟲</span>
+          <h3>到期前先提醒</h3>
+          <div class="vis ring" style="--off:62" role="img" aria-label="狂犬病疫苗依預設週期剩 23 天">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50"/></svg>
+            <span><span><b>23</b>天後</span></span>
+          </div>
+          <p>依你的紀錄與預設週期推算，也能改成獸醫師交代的間隔。</p>
+        </article>
+
+        <article class="tile t-c rv" style="--i:2">
+          <span class="tag">體重</span>
+          <h3 class="sr-only">體重曲線</h3>
+          <div class="big-num">5.2<small>kg</small></div>
+          <svg class="vis chart" viewBox="0 0 220 90" role="img" aria-label="最近 5 次體重：4.6、4.8、4.9、5.1、5.2 公斤">
+            <path class="area" d="M10 70 L60 58 L110 52 L160 40 L210 34 L210 90 L10 90Z"/>
+            <path class="line" d="M10 70 L60 58 L110 52 L160 40 L210 34"/>
+            <circle cx="10" cy="70" r="4"/><circle cx="60" cy="58" r="4"/><circle cx="110" cy="52" r="4"/><circle cx="160" cy="40" r="4"/><circle cx="210" cy="34" r="5"/>
+          </svg>
+          <p>每次量完記一筆，曲線一眼看懂。</p>
+        </article>
+
+        <article class="tile t-d rv" style="--i:1">
+          <span class="tag">用藥</span>
+          <h3>每 12 小時一次，漏了會說</h3>
+          <div class="vis doses" aria-label="本週用藥：五次已服、一次未記錄">
+            <i class="ok">一</i><i class="ok">二</i><i class="miss">三</i><i class="ok">四</i><i class="ok">五</i><i>六</i>
+          </div>
+          <p>過了時段還沒人記，就通知負責的家人。</p>
+        </article>
+
+        <article class="tile t-e rv" style="--i:2">
+          <span class="tag">看診・附件</span>
+          <span class="icon-lg" aria-hidden="true"><svg><use href="#handover"/></svg></span>
+          <h3>收據、疫苗卡直接掃</h3>
+          <p>看診紀錄和附件跟著毛孩走，回診時翻得到。</p>
+        </article>
+
+        <article class="tile t-f rv">
+          <div class="handover">
+            <div>
+              <span class="tag">臨時照顧者</span>
+              <h3 style="margin-top:14px">出遠門，交接一張卡就好。</h3>
+              <p style="margin-top:12px">保母、寄宿或朋友拿到的是照顧需要的資訊：吃什麼、吃多少、要吃哪些藥。花費和理賠資料一律不會出現在他們的畫面上。</p>
+            </div>
+            <div class="card-stack" aria-hidden="true">
+              <div class="hcard"></div>
+              <div class="hcard">
+                <dl>
+                  <dt>名字</dt><dd>麻糬（柴犬・5 歲）</dd>
+                  <dt>飼料</dt><dd>早晚各 80 g</dd>
+                  <dt>用藥</dt><dd>無</dd>
+                  <dt>散步</dt><dd>傍晚一次，怕機車聲</dd>
+                  <dt>支出</dt><dd class="locked"><svg><use href="#lock"/></svg>不提供給臨時照顧者</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 3 -->
+  <section class="chapter dark-band" id="privacy-promise" aria-labelledby="c3">
+    <div class="wrap">
+      <p class="kicker rv" data-n="03">你的資料，留在你家</p>
+      <h2 class="h2 rv" id="c3" style="--i:1">我們沒有伺服器，<br>所以<em>什麼都拿不到</em>。</h2>
+      <div class="facts">
+        <div class="fact rv"><svg aria-hidden="true"><use href="#cloud"/></svg><strong>存在你的 iCloud</strong><p>紀錄透過 Apple CloudKit 同步，開發者無法讀取。</p></div>
+        <div class="fact rv" style="--i:1"><svg aria-hidden="true"><use href="#eye-off"/></svg><strong>不追蹤、沒有廣告</strong><p>不放任何第三方分析或廣告 SDK。</p></div>
+        <div class="fact rv" style="--i:2"><svg aria-hidden="true"><use href="#bell"/></svg><strong>提醒在手機上排</strong><p>到期與時段提醒都是本機通知，離線也照常。</p></div>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>今天餵了沒</span><span>誰帶去散步</span><span>疫苗快到期</span><span>藥吃了嗎</span><span>體重又胖了</span><span>交接給保母</span>
+        <span>今天餵了沒</span><span>誰帶去散步</span><span>疫苗快到期</span><span>藥吃了嗎</span><span>體重又胖了</span><span>交接給保母</span>
+      </div>
+    </div>
+    <div style="height:clamp(64px,8vw,112px)"></div>
+  </section>
+
+  <!-- NAME -->
+  <section class="chapter name-story" id="name" aria-labelledby="c4">
+    <div class="wrap">
+      <p class="kicker rv" data-n="04" style="justify-content:center">名字由來</p>
+      <h2 class="sr-only" id="c4">寵寵欲動，取自蠢蠢欲動</h2>
+      <div class="pun" id="pun" aria-hidden="true">
+        <span class="sw"><span class="old">蠢</span><span class="new">寵</span></span><span class="sw"><span class="old">蠢</span><span class="new">寵</span></span><span>欲</span><span>動</span>
+      </div>
+      <p class="pun-cap rv">取自「蠢蠢欲動」：毛孩一聽到開飯，就開始坐不住。</p>
+      <div class="meaning">
+        <div class="rv"><b>寵</b>寵物，也是寵愛。這個 App 只為毛孩存在。</div>
+        <div class="rv" style="--i:1"><b>寵寵</b>疊字是一家人一起寵，家裡也常常不只一隻。</div>
+        <div class="rv" style="--i:2"><b>欲動</b>該做的事準時動起來：開飯、散步、回診，提醒先你一步。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="final" aria-labelledby="c5">
+    <div class="wrap rv">
+      <div class="paw-trail" aria-hidden="true">
+        <svg style="--i:0;--r:-14deg"><use href="#paw"/></svg><svg style="--i:1;--r:10deg"><use href="#paw"/></svg><svg style="--i:2;--r:-12deg"><use href="#paw"/></svg><svg style="--i:3;--r:8deg"><use href="#paw"/></svg><svg style="--i:4;--r:-10deg"><use href="#paw"/></svg>
+      </div>
+      <h2 class="h2" id="c5">把毛孩的大小事，<em>交給全家一起記</em>。</h2>
+      <p class="sub" style="margin:0 auto 36px">寵寵欲動正在開發中，預計於 App Store 推出，支援 iOS 17 以上的 iPhone。</p>
+      <div class="cta-row"><a class="btn" href="#top">回去按一下「餵了」 <svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section class="policy" id="privacy" aria-labelledby="pp">
+    <div class="wrap policy-grid">
+      <div>
+        <h2 id="pp">隱私權政策</h2>
+        <p class="updated">最後更新：2026 年 11 月 2 日</p>
+      </div>
+      <div>
+        <h3>我們收集的資料</h3>
+        <p>寵寵欲動的開發者不收集任何個人資料。App 沒有帳號系統、沒有自建伺服器，也沒有第三方分析或廣告 SDK。</p>
+        <h3>資料存放位置</h3>
+        <p>你輸入的毛孩檔案、打卡、健康紀錄、支出與附件，存放在你的裝置與你的 iCloud 帳號中，透過 Apple CloudKit 同步。資料在裝置上以 iOS 檔案保護加密。</p>
+        <h3>與家人共享</h3>
+        <p>你邀請家人或臨時照顧者時，App 使用 iCloud 共享功能，只有你邀請的人看得到該毛孩的資料。臨時照顧者看不到支出與理賠資料。你可以隨時移除成員。</p>
+        <h3>權限</h3>
+        <ul>
+          <li>相機：只用於掃描收據與疫苗卡，影像存放在你的毛孩檔案中。</li>
+          <li>通知：到期與時段提醒由手機本機排程。</li>
+        </ul>
+        <h3>匯出與刪除</h3>
+        <p>交接卡 PDF 預設不含晶片號碼與住址。刪除毛孩檔案或 App 後，資料會從你的裝置刪除；iCloud 內的資料可在「設定 › Apple 帳號 › iCloud › 管理帳號儲存空間」中刪除。</p>
+        <h3>健康資訊聲明</h3>
+        <p>App 內的提醒依你的紀錄與預設週期推算，僅供記錄與提醒，不構成醫療建議。毛孩的健康狀況請依獸醫師指示。</p>
+        <h3>聯絡我們</h3>
+        <p>對本政策有任何疑問，請透過 App Store 頁面上的開發者聯絡方式與我們聯繫。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="寵寵欲動 回到頂端">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18" fill="var(--brand)"/><use href="#paw" x="12" y="12" width="40" height="40" style="color:var(--on-brand)"/></svg>
+      寵寵欲動
+    </a>
+    <p>提醒依紀錄與預設週期推算，不構成醫療建議。© 2026 寵寵欲動</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // theme toggle, remembered per viewer
+  const btn = document.getElementById('themeBtn');
+  const icon = btn.querySelector('use');
+  const sysDark = matchMedia('(prefers-color-scheme: dark)');
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : sysDark.matches;
+  const paint = () => {
+    icon.setAttribute('href', isDark() ? '#sun' : '#moon');
+    btn.setAttribute('aria-label', isDark() ? '切換淺色模式' : '切換深色模式');
+  };
+  try { const t = localStorage.getItem('cc-theme'); if (t) root.dataset.theme = t; } catch {}
+  paint();
+  sysDark.addEventListener('change', paint);
+  btn.addEventListener('click', () => {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('cc-theme', root.dataset.theme); } catch {}
+    paint();
+  });
+
+  // sticky nav + progress
+  const nav = document.getElementById('nav');
+  const bar = document.querySelector('.progress');
+  let ticking = false;
+  const onScroll = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.setProperty('--p', h > 0 ? (scrollY / h).toFixed(4) : 0);
+    nav.classList.toggle('is-stuck', scrollY > 8);
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  // reveals
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .18, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.rv').forEach(el => reduce ? el.classList.add('in') : io.observe(el));
+
+  // hero title: idle wiggle + hop on hover/tap
+  document.querySelectorAll('.title .ch').forEach(ch => {
+    if (!reduce) ch.classList.add('wiggle');
+    const hop = () => {
+      if (reduce) return;
+      ch.classList.remove('wiggle', 'hop'); void ch.offsetWidth; ch.classList.add('hop');
+    };
+    ch.addEventListener('pointerenter', hop);
+    ch.addEventListener('animationend', e => { if (e.animationName === 'hop') { ch.classList.remove('hop'); ch.classList.add('wiggle'); } });
+  });
+
+  // name pun flips when in view
+  const pun = document.getElementById('pun');
+  new IntersectionObserver(([e], o) => {
+    if (e.isIntersecting) { setTimeout(() => pun.classList.add('flip'), reduce ? 0 : 350); o.disconnect(); }
+  }, { threshold: .6 }).observe(pun);
+
+  // phone demo
+  const screen = document.getElementById('screen');
+  const feedBtn = document.getElementById('feedBtn');
+  feedBtn.addEventListener('click', () => {
+    const r = feedBtn.getBoundingClientRect(), s = screen.getBoundingClientRect();
+    const now = new Date(), hh = String(now.getHours()).padStart(2,'0'), mm = String(now.getMinutes()).padStart(2,'0');
+    if (!reduce) for (let i = 0; i < 10; i++) {
+      const d = document.createElement('i'); d.className = 'burst';
+      d.style.left = (r.left - s.left + r.width/2) + 'px'; d.style.top = (r.top - s.top + r.height/2) + 'px';
+      if (i % 2) d.style.background = 'var(--accent)';
+      screen.appendChild(d);
+      const a = (Math.PI * 2 * i) / 10, dist = 34 + Math.random() * 20;
+      d.animate([{ transform:'translate(-50%,-50%) scale(1)', opacity:1 },
+                 { transform:`translate(calc(-50% + ${Math.cos(a)*dist}px), calc(-50% + ${Math.sin(a)*dist}px)) scale(.2)`, opacity:0 }],
+                { duration:600, easing:'cubic-bezier(.22,1,.36,1)' }).onfinish = () => d.remove();
+    }
+    const line = document.createElement('div');
+    line.className = 'done-line done-anim';
+    line.setAttribute('role', 'status');
+    line.innerHTML = '<svg aria-hidden="true"><use href="#check"/></svg>已餵・你 ' + hh + ':' + mm;
+    feedBtn.replaceWith(line);
+    if (navigator.vibrate) navigator.vibrate(12);
+  });
+
+  const sheet = document.getElementById('sheet');
+  const dupBtn = document.getElementById('dupBtn');
+  const open = () => { sheet.hidden = false; requestAnimationFrame(() => screen.classList.add('sheet-open')); document.getElementById('sheetCancel').focus(); };
+  const close = (msg) => {
+    screen.classList.remove('sheet-open');
+    setTimeout(() => { sheet.hidden = true; }, reduce ? 0 : 380);
+    if (msg) { dupBtn.textContent = msg; dupBtn.disabled = true; dupBtn.style.textDecoration = 'none'; dupBtn.style.color = 'var(--muted)'; dupBtn.style.cursor = 'default'; }
+    else dupBtn.focus();
+  };
+  dupBtn.addEventListener('click', open);
+  document.getElementById('sheetCancel').addEventListener('click', () => close());
+  document.getElementById('sheetConfirm').addEventListener('click', () => close('已記 2 筆・標記重複'));
+  document.getElementById('scrim').addEventListener('click', () => close());
+  sheet.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

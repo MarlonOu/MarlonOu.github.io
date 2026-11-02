@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# 產生官網三種語言的頁面：繁中在根目錄，英文在 /en/，日文在 /ja/。
+# 產生「去處」官網三種語言的頁面：繁中在 /whereto/，英文在 /whereto/en/，日文在 /whereto/ja/。
+# 網站根目錄是個人首頁（index.html，手寫，不經此腳本）；舊網址（/privacy.html、/en/ 等）產生轉址頁，App Store 上填的連結仍然有效。
 # 內容在 _src/<語言>/<頁面>.html（第一、二行註解是 title、description），共用的頁首、語言切換、頁尾在這裡。
 # 用法：在網站 repo 根目錄執行 `python3 _src/build.py`
 import os, re
@@ -7,11 +8,11 @@ import os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://marlonou.github.io"
 LANGS = {
-    "zh": {"dir": "", "html": "zh-Hant-TW", "brand": "去處 Whereto", "nav": ["首頁", "支援", "隱私權"], "navlabel": "網站",
+    "zh": {"dir": "whereto/", "html": "zh-Hant-TW", "brand": "去處 Whereto", "nav": ["首頁", "支援", "隱私權"], "navlabel": "網站",
            "footer": ["支援", "隱私權政策"], "copy": "© 2026 去處 Whereto", "switch": "語言"},
-    "en": {"dir": "en/", "html": "en", "brand": "Whereto", "nav": ["Home", "Support", "Privacy"], "navlabel": "Site",
+    "en": {"dir": "whereto/en/", "html": "en", "brand": "Whereto", "nav": ["Home", "Support", "Privacy"], "navlabel": "Site",
            "footer": ["Support", "Privacy Policy"], "copy": "© 2026 Whereto", "switch": "Language"},
-    "ja": {"dir": "ja/", "html": "ja", "brand": "Whereto", "nav": ["ホーム", "サポート", "プライバシー"], "navlabel": "サイト",
+    "ja": {"dir": "whereto/ja/", "html": "ja", "brand": "Whereto", "nav": ["ホーム", "サポート", "プライバシー"], "navlabel": "サイト",
            "footer": ["サポート", "プライバシーポリシー"], "copy": "© 2026 Whereto", "switch": "言語"},
 }
 PAGES = ["index", "support", "privacy"]
@@ -28,7 +29,7 @@ def build(lang, page):
     src = open(os.path.join(ROOT, "_src", lang, page + ".html")).read()
     title = re.search(r"<!--title:(.*?)-->", src).group(1)
     desc = re.search(r"<!--desc:(.*?)-->", src).group(1)
-    body = re.sub(r"<!--(title|desc):.*?-->\n", "", src).replace('src="icon.png"', 'src="/icon.png"')
+    body = re.sub(r"<!--(title|desc):.*?-->\n", "", src).replace('src="icon.png"', 'src="/whereto/icon.png"')
     nav = "\n".join(
         f'      <a href="{url(lang, p)}"{" aria-current=\"page\"" if p == page else ""}>{L["nav"][i]}</a>'
         for i, p in enumerate(PAGES))
@@ -41,7 +42,7 @@ def build(lang, page):
     if lang == "zh" and page == "index":
         redirect = """<script>
 try{if(!localStorage.getItem('lang')){var l=(navigator.languages&&navigator.languages[0]||navigator.language||'').toLowerCase();
-if(l.indexOf('zh')!==0){location.replace(l.indexOf('ja')===0?'/ja/':'/en/')}}}catch(e){}
+if(l.indexOf('zh')!==0){location.replace(l.indexOf('ja')===0?'/whereto/ja/':'/whereto/en/')}}}catch(e){}
 </script>
 """
     remember = """<script>document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})})</script>"""
@@ -53,15 +54,15 @@ if(l.indexOf('zh')!==0){location.replace(l.indexOf('ja')===0?'/ja/':'/en/')}}}ca
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<link rel="icon" href="/favicon.png">
-<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/whereto/favicon.png">
+<link rel="stylesheet" href="/whereto/style.css">
 {alternates}
 <link rel="alternate" hreflang="x-default" href="{BASE}{url("en", page)}">
 {redirect}</head>
 <body>
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="{url(lang, "index")}"><img src="/icon.png" alt="">{L["brand"]}</a>
+    <a class="brand" href="{url(lang, "index")}"><img src="/whereto/icon.png" alt="">{L["brand"]}</a>
     <nav aria-label="{L["navlabel"]}">
 {nav}
     </nav>
@@ -89,3 +90,34 @@ for lang, L in LANGS.items():
         out = os.path.join(ROOT, L["dir"], page + ".html")
         open(out, "w").write(build(lang, page))
         print("寫入", os.path.relpath(out, ROOT))
+
+
+# 舊網址轉址：網站改版前「去處」放在根目錄
+OLD_DIRS = {"zh": "", "en": "en/", "ja": "ja/"}
+
+
+def stub(lang, page):
+    target = url(lang, page)
+    return f"""<!doctype html>
+<html lang="{LANGS[lang]["html"]}">
+<head>
+<meta charset="utf-8">
+<title>{LANGS[lang]["brand"]}</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{BASE}{target}">
+<meta http-equiv="refresh" content="0; url={target}">
+<script>location.replace("{target}"+location.search+location.hash)</script>
+</head>
+<body><p><a href="{target}">{BASE}{target}</a></p></body>
+</html>
+"""
+
+
+for lang, old in OLD_DIRS.items():
+    for page in PAGES:
+        if lang == "zh" and page == "index":
+            continue  # 根目錄首頁是個人首頁
+        os.makedirs(os.path.join(ROOT, old), exist_ok=True)
+        out = os.path.join(ROOT, old, page + ".html")
+        open(out, "w").write(stub(lang, page))
+        print("轉址", os.path.relpath(out, ROOT), "→", url(lang, page))
