@@ -2,31 +2,51 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>支援｜去處 Whereto</title>
 <meta name="description" content="「去處 Whereto」常見問題與聯絡方式。">
 <meta name="apple-itunes-app" content="app-id=6830008884">
+<meta name="theme-color" content="#F6F4F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="支援｜去處 Whereto">
+<meta property="og:description" content="「去處 Whereto」常見問題與聯絡方式。">
+<meta property="og:image" content="https://marlonou.github.io/whereto/icon.png">
 <link rel="icon" href="/whereto/favicon.png">
+<link rel="apple-touch-icon" href="/whereto/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Serif+TC:wght@500;700;900&display=swap">
 <link rel="stylesheet" href="/whereto/style.css">
 <link rel="alternate" hreflang="zh-Hant" href="https://marlonou.github.io/whereto/support.html">
 <link rel="alternate" hreflang="en" href="https://marlonou.github.io/whereto/en/support.html">
 <link rel="alternate" hreflang="ja" href="https://marlonou.github.io/whereto/ja/support.html">
 <link rel="alternate" hreflang="x-default" href="https://marlonou.github.io/whereto/en/support.html">
+<script>try{var t=localStorage.getItem('wt-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<noscript><style>.rv{opacity:1;transform:none}.display .line>span{transform:none}</style></noscript>
+<script src="/whereto/site.js" defer></script>
 </head>
-<body>
-<header class="topbar">
+<body class="page-support">
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="/whereto/"><img src="/whereto/icon.png" alt="">去處 Whereto</a>
-    <nav aria-label="網站">
-      <a href="/whereto/">首頁</a>
-      <a href="/whereto/support.html" aria-current="page">支援</a>
-      <a href="/whereto/privacy.html">隱私權</a>
+    <a class="brand" href="/whereto/"><img src="/whereto/icon.png" alt="" width="34" height="34">去處</a>
+    <nav class="nav-links" aria-label="網站">
+      <a href="/whereto/#features">功能</a>
+      <a href="/whereto/#privacy">隱私</a>
+      <a href="/whereto/#pricing">價格</a>
     </nav>
-    <div class="lang" role="group" aria-label="語言"><a href="/whereto/support.html" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh" aria-current="true">繁中</a><a href="/whereto/en/support.html" hreflang="en" lang="en" data-lang="en">English</a><a href="/whereto/ja/support.html" hreflang="ja" lang="ja" data-lang="ja">日本語</a></div>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="語言"><a href="/whereto/support.html" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh" aria-label="繁體中文" aria-current="true">繁中</a><a href="/whereto/en/support.html" hreflang="en" lang="en" data-lang="en" aria-label="English">EN</a><a href="/whereto/ja/support.html" hreflang="ja" lang="ja" data-lang="ja" aria-label="日本語">日本語</a></div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切換深色模式" data-dark="切換深色模式" data-light="切換淺色模式">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-sm" href="https://apps.apple.com/app/id6830008884">下載</a>
+    </div>
   </div>
 </header>
 
-<main>
+<main id="main" class="doc">
   <div class="wrap">
     <h1 class="page">支援</h1>
     <p class="meta">找不到答案的話，歡迎直接寫信給我們。</p>
@@ -120,13 +140,20 @@
   </div>
 </main>
 
-<footer>
+<footer class="foot">
   <div class="wrap">
-    <span>© 2026 去處 Whereto</span>
-    <a href="/whereto/support.html">支援</a>
-    <a href="/whereto/privacy.html">隱私權政策</a>
+    <div class="foot-brand">
+      <a class="brand" href="/whereto/"><img src="/whereto/icon.png" alt="" width="34" height="34">去處</a>
+      <p>每張照片，都有去處。</p>
+    </div>
+    <nav class="foot-links" aria-label="網站">
+      <a href="/whereto/support.html">支援</a>
+      <a href="/whereto/privacy.html">隱私權政策</a>
+      <a href="https://apps.apple.com/app/id6830008884">在 App Store 查看</a>
+      <a href="mailto:quchu.app@gmail.com">quchu.app@gmail.com</a>
+    </nav>
+    <p class="foot-copy">© 2026 去處 Whereto</p>
   </div>
 </footer>
-<script>document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})})</script>
 </body>
 </html>

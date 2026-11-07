@@ -2,98 +2,403 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Whereto - 写真整理と転送</title>
-<meta name="description" content="左にスワイプで削除、右で残す。重複や似た写真をまとめて検出し、同じWi-Fiならブラウザだけでパソコンへ転送。すべてiPhoneの中で完結し、写真はアップロードされません。">
+<meta name="description" content="左にスワイプで削除、右で残す、上でアルバムへ。重複や似た写真をまとめて検出し、同じWi-Fiならブラウザだけでパソコンへ転送。すべてiPhoneの中で完結し、写真はアップロードされません。">
 <meta name="apple-itunes-app" content="app-id=6830008884">
+<meta name="theme-color" content="#F6F4F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Whereto - 写真整理と転送">
+<meta property="og:description" content="左にスワイプで削除、右で残す、上でアルバムへ。重複や似た写真をまとめて検出し、同じWi-Fiならブラウザだけでパソコンへ転送。すべてiPhoneの中で完結し、写真はアップロードされません。">
+<meta property="og:image" content="https://marlonou.github.io/whereto/icon.png">
 <link rel="icon" href="/whereto/favicon.png">
+<link rel="apple-touch-icon" href="/whereto/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Serif+JP:wght@500;700;900&display=swap">
 <link rel="stylesheet" href="/whereto/style.css">
 <link rel="alternate" hreflang="zh-Hant" href="https://marlonou.github.io/whereto/">
 <link rel="alternate" hreflang="en" href="https://marlonou.github.io/whereto/en/">
 <link rel="alternate" hreflang="ja" href="https://marlonou.github.io/whereto/ja/">
 <link rel="alternate" hreflang="x-default" href="https://marlonou.github.io/whereto/en/">
+<script>try{var t=localStorage.getItem('wt-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<noscript><style>.rv{opacity:1;transform:none}.display .line>span{transform:none}</style></noscript>
+<script src="/whereto/site.js" defer></script>
 </head>
-<body>
-<header class="topbar">
+<body class="page-index">
+<a class="skip" href="#main">本文へ移動</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="/whereto/ja/"><img src="/whereto/icon.png" alt="">Whereto</a>
-    <nav aria-label="サイト">
-      <a href="/whereto/ja/" aria-current="page">ホーム</a>
-      <a href="/whereto/ja/support.html">サポート</a>
-      <a href="/whereto/ja/privacy.html">プライバシー</a>
+    <a class="brand" href="/whereto/ja/"><img src="/whereto/icon.png" alt="" width="34" height="34">Whereto</a>
+    <nav class="nav-links" aria-label="サイト">
+      <a href="#features">機能</a>
+      <a href="#privacy">プライバシー</a>
+      <a href="#pricing">価格</a>
     </nav>
-    <div class="lang" role="group" aria-label="言語"><a href="/whereto/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh">繁中</a><a href="/whereto/en/" hreflang="en" lang="en" data-lang="en">English</a><a href="/whereto/ja/" hreflang="ja" lang="ja" data-lang="ja" aria-current="true">日本語</a></div>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="言語"><a href="/whereto/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh" aria-label="繁體中文">繁中</a><a href="/whereto/en/" hreflang="en" lang="en" data-lang="en" aria-label="English">EN</a><a href="/whereto/ja/" hreflang="ja" lang="ja" data-lang="ja" aria-label="日本語" aria-current="true">日本語</a></div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="ダークモードに切り替え" data-dark="ダークモードに切り替え" data-light="ライトモードに切り替え">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-sm" href="https://apps.apple.com/app/id6830008884">入手</a>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <img src="/whereto/icon.png" alt="Whereto のアプリアイコン">
-    <h1>Whereto</h1>
-    <p>すべての写真に、行き先を。残したい写真は残し、いらない写真は削除し、必要な写真はそばのパソコンへ。</p>
-    <a class="badge" href="https://apps.apple.com/app/id6830008884">App Store でダウンロード</a>
-  </div>
-</section>
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow rv"><span class="exif"><i></i>v1.3・App Store</span>写真の整理と転送・iPhone と iPad</p>
+        <h1 class="display" data-in>
+          <span class="line"><span>すべての<wbr>写真に、</span></span>
+          <span class="line" style="--i:1"><span><em>行き先</em>を。</span></span>
+        </h1>
+        <p class="lede rv" style="--i:2">左で削除、右で残す、上でアルバムへ。<strong>重複も似た写真もまとめて検出</strong>し、同じ <span class="nw">Wi-Fi</span> ならブラウザだけでパソコンへ転送できます。</p>
+        <div class="cta-row rv" style="--i:3">
+          <a class="btn" href="https://apps.apple.com/app/id6830008884">App Store でダウンロード <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn ghost" href="#features">使い方を見る</a>
+        </div>
+        <p class="fine rv" style="--i:4"><span>無料ダウンロード</span><span>アカウント不要</span><span>アップロードなし</span><span>サブスクなし</span></p>
+      </div>
 
-<main>
-  <div class="wrap">
-    <h2>3つの機能で、アルバムをすっきり</h2>
-    <div class="cards">
-      <article class="card">
-        <span class="icon">整理</span>
-        <h3>左で削除、右で残す</h3>
-        <p>写真が1枚ずつ表示されるので、ひと目で判断できます。上にスワイプでアルバムに追加。ランダムや「あの日の今日」で整理でき、完全版なら複数の月をまとめて選べます。確定するまで削除されず、いつでも取り消せます。</p>
-      </article>
-      <article class="card">
-        <span class="icon">類似</span>
-        <h3>重複も似た写真も、まとめて検出</h3>
-        <p>6つの判定方法で、重複・連写・同じ写真の別バージョン・ブレた写真を見つけ、解像度がいちばん高い1枚をおすすめします。2枚を並べて同時に拡大して比較できます。</p>
-      </article>
-      <article class="card">
-        <span class="icon">転送</span>
-        <h3>同じWi-Fiなら、ブラウザだけ</h3>
-        <p>パソコンやタブレットでアドレスを開き、ペアリングコードを入力するだけで写真やファイルをダウンロード。ソフト不要、クラウドなし。</p>
-      </article>
+      <div class="stage rv" style="--i:2">
+        <div class="phone">
+          <div class="screen">
+            <div class="island" aria-hidden="true"></div>
+            <div class="statusbar" aria-hidden="true"><span>9:41</span><span><i></i></span></div>
+            <div class="app-head">
+              <small>整理モード</small>
+              <h3>残す？ 手放す？</h3>
+              <div class="counter"><span><b class="sort-n">0</b>/ 8 整理済み</span><span class="dirs" aria-hidden="true"><span>← 削除</span><span>↑ アルバム</span><span>残す →</span></span></div>
+              <div class="bar" aria-hidden="true"><i></i></div>
+            </div>
+            <div class="deck" tabindex="0" role="group" aria-label="整理のデモ：写真カードをドラッグするか、矢印キーで操作。左で削除、上でアルバムへ、右で残す、Backspaceで取り消し"
+                 data-del="削除" data-keep="残す" data-album="アルバム" data-said-del="削除に印を付けました" data-said-keep="残しました" data-said-album="アルバムに追加しました" data-said-undo="取り消しました" data-said-again="整理完了。もう一度どうぞ">
+              <div class="pcard" aria-label="夕焼けの山"><div class="art art-sunset"></div><span class="ptag">似ている写真 3 枚</span><div class="pinfo"><b>2019年8月8日 18:42</b><small>4032×3024・3.1 MB</small></div></div>
+              <div class="pcard" aria-label="スクリーンショット"><div class="art art-shot"></div><span class="ptag">スクリーンショット</span><div class="pinfo"><b>2024年3月2日 11:05</b><small>1179×2556・0.4 MB</small></div></div>
+              <div class="pcard" aria-label="海辺"><div class="art art-sea"></div><span class="ptag">ライブ</span><div class="pinfo"><b>2021年7月17日 15:20</b><small>4032×3024・2.8 MB</small></div></div>
+              <div class="pcard" aria-label="ブレた夕焼け"><div class="art art-sunset art-blur"></div><span class="ptag">ブレているかも</span><div class="pinfo"><b>2019年8月8日 18:42</b><small>4032×3024・2.9 MB</small></div></div>
+              <div class="pcard" aria-label="レシート"><div class="art art-receipt"></div><div class="pinfo"><b>2023年12月24日 20:11</b><small>3024×4032・2.2 MB</small></div></div>
+              <div class="pcard" aria-label="森"><div class="art art-forest"></div><span class="ptag">お気に入り</span><div class="pinfo"><b>2022年4月3日 9:14</b><small>4032×3024・3.6 MB</small></div></div>
+              <div class="pcard" aria-label="街の夜景"><div class="art art-night"></div><span class="ptag">連写 6 枚</span><div class="pinfo"><b>2020年1月1日 0:02</b><small>4032×3024・1.9 MB</small></div></div>
+              <div class="pcard" aria-label="夜明けの山"><div class="art art-dawn"></div><span class="ptag">あの日の今日</span><div class="pinfo"><b>2018年11月7日 6:20</b><small>4032×3024・2.7 MB</small></div></div>
+            </div>
+            <div class="controls">
+              <button class="ctl del" type="button" data-act="del" aria-label="削除"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <button class="ctl undo" type="button" data-act="undo" aria-label="取り消す" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></button>
+              <button class="ctl keep" type="button" data-act="keep" aria-label="残す"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.6-4.7-9.6-9.9C1 7 3.4 3.5 7.1 3.5c2.1 0 3.8 1.1 4.9 2.9 1.1-1.8 2.8-2.9 4.9-2.9 3.7 0 6.1 3.5 4.7 7.1-2 5.2-9.6 9.9-9.6 9.9z"/></svg></button>
+            </div>
+            <div class="tabbar" aria-hidden="true">
+              <span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 19h20"/></svg>転送</span>
+              <span class="on"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="16" rx="2.5" transform="rotate(-8 12 11)"/><path d="M9 21h8"/></svg>整理</span>
+              <span><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="12" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v11"/></svg>類似</span>
+            </div>
+            <p class="sr-only" aria-live="polite" data-live></p>
+          </div>
+        </div>
+        <div class="ledger" aria-hidden="true">
+          <span style="--c:var(--delete)"><i></i>削除 <b data-count="del">0</b></span>
+          <span style="--c:var(--accent)"><i></i>アルバム <b data-count="album">0</b></span>
+          <span style="--c:var(--keep)"><i></i>残す <b data-count="keep">0</b></span>
+        </div>
+        <p class="hint"><span class="hint-keys">カードをドラッグ、または <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd></span><span class="hint-touch">写真カードを指でドラッグしてみてください</span></p>
+      </div>
     </div>
+  </section>
 
-    <h2>画面のようす</h2>
-    <div class="shots">
-      <img src="/whereto/shots/ja/01-review.jpg" alt="整理：左で削除、右で残す" width="414" height="900" loading="lazy" decoding="async">
-      <img src="/whereto/shots/ja/02-similar.jpg" alt="類似：重複も似た写真もまとめて検出" width="414" height="900" loading="lazy" decoding="async">
-      <img src="/whereto/shots/ja/03-transfer.jpg" alt="転送：同じWi-Fiならブラウザでダウンロード" width="414" height="900" loading="lazy" decoding="async">
-      <img src="/whereto/shots/ja/05-privacy.jpg" alt="プライバシー：写真はiPhoneの中だけ" width="414" height="900" loading="lazy" decoding="async">
+  <!-- 01 -->
+  <section class="chapter" aria-labelledby="c1">
+    <div class="wrap problem">
+      <div>
+        <p class="kicker rv" data-n="01">アルバムのいま</p>
+        <h2 class="h2 rv" id="c1" style="--i:1">2万枚の写真、<br><em>何枚</em><wbr>覚えていますか？</h2>
+        <p class="sub rv" style="--i:2">残したい写真が、スクリーンショットや連写、二度保存した同じ写真に埋もれています。iCloud はもうすぐいっぱいなのに、探している1枚にはなかなかたどり着けません。</p>
+        <ul class="clutter rv" style="--i:3">
+          <li>一度見たきりの地図のスクリーンショット<span>IMG_0412.PNG</span></li>
+          <li>同じ瞬間に6回押したシャッター<span>IMG_3310–3315</span></li>
+          <li>チャットアプリから保存し直した同じ写真<span>IMG_0877 (1).JPG</span></li>
+          <li>手ブレ、ピンボケ、うっかり撮った1枚<span>IMG_5120.HEIC</span></li>
+          <li>経費精算が済んだレシート<span>IMG_6002.JPG</span></li>
+        </ul>
+      </div>
+      <div class="wall rv" style="--i:2">
+        <div class="mosaic" role="img" aria-label="イメージ図：写真のサムネイルが並び、整理後はおよそ半分が薄くなる"></div>
+        <div class="wall-bar">
+          <span class="wall-count"><b class="wall-n">96</b> 枚（イメージ）</span>
+          <button class="toggle" type="button" aria-pressed="false"><span class="sw" aria-hidden="true"></span>整理したあと</button>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <h2>バージョン 1.3 の新機能</h2>
-    <ul class="whatsnew">
-      <li><strong>上にスワイプでアルバムへ</strong>：整理しながら分類でき、複数のアルバムにまとめて追加することもできます。</li>
-      <li><strong>あの日の今日・複数の月をまとめて</strong>：無料版でも過去の今日の写真を整理できます。完全版は複数の月をまとめて選べます。</li>
-      <li><strong>カードの情報が充実</strong>：Live Photos・連写・お気に入り・ファイルサイズを表示し、ビデオはカード上で再生。お気に入りは削除前にもう一度確認し、類似の結果に入っている写真には「似ている写真 N 枚」と表示します。</li>
-      <li><strong>整理の結果を年月ごとに</strong>：複数選択して、まとめて取り消し・残す・削除ができます。</li>
-      <li><strong>類似スキャンがもっと便利に</strong>：「ブレているかも」と、2枚を同時に拡大できる並べて比較を追加。コピーを削除すると、アルバムとお気に入りは残した写真に引き継がれます。</li>
-      <li><strong>大きく表示</strong>：Live Photosを再生でき、消音モードでもビデオの音が出ます。</li>
-      <li><strong>転送ページ</strong>：HEICをJPGに変換でき、ダウンロードできなかった項目は再試行できます。</li>
-    </ul>
+  <!-- 02 -->
+  <section class="chapter" id="features" aria-labelledby="c2" style="padding-top:0">
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="02">3つの行き先</p>
+        <h2 class="h2 rv" id="c2" style="--i:1">残す、消す、<br>そして<em>送る</em>。</h2>
+        <p class="sub rv" style="--i:2">Whereto は整理を3つの小さな作業に分けます。どれも iPhone の中で完結し、アカウントもクラウドも使いません。</p>
+      </header>
 
-    <div class="note">
-      <strong>写真はiPhoneとWi-Fiの中だけ。</strong>解析はすべてiPhone上で行われます。Whereto は独自のサーバを持たず、アカウントも不要です。
+      <article class="feature">
+        <div class="rv">
+          <p class="f-label"><b>A</b>整理・Sort</p>
+          <h3>ひと目で、<wbr>すぐ決める。</h3>
+          <p>写真が1枚ずつ表示されます。左で削除、右で残す、上にスワイプでアルバムへ。整理しながら分類できます。間違えても、ワンタップで取り消せます。</p>
+          <dl class="specs">
+            <dt>方向</dt><dd>← 削除・↑ アルバム・→ 残す</dd>
+            <dt>範囲</dt><dd>ランダム、あの日の今日。完全版なら複数の月をまとめて選択</dd>
+            <dt>カード</dt><dd>Live Photos・連写・お気に入り・ファイルサイズを表示し、ビデオはそのまま再生</dd>
+            <dt>安心</dt><dd>確定するまで削除されず、削除した写真も「最近削除した項目」から30日以内なら復元できます</dd>
+          </dl>
+        </div>
+        <div class="f-vis rv" style="--i:1">
+          <div class="compass">
+            <button class="dbtn d-album" type="button" data-dir="album"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>アルバム</button>
+            <div class="c-row">
+              <button class="dbtn d-del" type="button" data-dir="del"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>削除</button>
+              <div class="c-card"><div class="art art-sea"></div></div>
+              <button class="dbtn d-keep" type="button" data-dir="keep">残す<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <div class="months" role="group" aria-label="整理する月を選ぶ（イメージ）">
+              <span class="y">2019</span>
+              <button type="button" aria-pressed="false">6月</button><button type="button" aria-pressed="false">7月</button><button type="button" aria-pressed="true">8月</button><button type="button" aria-pressed="true">9月</button><button type="button" aria-pressed="false">10月</button>
+              <small>完全版なら複数の月をまとめて選べます</small>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature flip">
+        <div class="rv">
+          <p class="f-label"><b>B</b>類似・Similar</p>
+          <h3>重複も<wbr>似た写真も、<wbr>まとめて検出。</h3>
+          <p>6つの判定方法で、まったく同じコピーから、同じ場面を少し違う角度で撮った写真まで見つけます。各グループで解像度がいちばん高い1枚をおすすめ。迷ったら2枚を並べて、同時に拡大して比べられます。</p>
+          <dl class="specs">
+            <dt>判定</dt><dd>完全な重複、ほぼ同じ、連写、同じ顔、見た目が似ている、ブレているかも</dd>
+            <dt>おすすめ</dt><dd>解像度がいちばん高い1枚。確度の高い結果だけ自動で選択します</dd>
+            <dt>比較</dt><dd>並べて表示し、同時に拡大</dd>
+            <dt>仕上げ</dt><dd>コピーを削除すると、アルバムとお気に入りは残した写真に引き継がれます</dd>
+          </dl>
+        </div>
+        <div class="f-vis rv" style="--i:1">
+          <div class="group" data-save="{n} MB 節約">
+            <div class="group-head"><b>重複・類似</b><span class="save" aria-live="polite">1.6 MB 節約</span></div>
+            <p class="group-note">写真をタップして、削除するかどうかを切り替え</p>
+            <div class="tiles">
+              <button class="tile" type="button" aria-pressed="false" data-mb="3.1" aria-label="4032×3024、3.1 MB、おすすめ">
+                <span class="ph"><span class="art art-sunset"></span><span class="best">おすすめ</span><span class="mark"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+                <small><b>4032×3024</b><br>3.1 MB</small>
+              </button>
+              <button class="tile" type="button" aria-pressed="true" data-mb="1.2" aria-label="1920×1440、1.2 MB">
+                <span class="ph"><span class="art art-sunset" style="filter:saturate(.85) brightness(1.03)"></span><span class="mark"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+                <small><b>1920×1440</b><br>1.2 MB</small>
+              </button>
+              <button class="tile" type="button" aria-pressed="true" data-mb="0.4" aria-label="1080×810、0.4 MB">
+                <span class="ph"><span class="art art-sunset" style="filter:contrast(.92) sepia(.12)"></span><span class="mark"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+                <small><b>1080×810</b><br>0.4 MB</small>
+              </button>
+            </div>
+            <div class="methods" aria-label="6つの判定方法">
+              <span class="on">完全な重複</span><span class="on">ほぼ同じ</span><span>連写</span><span>同じ顔</span><span>見た目が似ている</span><span>ブレているかも</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature">
+        <div class="rv">
+          <p class="f-label"><b>C</b>転送・Transfer</p>
+          <h3>同じ <span class="nw">Wi-Fi</span> なら、<wbr>ブラウザを<wbr>開くだけ。</h3>
+          <p>パソコンやタブレットで iPhone に表示されたアドレスを開き、6桁のペアリングコードを入力すれば、写真やファイルをダウンロードできます。ソフトもログインも不要、クラウドも経由しません。</p>
+          <dl class="specs">
+            <dt>必要なもの</dt><dd>同じ <span class="nw">Wi-Fi</span> と、いつものブラウザ</dd>
+            <dt>ペアリング</dt><dd>6桁のペアリングコード</dd>
+            <dt>形式</dt><dd>HEIC を JPG に変換可能。ダウンロードできなかった項目は一覧から再試行</dd>
+            <dt>料金</dt><dd>無料版ですべて使えます</dd>
+          </dl>
+        </div>
+        <div class="f-vis rv" style="--i:1">
+          <div class="browser" data-code="482917">
+            <div class="b-bar" aria-hidden="true"><span class="b-dots"><i></i><i></i><i></i></span><span class="b-url">http://<b>192.168.1.23</b>:8080</span></div>
+            <div class="b-body">
+              <div class="pair">
+                <p>iPhone に表示されたコードを入力</p>
+                <div class="code" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <small>コードはアプリの「転送」タブにあります</small>
+              </div>
+              <div class="files" aria-hidden="true">
+                <div class="ok-line">iPhone の写真<span>接続中</span></div>
+                <div class="f" style="--d:0ms"><div class="art art-sunset"></div></div>
+                <div class="f" style="--d:80ms"><div class="art art-sea"></div></div>
+                <div class="f" style="--d:160ms"><div class="art art-forest"></div></div>
+                <div class="f" style="--d:240ms"><div class="art art-dawn"></div></div>
+                <div class="f" style="--d:320ms"><div class="art art-night"></div></div>
+                <div class="f" style="--d:400ms"><div class="art art-receipt"></div></div>
+                <div class="f" style="--d:480ms"><div class="art art-sunset" style="filter:hue-rotate(-12deg)"></div></div>
+                <div class="f" style="--d:560ms"><div class="art art-sea" style="filter:saturate(.8)"></div></div>
+              </div>
+              <button class="replay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>もう一度</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="details">
+        <div class="rv"><b>あの日の今日</b><p>無料版でも、過去の今日に撮った写真を整理できます。</p></div>
+        <div class="rv" style="--i:1"><b>お気に入りは再確認</b><p>お気に入りの写真は、削除の前にもう一度確認します。</p></div>
+        <div class="rv" style="--i:2"><b>年月ごとに振り返り</b><p>整理の結果は年月ごとにまとまり、複数選択で一度に変更できます。</p></div>
+        <div class="rv" style="--i:3"><b>iPhone と iPad</b><p>アプリはシステムの言語に合わせて日本語・英語・繁体字中国語で表示。</p></div>
+      </div>
     </div>
+  </section>
 
-    <h2>無料で始めて、買い切りで解放</h2>
-    <p>無料版では1日20枚まで整理でき（広告を見て追加可能）、ランダムと「あの日の今日」に対応、類似スキャンは「ファイルサイズと内容」（「AI 画像特徴」は広告を見て1回試用可能）、転送機能はすべて使えます。気に入ったら完全版を一度購入するだけ：整理は無制限、月ごとの整理、類似スキャンのすべての方法、広告なし、ファミリー共有にも対応。サブスクリプションはありません。</p>
+  <!-- 03 -->
+  <section class="chapter" aria-labelledby="c3" style="padding-top:0">
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="03">アプリの画面</p>
+        <h2 class="h2 rv" id="c3" style="--i:1">静かな画面で、<br><em>写真</em>が主役に。</h2>
+        <p class="sub rv" style="--i:2">紙のような温かい背景に、琥珀色のひと筋の光。光るのは、あなたが決める場所だけです。</p>
+      </header>
+      <div class="gallery">
+        <figure class="rv"><img src="/whereto/shots/ja/01-review.jpg" alt="整理：左で削除、右で残す" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>01</span>整理</figcaption></figure>
+        <figure class="rv" style="--i:1"><img src="/whereto/shots/ja/02-similar.jpg" alt="類似：重複も似た写真もまとめて検出" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>02</span>類似</figcaption></figure>
+        <figure class="rv" style="--i:2"><img src="/whereto/shots/ja/03-transfer.jpg" alt="転送：同じWi-Fiならブラウザでダウンロード" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>03</span>転送</figcaption></figure>
+        <figure class="rv" style="--i:3"><img src="/whereto/shots/ja/05-privacy.jpg" alt="プライバシー：写真はiPhoneの中だけ" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>04</span>プライバシー</figcaption></figure>
+      </div>
+    </div>
+  </section>
 
-    <h2>お困りですか？</h2>
-    <p><a href="support.html">サポートページ</a>をご覧いただくか、<a href="mailto:quchu.app@gmail.com">quchu.app@gmail.com</a> までメールでお問い合わせください。</p>
-  </div>
+  <!-- 04 -->
+  <section class="chapter dark-band" id="privacy" aria-labelledby="c4">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="04">プライバシー</p>
+        <h2 class="h2 rv" id="c4" style="--i:1">サーバがないから、<br>写真は<wbr><em>どこにも<wbr>行かない</em>。</h2>
+        <p class="sub rv" style="--i:2">Whereto は独自のサーバもアカウントの仕組みも持ちません。解析も整理も削除も、すべてあなたの iPhone の中で行われます。</p>
+      </header>
+      <div class="facts">
+        <div class="fact rv"><span class="mono">ON-DEVICE</span><strong>解析は iPhone の中で</strong><p>類似の判定には iPhone に内蔵された Apple Vision を使います。解析のために写真をアップロードすることはありません。</p></div>
+        <div class="fact rv" style="--i:1"><span class="mono">NO ACCOUNT</span><strong>登録は不要</strong><p>アカウントはなく、名前やメールアドレス、連絡先も収集しません。</p></div>
+        <div class="fact rv" style="--i:2"><span class="mono">LAN ONLY</span><strong>転送は <span class="nw">Wi-Fi</span> の中だけ</strong><p>パソコンが iPhone から直接ダウンロード。インターネットもクラウドも経由しません。</p></div>
+      </div>
+      <p class="ads-note rv">無料版の広告は Google AdMob が配信し、パーソナライズされない広告のみを表示します。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>スクショ</span><span>連写</span><span>二度保存</span><span>レシート</span><span>あの日の今日</span><span>手ブレ</span><span>同じ場面</span><span>証明写真</span>
+        <span>スクショ</span><span>連写</span><span>二度保存</span><span>レシート</span><span>あの日の今日</span><span>手ブレ</span><span>同じ場面</span><span>証明写真</span>
+      </div>
+    </div>
+    <div style="height:clamp(64px,8vw,112px)"></div>
+  </section>
+
+  <!-- 05 -->
+  <section class="chapter name-story" aria-labelledby="c5">
+    <div class="wrap">
+      <p class="kicker rv" data-n="05">名前の由来</p>
+      <h2 class="sr-only" id="c5">Whereto：どこへ？</h2>
+      <p class="qmark" aria-hidden="true">Where<em>to?</em></p>
+      <p class="name-cap rv">「どこへ？」は、どの写真も静かに問いかけている言葉。中国語名の「去處」は「行き先」という意味です。答えは3つあります。</p>
+      <div class="routes">
+        <div class="route rv" style="--c:var(--keep);--mx:4px"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><b>残す</b><span class="to">→ あなたのアルバム</span><p>右で残し、上にスワイプでそのままアルバムへ。</p></div>
+        <div class="route rv" style="--i:1;--c:var(--delete);--mx:-4px"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span><b>消す</b><span class="to">→ 最近削除した項目・30日以内なら復元</span><p>確定してから削除。間違えても30日間は取り戻せます。</p></div>
+        <div class="route rv" style="--i:2;--c:var(--teal);--mx:3px;--my:-3px"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span><b>送る</b><span class="to">→ そばのパソコン</span><p>同じ <span class="nw">Wi-Fi</span> で、ブラウザから直接ダウンロード。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="chapter" aria-labelledby="c6" style="padding-top:0">
+    <div class="wrap news">
+      <div class="stick">
+        <p class="kicker rv" data-n="06">バージョン 1.3</p>
+        <h2 class="h2 rv" id="c6" style="--i:1">今回の<br><em>新機能</em>。</h2>
+        <p class="sub rv mono" style="--i:2">2026.11・iOS 26 以降</p>
+      </div>
+      <ol>
+        <li class="rv"><b>上にスワイプで<wbr>アルバムへ</b><p>整理しながら分類でき、複数のアルバムにまとめて追加することもできます。</p></li>
+        <li class="rv"><b>あの日の今日・<wbr>複数の月を<wbr>まとめて</b><p>無料版でも過去の今日の写真を整理できます。完全版は複数の月をまとめて選べます。</p></li>
+        <li class="rv"><b>カードの情報が充実</b><p>Live Photos・連写・お気に入り・ファイルサイズを表示し、ビデオはカード上で再生。お気に入りは削除前にもう一度確認し、類似の結果に入っている写真には「似ている写真 N 枚」と表示します。</p></li>
+        <li class="rv"><b>整理の結果を<wbr>年月ごとに</b><p>複数選択して、まとめて取り消し・残す・削除ができます。</p></li>
+        <li class="rv"><b>類似スキャンが<wbr>もっと便利に</b><p>「ブレているかも」と、2枚を同時に拡大できる並べて比較を追加。コピーを削除すると、アルバムとお気に入りは残した写真に引き継がれます。</p></li>
+        <li class="rv"><b>大きく表示</b><p>Live Photos を再生でき、消音モードでもビデオの音が出ます。</p></li>
+        <li class="rv"><b>転送ページ</b><p>HEIC を JPG に変換でき、ダウンロードできなかった項目は再試行できます。</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="chapter" id="pricing" aria-labelledby="c7" style="padding-top:0">
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="07">価格</p>
+        <h2 class="h2 rv" id="c7" style="--i:1">無料で始めて、<br><em>買い切り</em>で。</h2>
+        <p class="sub rv" style="--i:2">サブスクリプションはありません。気に入ったら一度だけ購入、ファミリー共有にも対応します。</p>
+      </header>
+      <div class="plans">
+        <div class="plan rv">
+          <span class="mono">Free</span>
+          <h3>無料版</h3>
+          <p class="price">ダウンロードしてすぐ使えます</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>1日20枚まで整理（広告を見て追加可能）</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>ランダムと「あの日の今日」</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>類似スキャンは「ファイルサイズと内容」。「AI 画像特徴」は広告を見て1回試用</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>転送機能はすべて無料</li>
+          </ul>
+          <a class="btn ghost" href="https://apps.apple.com/app/id6830008884">無料でダウンロード</a>
+        </div>
+        <div class="plan full rv" style="--i:1">
+          <span class="mono">Full Version</span>
+          <h3>完全版</h3>
+          <p class="price">買い切り。価格は App Store の表示をご確認ください</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>整理は無制限</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>月ごとの整理、複数の月をまとめて</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>類似スキャンのすべての方法</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>広告なし、ファミリー共有に対応</li>
+          </ul>
+          <a class="btn" href="https://apps.apple.com/app/id6830008884">App Store でダウンロード <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="final" aria-labelledby="c8">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="stack" aria-hidden="true" data-in><div class="art art-forest"></div><div class="art art-sea"></div><div class="art art-sunset"></div></div>
+      <h2 class="h2 rv" id="c8">すべての写真に、<br><em>行き先</em>を。</h2>
+      <p class="sub rv" style="--i:1">iOS 26 以降の iPhone と iPad に対応。お困りのときは<a href="support.html">サポートページ</a>に、よくある質問とお問い合わせ先があります。</p>
+      <div class="cta-row rv" style="--i:2">
+        <a class="btn" href="https://apps.apple.com/app/id6830008884">App Store でダウンロード <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
+<footer class="foot">
   <div class="wrap">
-    <span>© 2026 Whereto</span>
-    <a href="/whereto/ja/support.html">サポート</a>
-    <a href="/whereto/ja/privacy.html">プライバシーポリシー</a>
+    <div class="foot-brand">
+      <a class="brand" href="/whereto/ja/"><img src="/whereto/icon.png" alt="" width="34" height="34">Whereto</a>
+      <p>すべての写真に、行き先を。</p>
+    </div>
+    <nav class="foot-links" aria-label="サイト">
+      <a href="/whereto/ja/support.html">サポート</a>
+      <a href="/whereto/ja/privacy.html">プライバシーポリシー</a>
+      <a href="https://apps.apple.com/app/id6830008884">App Store で見る</a>
+      <a href="mailto:quchu.app@gmail.com">quchu.app@gmail.com</a>
+    </nav>
+    <p class="foot-copy">© 2026 Whereto</p>
   </div>
 </footer>
-<script>document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})})</script>
 </body>
 </html>

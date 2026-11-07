@@ -8,15 +8,26 @@ import os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://marlonou.github.io"
 LANGS = {
-    "zh": {"dir": "whereto/", "html": "zh-Hant-TW", "brand": "去處 Whereto", "nav": ["首頁", "支援", "隱私權"], "navlabel": "網站",
-           "footer": ["支援", "隱私權政策"], "copy": "© 2026 去處 Whereto", "switch": "語言"},
+    "zh": {"dir": "whereto/", "html": "zh-Hant-TW", "brand": "去處", "nav": ["首頁", "支援", "隱私權"], "navlabel": "網站",
+           "links": ["功能", "隱私", "價格"], "footer": ["支援", "隱私權政策"], "copy": "© 2026 去處 Whereto", "switch": "語言",
+           "skip": "跳到主要內容", "get": "下載", "store": "在 App Store 查看",
+           "theme": ["切換深色模式", "切換淺色模式"], "tagline": "每張照片，都有去處。",
+           "fonts": "family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Serif+TC:wght@500;700;900"},
     "en": {"dir": "whereto/en/", "html": "en", "brand": "Whereto", "nav": ["Home", "Support", "Privacy"], "navlabel": "Site",
-           "footer": ["Support", "Privacy Policy"], "copy": "© 2026 Whereto", "switch": "Language"},
+           "links": ["Features", "Privacy", "Pricing"], "footer": ["Support", "Privacy Policy"], "copy": "© 2026 Whereto", "switch": "Language",
+           "skip": "Skip to content", "get": "Get the app", "store": "View on the App Store",
+           "theme": ["Switch to dark mode", "Switch to light mode"], "tagline": "Every photo has somewhere to go.",
+           "fonts": "family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400"},
     "ja": {"dir": "whereto/ja/", "html": "ja", "brand": "Whereto", "nav": ["ホーム", "サポート", "プライバシー"], "navlabel": "サイト",
-           "footer": ["サポート", "プライバシーポリシー"], "copy": "© 2026 Whereto", "switch": "言語"},
+           "links": ["機能", "プライバシー", "価格"], "footer": ["サポート", "プライバシーポリシー"], "copy": "© 2026 Whereto", "switch": "言語",
+           "skip": "本文へ移動", "get": "入手", "store": "App Store で見る",
+           "theme": ["ダークモードに切り替え", "ライトモードに切り替え"], "tagline": "すべての写真に、行き先を。",
+           "fonts": "family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Serif+JP:wght@500;700;900"},
 }
+APP_STORE = "https://apps.apple.com/app/id6830008884"
 PAGES = ["index", "support", "privacy"]
-NAMES = {"zh": "繁中", "en": "English", "ja": "日本語"}
+NAMES = {"zh": "繁中", "en": "EN", "ja": "日本語"}
+LONG = {"zh": "繁體中文", "en": "English", "ja": "日本語"}
 HREFLANG = {"zh": "zh-Hant", "en": "en", "ja": "ja"}
 
 
@@ -30,14 +41,18 @@ def build(lang, page):
     title = re.search(r"<!--title:(.*?)-->", src).group(1)
     desc = re.search(r"<!--desc:(.*?)-->", src).group(1)
     body = re.sub(r"<!--(title|desc):.*?-->\n", "", src).replace('src="icon.png"', 'src="/whereto/icon.png"')
-    nav = "\n".join(
-        f'      <a href="{url(lang, p)}"{" aria-current=\"page\"" if p == page else ""}>{L["nav"][i]}</a>'
-        for i, p in enumerate(PAGES))
+    if page != "index":
+        body = body.replace("<main>", '<main id="main" class="doc">', 1)
+    home = url(lang, "index")
+    # 首頁內用錨點，其他頁連回首頁的段落
+    anchor = (lambda a: "#" + a) if page == "index" else (lambda a: home + "#" + a)
+    links = "\n".join(
+        f'      <a href="{h}">{t}</a>' for h, t in zip([anchor("features"), anchor("privacy"), anchor("pricing")], L["links"]))
     switch = "".join(
-        f'<a href="{url(l, page)}" hreflang="{HREFLANG[l]}" lang="{HREFLANG[l]}" data-lang="{l}"'
+        f'<a href="{url(l, page)}" hreflang="{HREFLANG[l]}" lang="{HREFLANG[l]}" data-lang="{l}" aria-label="{LONG[l]}"'
         f'{" aria-current=\"true\"" if l == lang else ""}>{NAMES[l]}</a>' for l in LANGS)
     alternates = "\n".join(f'<link rel="alternate" hreflang="{HREFLANG[l]}" href="{BASE}{url(l, page)}">' for l in LANGS)
-    # 根目錄首頁：沒選過語言時，依瀏覽器語言導到英文或日文版
+    # 繁中首頁：沒選過語言時，依瀏覽器語言導到英文或日文版
     redirect = ""
     if lang == "zh" and page == "index":
         redirect = """<script>
@@ -45,41 +60,69 @@ try{if(!localStorage.getItem('lang')){var l=(navigator.languages&&navigator.lang
 if(l.indexOf('zh')!==0){location.replace(l.indexOf('ja')===0?'/whereto/ja/':'/whereto/en/')}}}catch(e){}
 </script>
 """
-    remember = """<script>document.querySelectorAll('.lang a').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('lang',a.dataset.lang)}catch(e){}})})</script>"""
-    footer_links = f'<a href="{url(lang, "support")}">{L["footer"][0]}</a>\n    <a href="{url(lang, "privacy")}">{L["footer"][1]}</a>'
+    # 主題在 CSS 載入前決定，避免閃一下
+    theme = """<script>try{var t=localStorage.getItem('wt-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>"""
     return f"""<!doctype html>
 <html lang="{L["html"]}">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="apple-itunes-app" content="app-id=6830008884">
+<meta name="theme-color" content="#F6F4F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0E0D" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{BASE}/whereto/icon.png">
 <link rel="icon" href="/whereto/favicon.png">
+<link rel="apple-touch-icon" href="/whereto/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?{L["fonts"]}&display=swap">
 <link rel="stylesheet" href="/whereto/style.css">
 {alternates}
 <link rel="alternate" hreflang="x-default" href="{BASE}{url("en", page)}">
-{redirect}</head>
-<body>
-<header class="topbar">
+{theme}
+<noscript><style>.rv{{opacity:1;transform:none}}.display .line>span{{transform:none}}</style></noscript>
+{redirect}<script src="/whereto/site.js" defer></script>
+</head>
+<body class="page-{page}">
+<a class="skip" href="#main">{L["skip"]}</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="{url(lang, "index")}"><img src="/whereto/icon.png" alt="">{L["brand"]}</a>
-    <nav aria-label="{L["navlabel"]}">
-{nav}
+    <a class="brand" href="{home}"><img src="/whereto/icon.png" alt="" width="34" height="34">{L["brand"]}</a>
+    <nav class="nav-links" aria-label="{L["navlabel"]}">
+{links}
     </nav>
-    <div class="lang" role="group" aria-label="{L["switch"]}">{switch}</div>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="{L["switch"]}">{switch}</div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="{L["theme"][0]}" data-dark="{L["theme"][0]}" data-light="{L["theme"][1]}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-sm" href="{APP_STORE}">{L["get"]}</a>
+    </div>
   </div>
 </header>
 
 {body.strip()}
 
-<footer>
+<footer class="foot">
   <div class="wrap">
-    <span>{L["copy"]}</span>
-    {footer_links}
+    <div class="foot-brand">
+      <a class="brand" href="{home}"><img src="/whereto/icon.png" alt="" width="34" height="34">{L["brand"]}</a>
+      <p>{L["tagline"]}</p>
+    </div>
+    <nav class="foot-links" aria-label="{L["navlabel"]}">
+      <a href="{url(lang, "support")}">{L["footer"][0]}</a>
+      <a href="{url(lang, "privacy")}">{L["footer"][1]}</a>
+      <a href="{APP_STORE}">{L["store"]}</a>
+      <a href="mailto:quchu.app@gmail.com">quchu.app@gmail.com</a>
+    </nav>
+    <p class="foot-copy">{L["copy"]}</p>
   </div>
 </footer>
-{remember}
 </body>
 </html>
 """
@@ -103,7 +146,7 @@ def stub(lang, page):
 <html lang="{LANGS[lang]["html"]}">
 <head>
 <meta charset="utf-8">
-<title>{LANGS[lang]["brand"]}</title>
+<title>{"去處 Whereto" if lang == "zh" else "Whereto"}</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="{BASE}{target}">
 <meta http-equiv="refresh" content="0; url={target}">

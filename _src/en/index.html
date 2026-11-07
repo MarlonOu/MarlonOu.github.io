@@ -1,62 +1,340 @@
 <!--title:Whereto — Photo Sorter-->
-<!--desc:Swipe left to delete, right to keep. Find duplicates and similar photos in one scan, and send photos to your computer over the same Wi-Fi with just a browser. All on your iPhone, and nothing is uploaded.-->
-<section class="hero">
-  <div class="wrap">
-    <img src="/whereto/icon.png" alt="Whereto app icon">
-    <h1>Whereto</h1>
-    <p>Every photo has somewhere to go. Keep what you want, delete what you don’t, and send what you need to the computer next to you.</p>
-    <a class="badge" href="https://apps.apple.com/app/id6830008884">Download on the App Store</a>
-  </div>
-</section>
+<!--desc:Swipe left to delete, right to keep, up to add to an album. Find duplicates and similar photos in one scan, and send photos to your computer over the same Wi-Fi with just a browser. All on your iPhone, and nothing is uploaded.-->
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow rv"><span class="exif"><i></i>v1.3 · App Store</span>Photo sorting &amp; transfer · iPhone and iPad</p>
+        <h1 class="display" data-in>
+          <span class="line"><span>Every photo has</span></span>
+          <span class="line" style="--i:1"><span>somewhere <em>to go.</em></span></span>
+        </h1>
+        <p class="lede rv" style="--i:2">Swipe left to delete, right to keep, up to add to an album. <strong>Find duplicates and similar shots in one scan</strong>, and send photos to your computer over the same <span class="nw">Wi-Fi</span> with just a browser.</p>
+        <div class="cta-row rv" style="--i:3">
+          <a class="btn" href="https://apps.apple.com/app/id6830008884">Download on the App Store <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn ghost" href="#features">See how it works</a>
+        </div>
+        <p class="fine rv" style="--i:4"><span>Free to download</span><span>No account</span><span>Nothing uploaded</span><span>No subscription</span></p>
+      </div>
 
-<main>
-  <div class="wrap">
-    <h2>Three ways to a tidy library</h2>
-    <div class="cards">
-      <article class="card">
-        <span class="icon">Sort</span>
-        <h3>Swipe left to delete, right to keep</h3>
-        <p>Photos appear one at a time so deciding is quick; swipe up to add one to an album. Sort at random or On This Day, or pick several months with the Full Version. Nothing is deleted until you confirm, and you can undo anytime.</p>
-      </article>
-      <article class="card">
-        <span class="icon">Similar</span>
-        <h3>Find duplicates in one scan</h3>
-        <p>Six methods find duplicates, bursts, different versions of the same photo and possibly blurry shots, and suggest keeping the highest-resolution one. Compare two side by side with synced zoom.</p>
-      </article>
-      <article class="card">
-        <span class="icon">Transfer</span>
-        <h3>Same Wi-Fi, just a browser</h3>
-        <p>Open the address on a computer or tablet, enter the pairing code, and download photos and files. No software, no cloud.</p>
-      </article>
+      <div class="stage rv" style="--i:2">
+        <div class="phone">
+          <div class="screen">
+            <div class="island" aria-hidden="true"></div>
+            <div class="statusbar" aria-hidden="true"><span>9:41</span><span><i></i></span></div>
+            <div class="app-head">
+              <small>Sort</small>
+              <h3>Keep It, or Let It Go</h3>
+              <div class="counter"><span><b class="sort-n">0</b>/ 8 sorted</span><span class="dirs" aria-hidden="true"><span>← Delete</span><span>↑ Album</span><span>Keep →</span></span></div>
+              <div class="bar" aria-hidden="true"><i></i></div>
+            </div>
+            <div class="deck" tabindex="0" role="group" aria-label="Sorting demo: drag a photo card, or use the arrow keys. Left deletes, up adds to an album, right keeps, Backspace undoes"
+                 data-del="Delete" data-keep="Keep" data-album="Album" data-said-del="Marked for deletion" data-said-keep="Kept" data-said-album="Added to album" data-said-undo="Undone" data-said-again="All sorted. Here’s another round">
+              <div class="pcard" aria-label="Mountain sunset"><div class="art art-sunset"></div><span class="ptag">3 Similar</span><div class="pinfo"><b>Aug 8, 2019 at 6:42 PM</b><small>4032×3024 · 3.1 MB</small></div></div>
+              <div class="pcard" aria-label="Screenshot"><div class="art art-shot"></div><span class="ptag">Screenshot</span><div class="pinfo"><b>Mar 2, 2024 at 11:05 AM</b><small>1179×2556 · 0.4 MB</small></div></div>
+              <div class="pcard" aria-label="Seaside"><div class="art art-sea"></div><span class="ptag">Live</span><div class="pinfo"><b>Jul 17, 2021 at 3:20 PM</b><small>4032×3024 · 2.8 MB</small></div></div>
+              <div class="pcard" aria-label="Blurry sunset"><div class="art art-sunset art-blur"></div><span class="ptag">Possibly Blurry</span><div class="pinfo"><b>Aug 8, 2019 at 6:42 PM</b><small>4032×3024 · 2.9 MB</small></div></div>
+              <div class="pcard" aria-label="Receipt"><div class="art art-receipt"></div><div class="pinfo"><b>Dec 24, 2023 at 8:11 PM</b><small>3024×4032 · 2.2 MB</small></div></div>
+              <div class="pcard" aria-label="Forest"><div class="art art-forest"></div><span class="ptag">Favorite</span><div class="pinfo"><b>Apr 3, 2022 at 9:14 AM</b><small>4032×3024 · 3.6 MB</small></div></div>
+              <div class="pcard" aria-label="City at night"><div class="art art-night"></div><span class="ptag">Burst · 6</span><div class="pinfo"><b>Jan 1, 2020 at 12:02 AM</b><small>4032×3024 · 1.9 MB</small></div></div>
+              <div class="pcard" aria-label="Mountains at dawn"><div class="art art-dawn"></div><span class="ptag">On This Day</span><div class="pinfo"><b>Nov 7, 2018 at 6:20 AM</b><small>4032×3024 · 2.7 MB</small></div></div>
+            </div>
+            <div class="controls">
+              <button class="ctl del" type="button" data-act="del" aria-label="Delete"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+              <button class="ctl undo" type="button" data-act="undo" aria-label="Undo" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></button>
+              <button class="ctl keep" type="button" data-act="keep" aria-label="Keep"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.6-4.7-9.6-9.9C1 7 3.4 3.5 7.1 3.5c2.1 0 3.8 1.1 4.9 2.9 1.1-1.8 2.8-2.9 4.9-2.9 3.7 0 6.1 3.5 4.7 7.1-2 5.2-9.6 9.9-9.6 9.9z"/></svg></button>
+            </div>
+            <div class="tabbar" aria-hidden="true">
+              <span><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 19h20"/></svg>Transfer</span>
+              <span class="on"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="16" rx="2.5" transform="rotate(-8 12 11)"/><path d="M9 21h8"/></svg>Sort</span>
+              <span><svg viewBox="0 0 24 24"><rect x="3" y="7" width="12" height="12" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v11"/></svg>Similar</span>
+            </div>
+            <p class="sr-only" aria-live="polite" data-live></p>
+          </div>
+        </div>
+        <div class="ledger" aria-hidden="true">
+          <span style="--c:var(--delete)"><i></i>Delete <b data-count="del">0</b></span>
+          <span style="--c:var(--accent)"><i></i>Album <b data-count="album">0</b></span>
+          <span style="--c:var(--keep)"><i></i>Keep <b data-count="keep">0</b></span>
+        </div>
+        <p class="hint"><span class="hint-keys">Drag a card, or press <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd></span><span class="hint-touch">Try dragging a photo card</span></p>
+      </div>
     </div>
+  </section>
 
-    <h2>A closer look</h2>
-    <div class="shots">
-      <img src="/whereto/shots/en/01-review.jpg" alt="Sort: swipe left to delete, right to keep" width="414" height="900" loading="lazy" decoding="async">
-      <img src="/whereto/shots/en/02-similar.jpg" alt="Similar: find duplicates in one scan" width="414" height="900" loading="lazy" decoding="async">
-      <img src="/whereto/shots/en/03-transfer.jpg" alt="Transfer: download over the same Wi-Fi in a browser" width="414" height="900" loading="lazy" decoding="async">
-      <img src="/whereto/shots/en/05-privacy.jpg" alt="Privacy: your photos stay on your phone" width="414" height="900" loading="lazy" decoding="async">
+  <!-- 01 -->
+  <section class="chapter" aria-labelledby="c1">
+    <div class="wrap problem">
+      <div>
+        <p class="kicker rv" data-n="01">Your library today</p>
+        <h2 class="h2 rv" id="c1" style="--i:1">Twenty thousand photos. How many do you <em>remember?</em></h2>
+        <p class="sub rv" style="--i:2">The shots you love are buried under screenshots, bursts and the same picture saved twice. iCloud is nearly full, and the one you want is always another scroll away.</p>
+        <ul class="clutter rv" style="--i:3">
+          <li>A screenshot of directions you used once<span>IMG_0412.PNG</span></li>
+          <li>Six frames of the same moment<span>IMG_3310–3315</span></li>
+          <li>The copy a chat app saved back<span>IMG_0877 (1).JPG</span></li>
+          <li>Shaky, out of focus, or taken by accident<span>IMG_5120.HEIC</span></li>
+          <li>A receipt you already expensed<span>IMG_6002.JPG</span></li>
+        </ul>
+      </div>
+      <div class="wall rv" style="--i:2">
+        <div class="mosaic" role="img" aria-label="Illustration: a wall of photo thumbnails; after sorting, about half fade away"></div>
+        <div class="wall-bar">
+          <span class="wall-count"><b class="wall-n">96</b> photos (illustration)</span>
+          <button class="toggle" type="button" aria-pressed="false"><span class="sw" aria-hidden="true"></span>After sorting</button>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <h2>What’s new in 1.3</h2>
-    <ul class="whatsnew">
-      <li><strong>Swipe up to add to an album</strong>: sort and organize in one go, even into several albums at once.</li>
-      <li><strong>On This Day and several months at once</strong>: the free version can sort past years’ photos from today; the Full Version can pick several months together.</li>
-      <li><strong>More on each card</strong>: Live Photo, burst, favorite and file size are shown, videos play right on the card, favorites ask once more before deletion, and photos in your Similar results show “N Similar”.</li>
-      <li><strong>Summary grouped by month</strong>: multi-select to unmark, keep or delete in one go.</li>
-      <li><strong>A better Similar scan</strong>: a new “Possibly Blurry” group and side-by-side compare with synced zoom; when you delete copies, their albums and favorites move to the photo you keep.</li>
-      <li><strong>Full-screen view</strong>: Live Photos play, and videos have sound even in silent mode.</li>
-      <li><strong>Transfer page</strong>: convert HEIC to JPG, and retry anything that didn’t download.</li>
-    </ul>
+  <!-- 02 -->
+  <section class="chapter" id="features" aria-labelledby="c2" style="padding-top:0">
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="02">Three places to go</p>
+        <h2 class="h2 rv" id="c2" style="--i:1">Keep it, delete it, or <em>send it on.</em></h2>
+        <p class="sub rv" style="--i:2">Whereto breaks tidying up into three small jobs. Each one happens on your iPhone, with no account and no cloud.</p>
+      </header>
 
-    <div class="note">
-      <strong>Your photos stay on your phone and your Wi-Fi.</strong> All analysis happens on your iPhone. Whereto has no servers of its own and needs no account.
+      <article class="feature">
+        <div class="rv">
+          <p class="f-label"><b>A</b>Sort</p>
+          <h3>One look, one decision.</h3>
+          <p>Photos appear one at a time. Swipe left to delete, right to keep, and up to drop it into an album as you go. Swiped the wrong way? One tap undoes it.</p>
+          <dl class="specs">
+            <dt>Swipes</dt><dd>← Delete · ↑ Album · → Keep</dd>
+            <dt>Range</dt><dd>Random or On This Day; pick several months at once with the Full Version</dd>
+            <dt>Cards</dt><dd>Live Photo, burst, favorite and file size at a glance; videos play right on the card</dd>
+            <dt>Safety</dt><dd>Nothing is deleted until you confirm, and deleted photos can be recovered from Recently Deleted for 30 days</dd>
+          </dl>
+        </div>
+        <div class="f-vis rv" style="--i:1">
+          <div class="compass">
+            <button class="dbtn d-album" type="button" data-dir="album"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>Album</button>
+            <div class="c-row">
+              <button class="dbtn d-del" type="button" data-dir="del"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Delete</button>
+              <div class="c-card"><div class="art art-sea"></div></div>
+              <button class="dbtn d-keep" type="button" data-dir="keep">Keep<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <div class="months" role="group" aria-label="Choose months to sort (illustration)">
+              <span class="y">2019</span>
+              <button type="button" aria-pressed="false">Jun</button><button type="button" aria-pressed="false">Jul</button><button type="button" aria-pressed="true">Aug</button><button type="button" aria-pressed="true">Sep</button><button type="button" aria-pressed="false">Oct</button>
+              <small>The Full Version sorts several months at once</small>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature flip">
+        <div class="rv">
+          <p class="f-label"><b>B</b>Similar</p>
+          <h3>Duplicates and look-alikes, found in one scan.</h3>
+          <p>Six methods catch everything from exact copies to the same scene from a slightly different angle. Each group suggests keeping the highest-resolution shot, and when you can’t decide, compare two side by side with synced zoom.</p>
+          <dl class="specs">
+            <dt>Finds</dt><dd>Exact Duplicates, Nearly Identical, Burst, Same Face, Visually Similar, Possibly Blurry</dd>
+            <dt>Suggests</dt><dd>Keeping the highest resolution; only high-confidence matches are pre-selected</dd>
+            <dt>Compare</dt><dd>Side by side, zoomed together</dd>
+            <dt>Cleanup</dt><dd>When copies are deleted, their albums and favorites move to the photo you keep</dd>
+          </dl>
+        </div>
+        <div class="f-vis rv" style="--i:1">
+          <div class="group" data-save="Save {n} MB">
+            <div class="group-head"><b>Duplicates &amp; Similar</b><span class="save" aria-live="polite">Save 1.6 MB</span></div>
+            <p class="group-note">Tap a photo to mark or unmark it</p>
+            <div class="tiles">
+              <button class="tile" type="button" aria-pressed="false" data-mb="3.1" aria-label="4032×3024, 3.1 MB, suggested to keep">
+                <span class="ph"><span class="art art-sunset"></span><span class="best">Best</span><span class="mark"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+                <small><b>4032×3024</b><br>3.1 MB</small>
+              </button>
+              <button class="tile" type="button" aria-pressed="true" data-mb="1.2" aria-label="1920×1440, 1.2 MB">
+                <span class="ph"><span class="art art-sunset" style="filter:saturate(.85) brightness(1.03)"></span><span class="mark"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+                <small><b>1920×1440</b><br>1.2 MB</small>
+              </button>
+              <button class="tile" type="button" aria-pressed="true" data-mb="0.4" aria-label="1080×810, 0.4 MB">
+                <span class="ph"><span class="art art-sunset" style="filter:contrast(.92) sepia(.12)"></span><span class="mark"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+                <small><b>1080×810</b><br>0.4 MB</small>
+              </button>
+            </div>
+            <div class="methods" aria-label="Six detection methods">
+              <span class="on">Exact Duplicates</span><span class="on">Nearly Identical</span><span>Burst</span><span>Same Face</span><span>Visually Similar</span><span>Possibly Blurry</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature">
+        <div class="rv">
+          <p class="f-label"><b>C</b>Transfer</p>
+          <h3>Same <span class="nw">Wi-Fi</span>. Just open a browser.</h3>
+          <p>On a computer or tablet, open the address your phone shows and enter the 6-digit pairing code to download photos and files. No software, no sign-in, no cloud.</p>
+          <dl class="specs">
+            <dt>Needs</dt><dd>The same <span class="nw">Wi-Fi</span> and any browser</dd>
+            <dt>Pairing</dt><dd>A 6-digit pairing code</dd>
+            <dt>Formats</dt><dd>Convert HEIC to JPG; anything that didn’t download is listed so you can retry</dd>
+            <dt>Cost</dt><dd>Fully free in the free version</dd>
+          </dl>
+        </div>
+        <div class="f-vis rv" style="--i:1">
+          <div class="browser" data-code="482917">
+            <div class="b-bar" aria-hidden="true"><span class="b-dots"><i></i><i></i><i></i></span><span class="b-url">http://<b>192.168.1.23</b>:8080</span></div>
+            <div class="b-body">
+              <div class="pair">
+                <p>Enter the code shown on your iPhone</p>
+                <div class="code" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <small>Find it in the app’s Transfer tab</small>
+              </div>
+              <div class="files" aria-hidden="true">
+                <div class="ok-line">Photos on iPhone<span>Connected</span></div>
+                <div class="f" style="--d:0ms"><div class="art art-sunset"></div></div>
+                <div class="f" style="--d:80ms"><div class="art art-sea"></div></div>
+                <div class="f" style="--d:160ms"><div class="art art-forest"></div></div>
+                <div class="f" style="--d:240ms"><div class="art art-dawn"></div></div>
+                <div class="f" style="--d:320ms"><div class="art art-night"></div></div>
+                <div class="f" style="--d:400ms"><div class="art art-receipt"></div></div>
+                <div class="f" style="--d:480ms"><div class="art art-sunset" style="filter:hue-rotate(-12deg)"></div></div>
+                <div class="f" style="--d:560ms"><div class="art art-sea" style="filter:saturate(.8)"></div></div>
+              </div>
+              <button class="replay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Replay</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="details">
+        <div class="rv"><b>On This Day</b><p>Even the free version can sort photos taken on today’s date in past years.</p></div>
+        <div class="rv" style="--i:1"><b>Favorites ask twice</b><p>A favorited photo asks once more before it’s deleted.</p></div>
+        <div class="rv" style="--i:2"><b>Review by month</b><p>Your summary is grouped by month; multi-select to change many at once.</p></div>
+        <div class="rv" style="--i:3"><b>iPhone and iPad</b><p>Follows your system language: English, Japanese and Traditional Chinese.</p></div>
+      </div>
     </div>
+  </section>
 
-    <h2>Start free, buy once</h2>
-    <p>The free version sorts 20 photos a day (watch an ad for more), at random or On This Day, scans with “File Size &amp; Content” (watch an ad to try “AI Visual Match” once), and includes every transfer feature. If you like it, buy the Full Version once: unlimited sorting, sorting by month, every similar-scan method, no ads, and Family Sharing. No subscription.</p>
+  <!-- 03 -->
+  <section class="chapter" aria-labelledby="c3" style="padding-top:0">
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="03">In the app</p>
+        <h2 class="h2 rv" id="c3" style="--i:1">A quiet interface that lets the <em>photos</em> talk.</h2>
+        <p class="sub rv" style="--i:2">Warm paper tones and a single amber beam of light, used only where you need to decide.</p>
+      </header>
+      <div class="gallery">
+        <figure class="rv"><img src="/whereto/shots/en/01-review.jpg" alt="Sort: swipe left to delete, right to keep" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>01</span>Sort</figcaption></figure>
+        <figure class="rv" style="--i:1"><img src="/whereto/shots/en/02-similar.jpg" alt="Similar: find duplicates in one scan" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>02</span>Similar</figcaption></figure>
+        <figure class="rv" style="--i:2"><img src="/whereto/shots/en/03-transfer.jpg" alt="Transfer: download over the same Wi-Fi in a browser" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>03</span>Transfer</figcaption></figure>
+        <figure class="rv" style="--i:3"><img src="/whereto/shots/en/05-privacy.jpg" alt="Privacy: your photos stay on your phone" width="414" height="900" loading="lazy" decoding="async"><figcaption><span>04</span>Privacy</figcaption></figure>
+      </div>
+    </div>
+  </section>
 
-    <h2>Need help?</h2>
-    <p>See the <a href="support.html">support page</a>, or email us at <a href="mailto:quchu.app@gmail.com">quchu.app@gmail.com</a>.</p>
-  </div>
+  <!-- 04 -->
+  <section class="chapter dark-band" id="privacy" aria-labelledby="c4">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="04">Privacy</p>
+        <h2 class="h2 rv" id="c4" style="--i:1">No servers, so your photos go <em>nowhere.</em></h2>
+        <p class="sub rv" style="--i:2">Whereto has no servers of its own and no account system. Analysis, sorting and deletion all happen on your iPhone.</p>
+      </header>
+      <div class="facts">
+        <div class="fact rv"><span class="mono">ON-DEVICE</span><strong>Analyzed on your phone</strong><p>Similarity matching uses Apple Vision built into your iPhone. Nothing is uploaded to be analyzed.</p></div>
+        <div class="fact rv" style="--i:1"><span class="mono">NO ACCOUNT</span><strong>Nothing to sign up for</strong><p>No account, and no name, email or contact details collected.</p></div>
+        <div class="fact rv" style="--i:2"><span class="mono">LAN ONLY</span><strong>Transfers stay on your <span class="nw">Wi-Fi</span></strong><p>Your computer downloads straight from your phone, never over the internet or through a cloud.</p></div>
+      </div>
+      <p class="ads-note rv">Ads in the free version are provided by Google AdMob and are non-personalized only. See the <a href="privacy.html">privacy policy</a> for details.</p>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Screenshots</span><span>Bursts</span><span>Saved twice</span><span>Receipts</span><span>On This Day</span><span>Shaky</span><span>Same scene</span><span>ID photos</span>
+        <span>Screenshots</span><span>Bursts</span><span>Saved twice</span><span>Receipts</span><span>On This Day</span><span>Shaky</span><span>Same scene</span><span>ID photos</span>
+      </div>
+    </div>
+    <div style="height:clamp(64px,8vw,112px)"></div>
+  </section>
+
+  <!-- 05 -->
+  <section class="chapter name-story" aria-labelledby="c5">
+    <div class="wrap">
+      <p class="kicker rv" data-n="05">The name</p>
+      <h2 class="sr-only" id="c5">Whereto: where to?</h2>
+      <p class="qmark" aria-hidden="true">Where<em>to?</em></p>
+      <p class="name-cap rv">It’s the question every photo quietly asks. In Chinese the app is called 去處, “a place to go”, and there are three answers.</p>
+      <div class="routes">
+        <div class="route rv" style="--c:var(--keep);--mx:4px"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><b>Keep</b><span class="to">→ your albums</span><p>Swipe right to keep it, or up to file it into an album.</p></div>
+        <div class="route rv" style="--i:1;--c:var(--delete);--mx:-4px"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span><b>Delete</b><span class="to">→ Recently Deleted · 30 days to recover</span><p>Deleted only when you confirm, with 30 days to change your mind.</p></div>
+        <div class="route rv" style="--i:2;--c:var(--teal);--mx:3px;--my:-3px"><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span><b>Send</b><span class="to">→ the computer next to you</span><p>Same <span class="nw">Wi-Fi</span>, downloaded straight into a browser.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="chapter" aria-labelledby="c6" style="padding-top:0">
+    <div class="wrap news">
+      <div class="stick">
+        <p class="kicker rv" data-n="06">Version 1.3</p>
+        <h2 class="h2 rv" id="c6" style="--i:1">What’s <em>new.</em></h2>
+        <p class="sub rv mono" style="--i:2">2026.11 · iOS 26 or later</p>
+      </div>
+      <ol>
+        <li class="rv"><b>Swipe up to add to an album</b><p>Sort and organize in one go, even into several albums at once.</p></li>
+        <li class="rv"><b>On This Day, and several months at once</b><p>The free version can sort past years’ photos from today; the Full Version can pick several months together.</p></li>
+        <li class="rv"><b>More on each card</b><p>Live Photo, burst, favorite and file size are shown, videos play right on the card, favorites ask once more before deletion, and photos in your Similar results show “N Similar”.</p></li>
+        <li class="rv"><b>Summary grouped by month</b><p>Multi-select to unmark, keep or delete in one go.</p></li>
+        <li class="rv"><b>A better Similar scan</b><p>A new “Possibly Blurry” group and side-by-side compare with synced zoom; when you delete copies, their albums and favorites move to the photo you keep.</p></li>
+        <li class="rv"><b>Full-screen view</b><p>Live Photos play, and videos have sound even in silent mode.</p></li>
+        <li class="rv"><b>Transfer page</b><p>Convert HEIC to JPG, and retry anything that didn’t download.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="chapter" id="pricing" aria-labelledby="c7" style="padding-top:0">
+    <div class="wrap">
+      <header class="chap-head">
+        <p class="kicker rv" data-n="07">Pricing</p>
+        <h2 class="h2 rv" id="c7" style="--i:1">Start free. <em>Buy once.</em></h2>
+        <p class="sub rv" style="--i:2">No subscription. Upgrade when it earns its place, and share it with your family.</p>
+      </header>
+      <div class="plans">
+        <div class="plan rv">
+          <span class="mono">Free</span>
+          <h3>Free</h3>
+          <p class="price">Download and go</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>Sort 20 photos a day; watch an ad for more</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>Random and On This Day</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>Similar scan with “File Size &amp; Content”; watch an ad to try “AI Visual Match” once</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>Every transfer feature, free</li>
+          </ul>
+          <a class="btn ghost" href="https://apps.apple.com/app/id6830008884">Download free</a>
+        </div>
+        <div class="plan full rv" style="--i:1">
+          <span class="mono">Full Version</span>
+          <h3>Full Version</h3>
+          <p class="price">One-time purchase; see the App Store for your local price</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>Unlimited sorting</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>Sort by month, several months at once</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>Every similar-scan method</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.5 4.5L19 7"/></svg>No ads, with Family Sharing</li>
+          </ul>
+          <a class="btn" href="https://apps.apple.com/app/id6830008884">Download on the App Store <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="final" aria-labelledby="c8">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="stack" aria-hidden="true" data-in><div class="art art-forest"></div><div class="art art-sea"></div><div class="art art-sunset"></div></div>
+      <h2 class="h2 rv" id="c8">Give every photo <em>somewhere to go.</em></h2>
+      <p class="sub rv" style="--i:1">For iPhone and iPad on iOS 26 or later. Questions? The <a href="support.html">support page</a> has answers and a way to reach us.</p>
+      <div class="cta-row rv" style="--i:2">
+        <a class="btn" href="https://apps.apple.com/app/id6830008884">Download on the App Store <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
 </main>
