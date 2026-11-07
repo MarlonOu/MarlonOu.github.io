@@ -54,6 +54,7 @@ if(l.indexOf('zh')!==0){location.replace(l.indexOf('ja')===0?'/whereto/ja/':'/wh
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<meta name="apple-itunes-app" content="app-id=6830008884">
 <link rel="icon" href="/whereto/favicon.png">
 <link rel="stylesheet" href="/whereto/style.css">
 {alternates}

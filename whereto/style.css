@@ -76,6 +76,9 @@ a:hover { text-decoration-thickness: 2px; }
   display: inline-block; margin-top: 24px; padding: 12px 26px; border-radius: 999px;
   background: linear-gradient(90deg, var(--amber), var(--coral)); color: #1A1208; font-weight: 700;
 }
+a.badge { text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
+a.badge:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(245, 158, 11, .35); }
+a.badge:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 
 /* 內容 */
 main { padding: 40px 0 64px; }
