@@ -3,193 +3,401 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Marlon Ou｜獨立 iOS 開發者</title>
-<meta name="description" content="Marlon Ou，台灣的獨立 iOS 開發者。作品：去處 Whereto（照片整理）、寵寵欲動（全家一起照顧毛孩）。">
-<meta name="theme-color" content="#F3EFE8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#12100E" media="(prefers-color-scheme: dark)">
-<meta property="og:title" content="Marlon Ou｜獨立 iOS 開發者">
-<meta property="og:description" content="我做安靜的 App：不用帳號、沒有伺服器，你的東西留在你的手機裡。">
+<title>Marlon Ou｜獨立開發者</title>
+<meta name="description" content="Marlon Ou，台北的獨立開發者。iPhone App：去處（整理相簿）、寵寵欲動（全家一起照顧毛孩）；網頁遊戲：音樂猜歌、畫圖猜謎派對。">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marlon Ou｜獨立開發者">
+<meta property="og:description" content="兩款不用帳號的 iPhone App，加上兩個開瀏覽器就能玩的遊戲。">
+<meta property="og:image" content="https://marlonou.github.io/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://marlonou.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141210'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-style='italic' font-size='34' text-anchor='middle' fill='%23F3EFE8'%3EMo%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Huninn&text=%E5%AF%B5%E6%AC%B2%E5%8B%95&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&display=swap" rel="stylesheet">
 <script>
-  // 語言：記住的選擇 > 瀏覽器語言；在繪製前決定，避免閃一下中文
-  (function(){document.documentElement.classList.add('js');var l;try{l=localStorage.getItem('mo-lang')}catch(e){}
+  // language: saved choice > browser language, decided before paint
+  (function(){var d=document.documentElement;d.classList.add('js');var l;try{l=localStorage.getItem('mo-lang')}catch(e){}
   if(!l){var n=(navigator.languages&&navigator.languages[0]||navigator.language||'').toLowerCase();l=n.indexOf('zh')===0?'zh':'en'}
-  document.documentElement.dataset.lang=l;if(l==='en')document.documentElement.lang='en';
-  try{var t=localStorage.getItem('mo-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}})();
+  d.dataset.lang=l;if(l==='en')d.lang='en';})();
 </script>
 <style>
 :root{
-  --paper:#F3EFE8; --paper-2:#EAE4DA; --ink:#141210; --ink-2:#5C544C; --rule:#D6CEC2; --accent:#B4410C;
-  --serif:"Instrument Serif","Times New Roman",serif;
-  --sans:"Space Grotesk","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+  --bg:#000; --tile:#0e0e10; --tile-2:#151518; --line:rgba(255,255,255,.09);
+  --ink:#f5f5f7; --ink-2:#a1a1a6; --ink-3:#6e6e73;
+  --amber:#f5a524; --orange:#fb7a2c; --coral:#ff6a55; --blue:#4c8dff; --gold:#f0c044; --coral2:#ff6b4a; --cream:#f7f0e1; --ink-d:#1e1b2e;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter Tight","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
-  --gutter:clamp(16px,4vw,56px); --maxw:1320px;
-  /* app brand colors: fixed in both themes */
-  --wt-top:#2E2016; --wt-bot:#110C09; --wt-ink:#FBF7F1; --wt-amber:#F59E0B;
-  --cc-bg:#FFF7ED; --cc-ink:#431407; --cc-brand:#F97316; --cc-on:#0F172A;
-  color-scheme:light;
+  --gutter:clamp(20px,4vw,48px); --maxw:1200px;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--paper:#12100E;--paper-2:#1C1916;--ink:#F3EFE8;--ink-2:#B3AA9F;--rule:#34302B;--accent:#FB923C;color-scheme:dark}
-}
-:root[data-theme="dark"]{--paper:#12100E;--paper-2:#1C1916;--ink:#F3EFE8;--ink-2:#B3AA9F;--rule:#34302B;--accent:#FB923C;color-scheme:dark}
-
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .5s var(--ease),color .5s var(--ease)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:-.003em}
 a{color:inherit}
-img{display:block;max-width:100%}
-:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:8px}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
-.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;text-decoration:none}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--ink);color:#000;padding:10px 16px;border-radius:999px;text-decoration:none}
 .skip:focus{top:12px}
-/* bilingual: show the span for the active language */
 [data-lang="zh"] [lang="en"]:not(html),[data-lang="en"] [lang="zh-Hant"]{display:none!important}
+.app-icon{border-radius:22.4%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+img.app-icon[src*="draw-icon"]{border-radius:20%}
 
-/* ---------- header ---------- */
-.top{position:sticky;top:0;z-index:40;transition:background .3s,box-shadow .3s}
-.top.stuck{background:color-mix(in srgb,var(--paper) 84%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--rule)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
-.mono{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:500;letter-spacing:.01em}
-.mono i{font:italic 400 26px/1 var(--serif);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);padding-bottom:3px;transition:transform .5s var(--ease)}
-.mono:hover i{transform:rotate(-12deg)}
+/* ---------- header: frosted glass bar ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:15px}
+.logo .duo{display:flex}
+.logo .duo img{width:22px;height:22px;border-radius:6px}
+.logo .duo img + img{margin-left:-6px;box-shadow:0 0 0 2px #000}
 .nav{display:flex;align-items:center;gap:4px}
-.nav a{text-decoration:none;font-size:15px;padding:10px 12px;position:relative}
-.nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
-.nav a:hover::after{transform:scaleX(1);transform-origin:left}
-.tog{display:flex;align-items:center;border:1px solid var(--rule);border-radius:999px;padding:3px;margin-left:8px}
-.tog button{min-width:40px;height:36px;border:0;border-radius:999px;background:none;color:var(--ink-2);font:500 13px var(--sans);cursor:pointer;transition:background .3s,color .3s}
-.tog button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.theme{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:none;color:var(--ink);cursor:pointer;display:grid;place-items:center;margin-left:4px}
-.theme svg{width:18px;height:18px;transition:transform .6s var(--ease)}
-.theme:hover svg{transform:rotate(90deg)}
-@media (max-width:720px){.nav a{display:none}}
+.nav a{text-decoration:none;font-size:13px;color:var(--ink-2);padding:10px 12px;transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.tog{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:3px;margin-left:8px}
+.tog button{min-width:44px;height:30px;border:0;border-radius:999px;background:none;color:var(--ink-2);font:500 12px var(--sans);cursor:pointer;transition:background-color .25s,color .25s}
+.tog button[aria-pressed="true"]{background:var(--ink);color:#000}
+@media (max-width:640px){.nav a{display:none}}
+
+/* ---------- buttons ---------- */
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;text-decoration:none;font-weight:600;font-size:16px;transition:transform .3s var(--ease),background-color .25s,box-shadow .3s}
+.btn svg{width:16px;height:16px;transition:transform .35s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn:hover svg{transform:translateX(3px)}
+.btn:active{transform:scale(.97)}
+.btn--white{background:var(--ink);color:#000}
+.btn--white:hover{box-shadow:0 10px 40px -10px rgba(255,255,255,.45)}
+.btn--ghost{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.btn--ghost:hover{background:rgba(255,255,255,.08)}
+.btn--amber{background:linear-gradient(90deg,var(--amber),var(--coral));color:#1a1005}
+.btn--amber:hover{box-shadow:0 12px 44px -10px rgba(245,165,36,.6)}
+.btn--orange{background:var(--orange);color:#1c0a02}
+.btn--orange:hover{box-shadow:0 12px 44px -10px rgba(251,122,44,.6)}
 
 /* ---------- hero ---------- */
-.hero{min-height:calc(100svh - 72px);display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(24px,5vh,56px) clamp(24px,4vh,40px)}
-.meta-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:14px;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:16px}
-.meta-row span b{color:var(--ink);font-weight:500}
-.live::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#22A35A;margin-right:8px;vertical-align:1px;animation:pulse 2.4s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,163,90,.5)}70%,100%{box-shadow:0 0 0 8px rgba(34,163,90,0)}}
-.name{font:400 clamp(92px,19vw,300px)/.84 var(--serif);letter-spacing:-.035em;margin:clamp(32px,8vh,96px) 0 0;white-space:nowrap}
-.name .l{display:inline-block;transition:transform .5s var(--ease)}
-.name .l.it{font-style:italic;color:var(--accent)}
-.name .gap{display:inline-block;width:.22em}
-.lead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-top:clamp(24px,5vh,56px)}
-.lead p{font-size:clamp(22px,2.4vw,34px);line-height:1.38;margin:0;max-width:23em;letter-spacing:-.005em;text-wrap:balance}
-.lead p em{font:italic 400 1.18em/1 var(--serif);color:var(--accent);letter-spacing:0}
-.cue{justify-self:end;white-space:nowrap;display:flex;align-items:center;gap:12px;text-decoration:none;font-size:15px}
-.cue .dot{flex:none;width:52px;height:52px;border-radius:50%;border:1px solid var(--rule);display:grid;place-items:center;transition:background .3s,color .3s,transform .4s var(--ease)}
-.cue:hover .dot{background:var(--ink);color:var(--paper);transform:translateY(4px)}
-.cue svg{width:18px;height:18px}
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:110px 0 72px;overflow:hidden;isolation:isolate}
+.glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none}
+.glow--a{width:620px;height:620px;left:calc(50% - 560px);top:4%;background:radial-gradient(circle,rgba(245,165,36,.75),transparent 65%);animation:drift 18s ease-in-out infinite alternate}
+.glow--b{width:560px;height:560px;left:calc(50% - 20px);top:10%;background:radial-gradient(circle,rgba(251,122,44,.6),transparent 65%);animation:drift 22s ease-in-out infinite alternate-reverse}
+.glow--c{width:720px;height:420px;left:calc(50% - 360px);bottom:-160px;background:radial-gradient(ellipse,rgba(76,141,255,.35),transparent 65%);animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(60px,-40px,0) scale(1.12)}}
+.hero__inner{position:relative;max-width:980px;padding-inline:var(--gutter)}
+.icons{display:flex;justify-content:center;gap:clamp(20px,3vw,40px);margin-bottom:clamp(32px,5vh,56px);perspective:900px}
+.icons a{display:block;text-decoration:none;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease)}
+.icons a:hover{--lift:-10px}
+.icons .float{animation:float 6s ease-in-out infinite}
+.icons a:nth-child(2) .float{animation-delay:-3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.icons img{width:clamp(108px,12vw,164px);height:auto;transform:translateY(var(--lift,0));transition:transform .5s var(--ease)}
+.icons a:nth-child(1) img{box-shadow:0 30px 80px -20px rgba(245,165,36,.7),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(2) img{box-shadow:0 30px 80px -20px rgba(251,122,44,.65),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons span{display:block;margin-top:14px;font-size:13px;color:var(--ink-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);margin:0 0 18px}
+.eyebrow .live{width:7px;height:7px;border-radius:50%;background:#30d158;box-shadow:0 0 0 0 rgba(48,209,88,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%,100%{box-shadow:0 0 0 8px rgba(48,209,88,0)}}
+h1{font-size:clamp(48px,8vw,104px);line-height:1.02;letter-spacing:-.045em;font-weight:700;margin:0;
+  background:linear-gradient(180deg,#fff 30%,#a8a8ad);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+[data-lang="zh"] h1{letter-spacing:-.02em;line-height:1.12}
+.hero__sub{font-size:clamp(18px,1.7vw,23px);line-height:1.5;color:var(--ink-2);max-width:34em;margin:24px auto 36px;text-wrap:balance}
+.hero__sub b{color:var(--ink);font-weight:600}
 
-/* intro animation */
-.js .in-l{opacity:0;transform:translateY(.25em)}
-.ready .in-l{opacity:1;transform:none;transition:opacity .9s var(--ease),transform 1.1s var(--ease);transition-delay:calc(var(--i)*55ms + 120ms)}
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0)*100ms)}
-.js .rv.on{opacity:1;transform:none}
+/* intro and reveals */
+.js .in{opacity:0;transform:translateY(24px);filter:blur(6px)}
+.ready .in{opacity:1;transform:none;filter:none;transition:opacity 1.1s var(--ease),transform 1.1s var(--ease),filter 1.1s var(--ease);transition-delay:calc(var(--i,0)*110ms + 100ms)}
+.js .rv{opacity:0;transform:translateY(40px)}
+.js .rv.on{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--d,0)*90ms)}
 
 /* ---------- section heads ---------- */
-.sec{padding-block:clamp(80px,12vw,168px) 0}
-.head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;border-bottom:1px solid var(--rule);padding-bottom:20px;margin-bottom:clamp(28px,4vw,48px)}
-.head h2{font:400 clamp(44px,7vw,104px)/.95 var(--serif);margin:0;letter-spacing:-.02em}
-.head h2 i{color:var(--accent)}
-.head small{font-size:14px;color:var(--ink-2)}
+.sec{padding-block:clamp(96px,12vw,160px)}
+.kicker{font-size:15px;font-weight:600;margin:0 0 12px}
+.h2{font-size:clamp(40px,5.6vw,72px);line-height:1.05;letter-spacing:-.04em;font-weight:700;margin:0;text-wrap:balance}
+[data-lang="zh"] .h2{letter-spacing:-.015em;line-height:1.15}
+.h2 .dim{color:var(--ink-3)}
+.lede{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);max-width:36em;margin:20px 0 0;text-wrap:pretty}
+.center{text-align:center}
+.center .lede{margin-inline:auto}
 
-/* ---------- work panels ---------- */
-.works{display:grid;gap:clamp(16px,2vw,24px)}
-.panel{position:relative;display:grid;grid-template-columns:1.1fr .9fr;min-height:clamp(440px,48vw,620px);border-radius:clamp(24px,3vw,40px);overflow:hidden;isolation:isolate;
-  transition:transform .7s var(--ease)}
-.panel .txt{position:relative;z-index:2;display:flex;flex-direction:column;padding:clamp(28px,4vw,56px)}
-.idx{font:500 14px var(--sans);letter-spacing:.08em;opacity:.75}
-.panel h3{font:400 clamp(48px,6.4vw,96px)/1 var(--serif);margin:auto 0 0;letter-spacing:-.02em}
-.panel h3 small{display:block;font:500 clamp(15px,1.2vw,17px)/1.4 var(--sans);letter-spacing:.02em;opacity:.75;margin-top:12px}
-.panel .desc{font-size:clamp(17px,1.4vw,20px);max-width:26em;margin:20px 0 0;opacity:.9}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none;font-size:13px}
-.tags li{padding:5px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px currentColor;opacity:.85}
-.tags li.status{box-shadow:none;opacity:1}
-.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.lk{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;transition:transform .3s var(--ease),background .3s,color .3s}
-.lk svg{width:16px;height:16px;transition:transform .4s var(--ease)}
-.lk:hover svg{transform:translateX(4px)}
-.lk:active{transform:scale(.97)}
-.art{position:relative;display:grid;place-items:center;z-index:1}
+/* ---------- bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(232px,auto);gap:16px;margin-top:56px}
+.tile{position:relative;overflow:hidden;border-radius:28px;background:var(--tile);box-shadow:inset 0 0 0 1px var(--line);padding:28px;display:flex;flex-direction:column;text-decoration:none;isolation:isolate;transition:transform .5s var(--ease),box-shadow .4s}
+/* a light that follows the pointer along the edge and the ground */
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.07),transparent 45%)}
+.tile::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;opacity:0;transition:opacity .4s;pointer-events:none;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.45),transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.tile:hover::before,.tile:hover::after{opacity:1}
+a.tile:hover{transform:translateY(-4px)}
+.tile h3{font-size:24px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0}
+.tile p{margin:8px 0 0;color:var(--ink-2);font-size:15px;line-height:1.5}
+.tile .tag{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.1);margin-bottom:auto}
+.tile .go{position:absolute;right:22px;top:22px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);transition:transform .45s var(--ease),background-color .3s}
+.tile .go svg{width:16px;height:16px}
+a.tile:hover .go{transform:rotate(-45deg);background:rgba(255,255,255,.2)}
+.t-wt{grid-column:span 2;grid-row:span 2;background:radial-gradient(120% 90% at 10% 0%,#4a3020,#160e09 60%,#0a0705)}
+.t-wt .head{display:flex;align-items:center;gap:14px}
+.t-wt .head img{width:56px;height:56px}
+.t-wt .tag{background:rgba(245,165,36,.18);color:#ffc96b;margin-bottom:0}
+.t-wt .body{margin-top:18px;max-width:15.5em}
+.t-wt .peek{position:absolute;right:24px;top:120px;width:44%;max-width:250px;transform:rotate(-8deg);transition:transform .8s var(--ease);border-radius:24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.t-wt:hover .peek{transform:rotate(-4deg) translateY(-24px)}
+.t-cc{grid-column:span 2;grid-row:span 2;background:radial-gradient(110% 90% at 90% 0%,#ffe3c4,#fff4e6 55%,#fde9d3);color:#431407;box-shadow:none}
+.t-cc p{color:#7c3a17}
+.t-cc .tag{background:#dbeafe;color:#1e3a8a;margin-bottom:0}
+.t-cc .go{background:rgba(67,20,7,.08)}
+.t-cc .head{display:flex;align-items:center;gap:14px}
+.t-cc .head img{width:56px;height:56px}
+.t-cc .body{margin-top:18px;max-width:15em}
+.t-cc .mini{position:absolute;right:28px;top:110px;width:min(44%,240px);transform:rotate(6deg);transition:transform .8s var(--ease)}
+.t-cc:hover .mini{transform:rotate(2deg) translateY(-20px)}
+.t-cc::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(251,122,44,.16),transparent 45%)}
+.t-clock .time{font-size:clamp(56px,6vw,76px);font-weight:700;letter-spacing:-.05em;line-height:1;margin-top:auto;font-variant-numeric:tabular-nums}
+.t-clock .time i{font-style:normal;animation:blink 2s steps(1) infinite}
+@keyframes blink{50%{opacity:.25}}
+.t-zero .big{font-size:clamp(88px,9vw,120px);font-weight:800;letter-spacing:-.06em;line-height:.85;margin-top:auto;
+  background:linear-gradient(160deg,#fff,#5c5c62);-webkit-background-clip:text;background-clip:text;color:transparent}
+.t-sign{background:linear-gradient(160deg,#10182b,#0b0d14)}
+.t-sign .lock{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(76,141,255,.18);color:#8fb6ff;margin-bottom:auto}
+.t-sign .lock svg{width:22px;height:22px}
+.t-gh .handle{font-size:28px;font-weight:700;letter-spacing:-.03em;margin-top:auto}
+.t-gh svg.mark{width:40px;height:40px;margin-bottom:auto}
 
-/* Whereto panel */
-.wt{background:linear-gradient(135deg,var(--wt-top),var(--wt-bot));color:var(--wt-ink)}
-.wt::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(520px circle at var(--mx,80%) var(--my,20%),rgba(245,158,11,.30),transparent 60%);transition:opacity .4s}
-.wt .status{background:var(--wt-amber);color:#1A1208}
-.wt .lk.pri{background:linear-gradient(90deg,var(--wt-amber),#F97355);color:#1A1208}
-.wt .lk.sec{box-shadow:inset 0 0 0 1px rgba(251,247,241,.35);color:var(--wt-ink)}
-.wt .lk.sec:hover{background:rgba(251,247,241,.1)}
-.wt .icon{width:min(62%,240px);aspect-ratio:1;border-radius:22.5%;box-shadow:0 40px 90px -20px rgba(245,158,11,.45),0 0 0 1px rgba(255,255,255,.06);
-  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotate(-6deg);transition:transform .6s var(--ease)}
+/* ---------- app showcases ---------- */
+.show{position:relative;overflow:hidden;isolation:isolate}
+.show__glow{position:absolute;z-index:-1;left:50%;top:38%;width:1100px;height:700px;transform:translateX(-50%);border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none}
+.show--wt .show__glow{background:radial-gradient(ellipse,var(--amber),transparent 65%)}
+.show--cc .show__glow{background:radial-gradient(ellipse,var(--orange),transparent 65%)}
+.app-tag{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;margin-bottom:18px}
+.app-tag img{width:32px;height:32px}
+.grad-amber{background:linear-gradient(90deg,#ffd27a,var(--amber) 40%,var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-orange{background:linear-gradient(90deg,#ffc58f,var(--orange) 45%,#ff5d3a);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* ChongChong panel */
-.cc{background:var(--cc-bg);color:var(--cc-ink);box-shadow:inset 0 0 0 1px #FED7AA}
-.cc .status{background:#DBEAFE;color:#1E3A8A}
-.cc .lk.pri{background:var(--cc-brand);color:var(--cc-on);box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
-.cc .lk.sec{box-shadow:inset 0 0 0 1px #FDBA74;color:var(--cc-ink)}
-.cc .lk.sec:hover{background:#FFEDD5}
-.cc .zh-title{font-family:"Huninn","PingFang TC",var(--sans)}
-.cc .mark{width:min(56%,270px);aspect-ratio:1;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotate(5deg);transition:transform .6s var(--ease);
-  filter:drop-shadow(0 36px 50px rgba(249,115,22,.38))}
-.print{position:absolute;width:26px;height:26px;color:var(--cc-brand);pointer-events:none;z-index:0;opacity:.0;animation:print 1.6s var(--ease) forwards}
-@keyframes print{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(.6)}15%{opacity:.55;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}}
+.stage{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,2.4vw,32px);margin-top:64px;min-height:clamp(420px,46vw,620px)}
+.stage .shot{width:clamp(150px,21vw,280px);border-radius:clamp(20px,2.4vw,34px);box-shadow:0 50px 100px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07)}
+.stage .shot:nth-child(2){width:clamp(170px,24vw,320px);z-index:2}
+.js .stage .shot{opacity:0;transform:translateY(120px) scale(.94)}
+.js .stage.on .shot{opacity:1;transform:none;transition:opacity 1.1s var(--ease),transform 1.3s var(--ease)}
+.js .stage.on .shot:nth-child(1){transition-delay:.15s}
+.js .stage.on .shot:nth-child(3){transition-delay:.3s}
 
-/* ---------- principles ---------- */
-.rules{list-style:none;margin:0;padding:0;counter-reset:r}
-.rules li{display:grid;grid-template-columns:clamp(64px,10vw,160px) 1fr 1fr;gap:24px;align-items:baseline;padding:clamp(24px,3vw,40px) 0;border-bottom:1px solid var(--rule);position:relative}
-.rules li::before{counter-increment:r;content:"0" counter(r);font:400 clamp(28px,3vw,40px)/1 var(--serif);color:var(--ink-2)}
-.rules h3{font:400 clamp(30px,3.6vw,52px)/1.1 var(--serif);margin:0;letter-spacing:-.01em;transition:transform .5s var(--ease),color .3s}
-.rules p{margin:0;color:var(--ink-2);max-width:30em}
-.rules li:hover h3{transform:translateX(12px);color:var(--accent)}
-[data-lang="zh"] .rules h3,[data-lang="zh"] .head h2 span[lang="zh-Hant"]{font-family:var(--sans);font-weight:500;letter-spacing:.02em}
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:64px}
+.feat{border-radius:24px;padding:26px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line)}
+.feat .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px}
+.feat .ic svg{width:20px;height:20px}
+.show--wt .feat .ic{background:rgba(245,165,36,.16);color:#ffc96b}
+.show--cc .feat .ic{background:rgba(251,122,44,.16);color:#ffab73}
+.feat h3{font-size:19px;letter-spacing:-.015em;margin:0 0 6px;font-weight:700}
+.feat p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.55}
+.show .btns{margin-top:48px}
+.price{text-align:center;color:var(--ink-3);font-size:14px;margin:16px 0 0}
 
-/* ---------- contact ---------- */
-.contact{padding-block:clamp(96px,14vw,200px) clamp(48px,6vw,80px)}
-.contact p{color:var(--ink-2);margin:0 0 16px}
-.big{display:inline-flex;align-items:center;gap:.18em;font:400 clamp(40px,8.6vw,136px)/1 var(--serif);text-decoration:none;letter-spacing:-.025em;position:relative;padding-bottom:.08em}
-.big::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(.18);transform-origin:left;transition:transform .7s var(--ease)}
-.big:hover::after{transform:scaleX(1)}
-.big svg{width:.5em;height:.5em;transition:transform .6s var(--ease)}
-.big:hover svg{transform:rotate(45deg)}
-.big:hover{color:var(--accent)}
-.side{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:40px;font-size:15px;color:var(--ink-2)}
-.side a{color:var(--ink);text-underline-offset:4px}
+/* ChongChong: a drawn phone with cards that slide out beside it */
+.cc-stage{position:relative;display:grid;place-items:center;margin-top:64px;min-height:640px}
+.phone{position:relative;z-index:2;width:300px;aspect-ratio:9/19;border-radius:52px;background:#1c1917;padding:11px;box-shadow:0 60px 120px -40px rgba(251,122,44,.55),0 0 0 1px rgba(255,255,255,.1)}
+.scr{height:100%;border-radius:42px;background:#fff7ed;text-align:left;overflow:hidden;display:flex;flex-direction:column;font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif;color:#431407;letter-spacing:0}
+.scr__bar{display:flex;justify-content:space-between;align-items:center;padding:14px 24px 0;font-size:12px;font-weight:600}
+.scr__island{width:86px;height:25px;border-radius:999px;background:#1c1917}
+.scr__body{flex:1;padding:12px 16px 0;overflow:hidden}
+.scr__date{font-size:11px;color:#9a3412;margin:6px 0 0}
+.scr__title{font-size:27px;font-weight:700;margin:0 0 10px}
+.pets{display:flex;gap:8px;margin-bottom:12px}
+.pets span{display:flex;align-items:center;gap:6px;font-size:12px;padding:4px 10px 4px 4px;border-radius:999px;background:#ffedd5}
+.pets span:first-child{background:#f97316;color:#1c0a02}
+.pets i{width:20px;height:20px;border-radius:50%;background:#fed7aa;display:grid;place-items:center;font-style:normal;font-size:10px;font-weight:700;color:#7c2d12}
+.task{background:#fff;border-radius:16px;padding:11px 12px;margin-bottom:9px;box-shadow:0 1px 0 #fde4c8,0 6px 16px -10px rgba(124,45,18,.25)}
+.task b{display:block;font-size:13px}
+.task small{display:block;font-size:11px;color:#9a3412;margin-top:1px}
+.task__row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px}
+.task__who{font-size:11px;color:#166534;background:#dcfce7;padding:3px 8px;border-radius:999px}
+.task__btn{font-size:12px;font-weight:600;color:#1c0a02;background:#f97316;padding:5px 12px;border-radius:999px}
+.task__due{font-size:11px;color:#92400e;background:#fef3c7;padding:3px 8px;border-radius:999px}
+.tabs{display:flex;justify-content:space-around;padding:10px 8px 18px;border-top:1px solid #fde4c8;background:#fffaf3;font-size:10px;color:#9a3412}
+.tabs span{display:grid;justify-items:center;gap:3px}
+.tabs span::before{content:"";width:18px;height:18px;border-radius:6px;background:#fed7aa}
+.tabs span.on{color:#c2410c;font-weight:600}
+.tabs span.on::before{background:#f97316}
+.float-card{position:absolute;z-index:3;width:250px;padding:16px 18px;border-radius:20px;background:rgba(28,22,18,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 30px 60px -20px rgba(0,0,0,.7);text-align:left;font-size:14px;line-height:1.45}
+.float-card small{display:block;color:#ffab73;font-size:12px;font-weight:600;margin-bottom:4px}
+.float-card b{display:block;font-size:17px;letter-spacing:-.01em}
+.float-card > span{color:var(--ink-2);font-size:13px}
+.float-card dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:8px 0 0;font-size:13px}
+.float-card dt{color:var(--ink-3)}
+.float-card dd{margin:0}
+.float-card .no{color:#ff9f7a}
+.fc-1{left:calc(50% - 470px);top:12%}
+.fc-2{right:calc(50% - 470px);top:30%}
+.fc-3{left:calc(50% - 430px);bottom:10%}
+.js .float-card{opacity:0}
+.js .fc-1,.js .fc-3{transform:translateX(60px)}
+.js .fc-2{transform:translateX(-60px)}
+.js .cc-stage.on .float-card{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+.js .cc-stage.on .fc-2{transition-delay:.2s}
+.js .cc-stage.on .fc-3{transition-delay:.4s}
+.js .cc-stage .phone{opacity:0;transform:translateY(80px)}
+.js .cc-stage.on .phone{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
 
-footer{border-top:1px solid var(--rule);padding-block:28px 40px;font-size:14px;color:var(--ink-2)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+/* ---------- close ---------- */
+.close{text-align:center;padding-block:clamp(110px,14vw,180px) 64px;position:relative;overflow:hidden;isolation:isolate}
+.close .glow--c{bottom:auto;top:30%}
+.close .duo-big{display:flex;justify-content:center;margin-bottom:32px}
+.close .duo-big img{width:84px;height:84px}
+.close .duo-big img:nth-child(2){transform:rotate(8deg)}
+.close .duo-big img:first-child{transform:rotate(-6deg)}
+.contact-line{margin-top:28px;color:var(--ink-2);font-size:15px}
+.contact-line a{color:var(--ink);text-underline-offset:4px}
+footer{border-top:1px solid var(--line);padding-block:24px 36px;font-size:13px;color:var(--ink-3)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{text-decoration:none;color:var(--ink-2)}
+footer a:hover{color:var(--ink)}
+
+
+/* hero: four icons on wide screens */
+.icons img{width:clamp(76px,9.5vw,136px)}
+.icons a:nth-child(4) img{box-shadow:0 30px 80px -20px rgba(240,192,68,.55),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(5) img{box-shadow:0 30px 80px -20px rgba(255,107,74,.6),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(4) .float{animation-delay:-1.5s}
+.icons a:nth-child(5) .float{animation-delay:-4.5s}
+.icons .sep{align-self:center;width:1px;height:56px;background:linear-gradient(transparent,rgba(255,255,255,.25),transparent);margin-bottom:28px}
+.glow--d{width:520px;height:520px;right:calc(50% - 600px);top:30%;background:radial-gradient(circle,rgba(240,192,68,.4),transparent 65%);animation:drift 24s ease-in-out infinite alternate-reverse}
+
+/* bento: games tile across the grid */
+.t-games{grid-column:1/-1;flex-direction:row;align-items:center;gap:32px;min-height:220px;background:radial-gradient(70% 140% at 95% 50%,rgba(255,107,74,.26),transparent 60%),radial-gradient(60% 120% at 65% 100%,rgba(240,192,68,.2),transparent 60%),var(--tile)}
+.t-games .txt{flex:1;max-width:30em}
+.t-games .tag{background:rgba(48,209,88,.16);color:#7ee2a0;margin-bottom:14px}
+.t-games .pair{display:flex;gap:16px;margin:0 72px 0 auto}
+.t-games .pair img{width:104px;height:104px;transition:transform .7s var(--ease)}
+.t-games .pair img:first-child{transform:rotate(-8deg)}
+.t-games .pair img:last-child{transform:rotate(7deg) translateY(10px)}
+.t-games:hover .pair img:first-child{transform:rotate(-2deg) translateY(-8px)}
+.t-games:hover .pair img:last-child{transform:rotate(2deg) translateY(-4px)}
+
+/* ChongChong: paw prints that follow the pointer */
+.print{position:absolute;z-index:-1;width:28px;height:28px;color:var(--orange);pointer-events:none;opacity:0;animation:print 1.8s var(--ease) forwards}
+@keyframes print{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(.5)}14%{opacity:.6;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}}
+
+/* ---------- games ---------- */
+.show--gm .show__glow{background:radial-gradient(ellipse at 30% 50%,var(--gold),transparent 60%),radial-gradient(ellipse at 75% 50%,var(--coral2),transparent 60%);opacity:.24}
+.grad-game{background:linear-gradient(90deg,#ffe08a,var(--gold) 35%,var(--coral2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.app-tag .pair{display:flex}
+.app-tag .pair img + img{margin-left:-8px;box-shadow:0 0 0 2px #000}
+.games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:64px;text-align:left}
+.game{position:relative;overflow:hidden;isolation:isolate;border-radius:32px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column}
+.game .head{display:flex;align-items:center;gap:16px}
+.game .head img{width:64px;height:64px}
+.game h3{font-size:28px;letter-spacing:-.02em;margin:0;font-weight:800;line-height:1.2}
+.game .slogan{display:block;font-size:15px;font-weight:600;margin-top:2px}
+.game > p{font-size:16px;margin:18px 0 18px;max-width:28em}
+.modes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
+.modes li{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px}
+.modes small{font-weight:500;opacity:.75;margin-left:4px;font-size:12px}
+.game .play{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:24px}
+.game .play .btn{min-height:46px;font-size:15px}
+.game .play small{font-size:13px}
+/* music: gold on near-black, like the game */
+.game--music{background:radial-gradient(90% 70% at 100% 0%,rgba(240,192,68,.22),transparent 60%),#0e0f12;box-shadow:inset 0 0 0 1px rgba(240,192,68,.18)}
+.game--music .slogan{color:var(--gold)}
+.game--music > p,.game--music .play small{color:var(--ink-2)}
+.game--music .modes li{background:rgba(240,192,68,.12);color:#f6d77e}
+.btn--gold{background:var(--gold);color:#1a1405}
+.btn--gold:hover{box-shadow:0 12px 44px -10px rgba(240,192,68,.6)}
+/* draw: coral and ink on dotted cream, like the game */
+.game--draw{background:radial-gradient(circle,rgba(30,27,46,.13) 1.2px,transparent 1.6px) 0 0/22px 22px,var(--cream);color:var(--ink-d)}
+.game--draw .slogan{color:#c2410c}
+.game--draw > p,.game--draw .play small{color:#4b4760}
+.game--draw .modes li{background:#fff;box-shadow:inset 0 0 0 2px var(--ink-d),0 3px 0 var(--ink-d);color:var(--ink-d)}
+.game--draw .modes li:nth-child(1){background:#ffe1d6}
+.game--draw .modes li:nth-child(2){background:#d6f5e6}
+.game--draw .modes li:nth-child(3){background:#dde3ff}
+.btn--coral{background:var(--coral2);color:var(--ink-d);box-shadow:inset 0 0 0 2px var(--ink-d),0 4px 0 var(--ink-d)}
+.btn--coral:hover{box-shadow:inset 0 0 0 2px var(--ink-d),0 6px 0 var(--ink-d)}
+.mock{margin-top:auto;border-radius:22px;padding:18px;font-size:13px}
+.game--music .mock{background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.game--draw .mock{background:#fff;box-shadow:inset 0 0 0 2px var(--ink-d),0 5px 0 var(--ink-d)}
+.mock__top{display:flex;justify-content:space-between;font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.mock__top b{color:var(--ink)}
+.game--draw .mock__top{color:#6b6780}
+.game--draw .mock__top b{color:var(--ink-d)}
+/* music: vinyl + equalizer + four answers */
+.spin{display:flex;align-items:center;justify-content:center;gap:22px;margin:16px 0 18px}
+.vinyl{width:84px;height:84px;border-radius:50%;flex:none;background:radial-gradient(circle,var(--gold) 0 26%,#16171b 27% 30%,#1c1d22 31% 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);position:relative;animation:spin 3.2s linear infinite}
+.vinyl::after{content:"";position:absolute;inset:14%;border-radius:50%;border:1px solid rgba(255,255,255,.07);box-shadow:0 0 0 7px rgba(0,0,0,0),inset 0 0 0 7px #1c1d22,inset 0 0 0 8px rgba(255,255,255,.06)}
+@keyframes spin{to{transform:rotate(1turn)}}
+.eq{display:flex;align-items:flex-end;gap:5px;height:72px}
+.eq span{width:7px;border-radius:4px;height:var(--h);background:linear-gradient(#ffe08a,var(--gold));transform-origin:bottom;animation:eq 1.1s ease-in-out infinite alternate;animation-delay:var(--dl)}
+@keyframes eq{0%{transform:scaleY(.25)}100%{transform:scaleY(1)}}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opts > span{padding:11px 12px;border-radius:12px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);color:var(--ink);display:flex;justify-content:space-between;gap:6px}
+.opts .ok{background:rgba(240,192,68,.14);box-shadow:inset 0 0 0 1px rgba(240,192,68,.6)}
+.opts .ok em{font-style:normal;color:var(--gold);font-weight:700}
+/* draw: canvas, palette, guesses */
+.canvas{position:relative;margin:14px 0 12px;border-radius:14px;background:#fffdf7;box-shadow:inset 0 0 0 2px rgba(30,27,46,.12);height:196px;overflow:hidden}
+.canvas svg{position:absolute;left:8%;top:6%;width:52%;height:88%}
+.canvas path{fill:none;stroke:var(--ink-d);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:0}
+.js .canvas path{stroke-dashoffset:var(--len)}
+.js .games.on .canvas path{stroke-dashoffset:0;transition:stroke-dashoffset 1.1s ease-in-out;transition-delay:calc(var(--k)*.5s + .3s)}
+.chat{position:absolute;right:10px;top:10px;bottom:10px;width:44%;display:flex;flex-direction:column;justify-content:flex-end;gap:6px}
+.chat > span{align-self:flex-end;padding:6px 10px;border-radius:12px 12px 4px 12px;background:#efeae0;color:var(--ink-d);font-size:12px;line-height:1.35}
+.chat > span b{font-weight:700;color:#6b6780;margin-right:4px}
+.chat > .hit{background:#d6f5e6;color:#14532d}
+.js .chat > span{opacity:0;transform:translateY(8px)}
+.js .games.on .chat > span{opacity:1;transform:none;transition:opacity .5s,transform .5s var(--ease);transition-delay:calc(var(--k)*.6s + 2.6s)}
+.palette{display:flex;align-items:center;gap:8px}
+.palette i{width:20px;height:20px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 2px var(--ink-d)}
+.palette i:first-child{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--coral2)}
+.palette small{margin-left:auto;color:#6b6780;font-size:12px}
+.games-note{text-align:center;color:var(--ink-3);font-size:14px;margin:28px 0 0}
+.games-note a{color:var(--ink-2);text-underline-offset:4px}
+.close .duo-big img:nth-child(3){transform:rotate(-4deg)}
+.close .duo-big img:nth-child(4){transform:rotate(10deg)}
+.close .duo-big img + img{margin-left:-18px;box-shadow:0 0 0 4px #000}
 
 /* ---------- responsive ---------- */
-@media (max-width:900px){
-  .panel{grid-template-columns:1fr;min-height:0}
-  .panel .art{order:-1;padding-top:40px;min-height:260px}
-  .panel h3{margin-top:24px}
-  .lead{grid-template-columns:1fr}
-  .cue{justify-self:start}
-  .rules li{grid-template-columns:56px 1fr}
-  .rules li p{grid-column:2}
+@media (max-width:1023px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .t-wt,.t-cc{grid-row:span 2;min-height:480px}
+  .fc-1{left:2%}.fc-2{right:2%}.fc-3{left:4%}
+  .games{grid-template-columns:1fr}
+  .glow--d{right:-200px}
 }
-@media (max-width:560px){
+@media (max-width:760px){
+  .feats{grid-template-columns:1fr}
+  .cc-stage{min-height:0;display:flex;flex-direction:column;gap:14px}
+  .float-card{position:relative;inset:auto;width:min(100%,340px)}
+  .js .float-card,.js .fc-1,.js .fc-2,.js .fc-3{transform:translateY(30px)}
+  .fc-1{order:2}.fc-2{order:3}.fc-3{order:4}
+  .phone{margin-bottom:20px}
+}
+@media (max-width:640px){
   body{font-size:16px}
-  .name{font-size:clamp(76px,25vw,120px)}
-  .wt .icon{width:52%}
-  .cc .mark{width:46%}
-  .panel .art{min-height:220px}
-  .lk{flex:1 1 auto;justify-content:center}
-  .head{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr;grid-auto-rows:minmax(200px,auto)}
+  .t-wt,.t-cc{grid-column:auto;min-height:520px}
+  .t-wt .peek,.t-cc .mini{top:auto;bottom:-120px;right:50%;transform:translateX(50%) rotate(-4deg);width:58%}
+  .t-wt:hover .peek,.t-cc:hover .mini{transform:translateX(50%) rotate(-4deg)}
+  .t-wt .body,.t-cc .body{max-width:none}
+  .stage{gap:8px;min-height:0}
+  .stage .shot{width:28%;border-radius:16px}
+  .stage .shot:nth-child(2){width:36%}
+  .phone{width:264px;border-radius:46px}
+  .scr{border-radius:37px}
+  .btns .btn{flex:1 1 100%;justify-content:center}
+  .icons{gap:12px}
+  .icons img{width:64px}
+  .icons span{font-size:12px}
+  .icons .sep{height:40px}
+  .t-games{flex-direction:column-reverse;align-items:flex-start;gap:24px}
+  .t-games .pair{margin:0}
+  .t-games .pair img{width:84px;height:84px}
+  .close .duo-big img{width:64px;height:64px}
+  .chat{width:56%}
+  .canvas svg{left:4%;width:46%}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition-duration:.001ms!important;transition-delay:0s!important}
-  .js .in-l,.js .rv{opacity:1;transform:none}
+  .js .in,.js .rv,.js .stage .shot,.js .float-card,.js .cc-stage .phone,.js .chat > span{opacity:1;transform:none;filter:none}
+  .js .canvas path{stroke-dashoffset:0}
 }
 </style>
 </head>
@@ -197,136 +405,283 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <a class="skip" href="#main"><span lang="zh-Hant">跳到主要內容</span><span lang="en">Skip to content</span></a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="half" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="paw" viewBox="0 0 64 64"><path d="M32 30c-8 0-15 7-15 14 0 5 3.5 8 8 8 2.6 0 4.6-1.2 7-1.2s4.4 1.2 7 1.2c4.5 0 8-3 8-8 0-7-7-14-15-14z" fill="currentColor"/><ellipse cx="15" cy="27" rx="5.5" ry="6.5" transform="rotate(-20 15 27)" fill="currentColor"/><ellipse cx="25" cy="15" rx="5.5" ry="7" transform="rotate(-8 25 15)" fill="currentColor"/><ellipse cx="40" cy="13" rx="5.5" ry="7" transform="rotate(12 40 13)" fill="currentColor"/><ellipse cx="50" cy="25" rx="5.5" ry="6.5" transform="rotate(24 50 25)" fill="currentColor"/></symbol>
+  <symbol id="down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
-<header class="top" id="top">
+<header class="top">
   <div class="wrap">
-    <a class="mono" href="#main" aria-label="Marlon Ou"><i aria-hidden="true">M</i>Marlon Ou</a>
+    <a class="logo" href="#main"><span class="duo" aria-hidden="true"><img src="img/whereto-icon-128.jpg" alt="" width="22" height="22"><img src="img/chongchong-icon-128.jpg" alt="" width="22" height="22"></span>Marlon Ou</a>
     <nav class="nav" aria-label="Main">
-      <a href="#work"><span lang="zh-Hant">作品</span><span lang="en">Work</span></a>
-      <a href="#how"><span lang="zh-Hant">原則</span><span lang="en">Principles</span></a>
+      <a href="#overview"><span lang="zh-Hant">概覽</span><span lang="en">Overview</span></a>
+      <a href="#whereto"><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></a>
+      <a href="#chongchong"><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></a>
+      <a href="#games"><span lang="zh-Hant">遊戲</span><span lang="en">Games</span></a>
       <a href="#contact"><span lang="zh-Hant">聯絡</span><span lang="en">Contact</span></a>
       <div class="tog" role="group" aria-label="Language / 語言">
         <button type="button" data-set="zh" aria-label="繁體中文">中</button>
         <button type="button" data-set="en" aria-label="English">EN</button>
       </div>
-      <button class="theme" type="button" id="theme" aria-label="Toggle dark mode"><svg aria-hidden="true"><use href="#half"/></svg></button>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="wrap hero" aria-labelledby="name">
-    <div class="meta-row">
-      <span><span lang="zh-Hant">獨立 iOS 開發者</span><span lang="en">Independent iOS developer</span></span>
-      <span class="live"><span lang="zh-Hant">台北</span><span lang="en">Taipei</span> <b id="clock">--:--</b></span>
-    </div>
-
-    <h1 class="name" id="name" aria-label="Marlon Ou"><span aria-hidden="true" id="letters">Marlon Ou</span></h1>
-
-    <div class="lead">
-      <p class="in-l" style="--i:10">
-        <span lang="zh-Hant">我做<em>安靜</em>的 App：不用註冊帳號，也沒有自己的伺服器，你的東西留在你的手機裡。</span>
-        <span lang="en">I make <em>quiet</em> apps. No sign-up, no servers of my own — your stuff stays on your phone.</span>
+  <!-- hero: two app icons floating in the light, one plain promise under them -->
+  <section class="hero" aria-labelledby="hero-h">
+    <span class="glow glow--a"></span><span class="glow glow--b"></span><span class="glow glow--c"></span><span class="glow glow--d"></span>
+    <div class="hero__inner">
+      <div class="icons in" style="--i:0" data-tilt>
+        <a href="#whereto"><div class="float"><img class="app-icon" src="img/whereto-icon-384.jpg" alt="" width="384" height="384" fetchpriority="high"></div><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></a>
+        <a href="#chongchong"><div class="float"><img class="app-icon" src="img/chongchong-icon-384.jpg" alt="" width="384" height="384" fetchpriority="high"></div><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></a>
+        <i class="sep" aria-hidden="true"></i>
+        <a href="#games"><div class="float"><img class="app-icon" src="img/music-icon-384.jpg" alt="" width="120" height="120"></div><span lang="zh-Hant">音樂猜歌</span><span lang="en">Music Guess</span></a>
+        <a href="#games"><div class="float"><img class="app-icon" src="img/draw-icon-384.png" alt="" width="120" height="120"></div><span lang="zh-Hant">畫圖猜謎</span><span lang="en">Draw &amp; Guess</span></a>
+      </div>
+      <p class="eyebrow in" style="--i:1"><span class="live" aria-hidden="true"></span><span lang="zh-Hant">Marlon Ou・台北的獨立開發者</span><span lang="en">Marlon Ou · independent developer in Taipei</span></p>
+      <h1 id="hero-h" class="in" style="--i:2"><span lang="zh-Hant">寫 iPhone App，<br>也寫網頁遊戲。</span><span lang="en">I make iPhone apps<br>and browser games.</span></h1>
+      <p class="hero__sub in" style="--i:3">
+        <span lang="zh-Hant"><b>去處</b>幫你整理相簿，<b>寵寵欲動</b>讓全家一起照顧毛孩，兩款都不用帳號。<b>音樂猜歌</b>和<b>畫圖猜謎派對</b>則是打開網頁就能和朋友玩的遊戲。</span>
+        <span lang="en"><b>Whereto</b> sorts your camera roll and <b>ChongChong</b> lets a whole family care for one pet, both with no sign-up. <b>Music Guess</b> and <b>Draw &amp; Guess Party</b> are games you play with friends in a browser.</span>
       </p>
-      <a class="cue in-l" style="--i:12" href="#work"><span class="dot" aria-hidden="true"><svg><use href="#down"/></svg></span>
-        <span lang="zh-Hant">看作品（2）</span><span lang="en">See the work (2)</span></a>
+      <div class="btns in" style="--i:4">
+        <a class="btn btn--white" href="https://apps.apple.com/app/id6830008884"><span lang="zh-Hant">在 App Store 下載去處</span><span lang="en">Get Whereto on the App Store</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
+        <a class="btn btn--ghost" href="#overview"><span lang="zh-Hant">看全部作品</span><span lang="en">See all the work</span><svg aria-hidden="true"><use href="#down"/></svg></a>
+      </div>
     </div>
   </section>
 
-  <section class="wrap sec" id="work" aria-labelledby="work-h">
-    <div class="head rv">
-      <h2 id="work-h"><span lang="zh-Hant">作品</span><span lang="en">Selected <i>work</i></span></h2>
-      <small><span lang="zh-Hant">2026 — 現在</span><span lang="en">2026 — now</span></small>
-    </div>
-
-    <div class="works">
-      <article class="panel wt rv" data-tilt>
+  <!-- bento: everything at a glance -->
+  <section class="wrap sec" id="overview" aria-labelledby="overview-h" style="padding-top:clamp(48px,6vw,80px)">
+    <h2 class="h2 rv" id="overview-h"><span lang="zh-Hant">兩款 App、兩個遊戲，<span class="dim">一個人做的。</span></span><span lang="en">Two apps and two games, <span class="dim">made by one person.</span></span></h2>
+    <div class="bento">
+      <a class="tile t-wt rv" href="#whereto" data-spot>
+        <div class="head"><img class="app-icon" src="img/whereto-icon-128.jpg" alt="" width="56" height="56" loading="lazy"><div><h3><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></h3><span class="tag"><span lang="zh-Hant">已上架・1.3 版</span><span lang="en">On the App Store · 1.3</span></span></div></div>
+        <p class="body"><span lang="zh-Hant">左滑刪、右滑留，重複與相似一次找出，同一個 Wi-Fi 下用瀏覽器把照片傳到電腦。</span><span lang="en">Swipe to delete or keep, find duplicates in one scan, and send photos to your computer over Wi-Fi in a browser.</span></p>
+        <span class="go" aria-hidden="true"><svg><use href="#arr"/></svg></span>
+        <img class="peek" src="whereto/shots/zh/01-review.jpg" data-src-en="whereto/shots/en/01-review.jpg" alt="" width="414" height="900" loading="lazy">
+      </a>
+      <div class="tile t-clock rv" style="--d:1" data-spot>
+        <span class="tag"><span lang="zh-Hant">台北・UTC+8</span><span lang="en">Taipei · UTC+8</span></span>
+        <p class="time" id="clock" aria-label="台北現在時間">--<i>:</i>--</p>
+        <p><span lang="zh-Hant">每一行程式都在這個時區寫成。</span><span lang="en">Every line is written in this time zone.</span></p>
+      </div>
+      <div class="tile t-zero rv" style="--d:2" data-spot>
+        <span class="tag"><span lang="zh-Hant">App 的伺服器</span><span lang="en">App servers</span></span>
+        <p class="big">0</p>
+        <p><span lang="zh-Hant">App 的資料只在你的裝置與 iCloud，我拿不到你的照片和紀錄。</span><span lang="en">App data lives on your devices and in iCloud. I can’t see your photos or records.</span></p>
+      </div>
+      <a class="tile t-cc rv" style="--d:1" href="#chongchong" data-spot>
+        <div class="head"><img class="app-icon" src="img/chongchong-icon-128.jpg" alt="" width="56" height="56" loading="lazy"><div><h3><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></h3><span class="tag"><span lang="zh-Hant">2027 上架準備中</span><span lang="en">Coming 2027</span></span></div></div>
+        <p class="body"><span lang="zh-Hant">全家共用一份毛孩檔案：誰餵過、誰散步、疫苗何時到期，打開就知道。</span><span lang="en">One shared pet profile: who fed, who walked, when the vaccine is due.</span></p>
+        <span class="go" aria-hidden="true"><svg><use href="#arr"/></svg></span>
+        <div class="mini" aria-hidden="true">
+          <div class="phone" style="width:100%;border-radius:40px;padding:8px"><div class="scr" style="border-radius:33px">
+            <div class="scr__bar"><span>08:05</span><span class="scr__island" style="width:64px;height:20px"></span><span>●●</span></div>
+            <div class="scr__body"><p class="scr__title" style="font-size:22px;margin-top:8px">今天</p>
+              <div class="task"><b>麻糬・早餐</b><small>07:00–09:00</small><div class="task__row"><span class="task__who">✓ 爸爸 07:42</span></div></div>
+              <div class="task"><b>豆花・早餐</b><small>07:00–09:00</small><div class="task__row"><small>還沒有人記</small><span class="task__btn">餵了</span></div></div>
+              <div class="task"><b>麻糬・狂犬病疫苗</b><div class="task__row"><span class="task__due">23 天後到期</span></div></div>
+            </div></div></div>
+        </div>
+      </a>
+      <div class="tile t-sign rv" style="--d:2" data-spot>
+        <span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 7.6-1.8"/></svg></span>
+        <h3><span lang="zh-Hant">不用註冊</span><span lang="en">No sign-up</span></h3>
+        <p><span lang="zh-Hant">打開就能用。跟家人共用，用你已經有的 Apple 帳號。</span><span lang="en">Open and go. Family sharing uses the Apple account you already have.</span></p>
+      </div>
+      <a class="tile t-gh rv" style="--d:3" href="https://github.com/MarlonOu" rel="me" data-spot>
+        <svg class="mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        <span class="go" aria-hidden="true"><svg><use href="#ne"/></svg></span>
+        <p style="margin:0"><span lang="zh-Hant">程式碼與進度</span><span lang="en">Code and progress</span></p>
+        <p class="handle">MarlonOu</p>
+      </a>
+      <a class="tile t-games rv" href="#games" data-spot>
         <div class="txt">
-          <span class="idx">01 — iOS</span>
-          <h3>Whereto<small lang="zh-Hant">去處・照片整理</small><small lang="en">Photo sorter</small></h3>
-          <p class="desc">
-            <span lang="zh-Hant">每張照片，都有去處。左滑刪、右滑留，重複與相似的一次找出；同一個 Wi-Fi 下，用瀏覽器就能把照片傳到電腦。照片不上傳。</span>
-            <span lang="en">Every photo has somewhere to go. Swipe to keep or delete, catch duplicates and look-alikes in one scan, and send photos to your computer over Wi-Fi with just a browser. Nothing is uploaded.</span>
-          </p>
-          <ul class="tags">
-            <li class="status"><span lang="zh-Hant">即將上架</span><span lang="en">Coming soon</span></li>
-            <li>iPhone・iPad</li>
-            <li><span lang="zh-Hant">繁中・English・日本語</span><span lang="en">中文 · English · 日本語</span></li>
-          </ul>
-          <div class="links">
-            <a class="lk pri" href="/whereto/" data-href-en="/whereto/en/"><span lang="zh-Hant">認識去處</span><span lang="en">Meet Whereto</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
-            <a class="lk sec" href="/whereto/support.html" data-href-en="/whereto/en/support.html"><span lang="zh-Hant">支援</span><span lang="en">Support</span></a>
-            <a class="lk sec" href="/whereto/privacy.html" data-href-en="/whereto/en/privacy.html"><span lang="zh-Hant">隱私權政策</span><span lang="en">Privacy</span></a>
+          <span class="tag"><span lang="zh-Hant">網頁遊戲・限時開放試玩</span><span lang="en">Browser games · open playtest</span></span>
+          <h3><span lang="zh-Hant">音樂猜歌、畫圖猜謎派對</span><span lang="en">Music Guess, Draw &amp; Guess Party</span></h3>
+          <p><span lang="zh-Hant">不用下載、不用註冊，手機打開網頁就能玩：聽旋律喊出歌名，或一人畫、大家猜。</span><span lang="en">No download, no sign-up, right in a phone browser: name the song from its melody, or draw while everyone guesses.</span></p>
+        </div>
+        <div class="pair" aria-hidden="true"><img class="app-icon" src="img/music-icon-384.jpg" alt="" width="104" height="104" loading="lazy"><img class="app-icon" src="img/draw-icon-384.png" alt="" width="104" height="104" loading="lazy"></div>
+        <span class="go" aria-hidden="true"><svg><use href="#arr"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Whereto showcase -->
+  <section class="show show--wt sec" id="whereto" aria-labelledby="wt-h">
+    <span class="show__glow" aria-hidden="true"></span>
+    <div class="wrap center">
+      <p class="app-tag rv"><img class="app-icon" src="img/whereto-icon-128.jpg" alt="" width="32" height="32" loading="lazy"><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></p>
+      <h2 class="h2 rv" id="wt-h" style="font-size:clamp(48px,7.4vw,96px)"><span lang="zh-Hant">左滑刪，右滑留。<br><span class="grad-amber">相簿終於清爽。</span></span><span lang="en">Swipe left to delete.<br><span class="grad-amber">Swipe right to keep.</span></span></h2>
+      <p class="lede rv"><span lang="zh-Hant">照片一張張出現，往上滑順手放進相簿。重複、連拍與相似的照片一次找出，建議保留解析度最高的那張。</span><span lang="en">Photos come up one at a time; swipe up to file one into an album. Duplicates, bursts and look-alikes turn up in one scan, with the sharpest copy suggested to keep.</span></p>
+      <div class="stage" data-stage>
+        <img class="shot" src="whereto/shots/zh/02-similar.jpg" data-src-en="whereto/shots/en/02-similar.jpg" alt="去處的相似掃描：找到 4 組、可釋放 7.4 MB" data-alt-en="Whereto's similar-photo scan" width="414" height="900" loading="lazy">
+        <img class="shot" src="whereto/shots/zh/01-review.jpg" data-src-en="whereto/shots/en/01-review.jpg" alt="去處的整理畫面：左滑刪、右滑留" data-alt-en="Whereto's sorting screen: swipe left to delete, right to keep" width="414" height="900" loading="lazy">
+        <img class="shot" src="whereto/shots/zh/03-transfer.jpg" data-src-en="whereto/shots/en/03-transfer.jpg" alt="去處的 Wi-Fi 傳輸：電腦用瀏覽器輸入配對碼下載" data-alt-en="Whereto's Wi-Fi transfer: download on a computer with a pairing code" width="414" height="900" loading="lazy">
+      </div>
+      <div class="feats" style="text-align:left">
+        <div class="feat rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M11 18h2"/></svg></span>
+          <h3><span lang="zh-Hant">照片不上傳</span><span lang="en">Nothing uploaded</span></h3>
+          <p><span lang="zh-Hant">相似比對用 iPhone 內建的 Apple Vision，全部在手機上完成。</span><span lang="en">Matching runs on the phone with Apple’s built-in Vision.</span></p></div>
+        <div class="feat rv" style="--d:1"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>
+          <h3><span lang="zh-Hant">刪錯救得回來</span><span lang="en">Undo a mistake</span></h3>
+          <p><span lang="zh-Hant">確認後才刪除，30 天內可從「最近刪除」救回。</span><span lang="en">Nothing is deleted until you confirm, and Recently Deleted keeps it for 30 days.</span></p></div>
+        <div class="feat rv" style="--d:2"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/><path d="M1.5 9a15 15 0 0 1 21 0"/></svg></span>
+          <h3><span lang="zh-Hant">Wi-Fi 傳到電腦</span><span lang="en">Wi-Fi to your computer</span></h3>
+          <p><span lang="zh-Hant">電腦打開瀏覽器、輸入 6 位數配對碼就能下載，不經過雲端。</span><span lang="en">Open a browser, type the 6-digit code, download. No cloud in between.</span></p></div>
+      </div>
+      <div class="btns rv">
+        <a class="btn btn--amber" href="https://apps.apple.com/app/id6830008884"><span lang="zh-Hant">在 App Store 下載</span><span lang="en">Get it on the App Store</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
+        <a class="btn btn--ghost" href="/whereto/" data-href-en="/whereto/en/"><span lang="zh-Hant">認識去處</span><span lang="en">Meet Whereto</span></a>
+      </div>
+      <p class="price"><span lang="zh-Hant">免費下載・完整版一次買斷，沒有訂閱・iOS 26 以上的 iPhone 與 iPad</span><span lang="en">Free to download · one-time purchase for the full version, no subscription · iPhone and iPad on iOS 26 or later</span></p>
+    </div>
+  </section>
+
+  <!-- ChongChong showcase -->
+  <section class="show show--cc sec" id="chongchong" aria-labelledby="cc-h">
+    <span class="show__glow" aria-hidden="true"></span>
+    <div class="wrap center">
+      <p class="app-tag rv"><img class="app-icon" src="img/chongchong-icon-128.jpg" alt="" width="32" height="32" loading="lazy"><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></p>
+      <h2 class="h2 rv" id="cc-h" style="font-size:clamp(48px,7.4vw,96px)"><span lang="zh-Hant">今天餵了沒？<br><span class="grad-orange">打開就知道。</span></span><span lang="en">Did anyone feed the dog?<br><span class="grad-orange">Open it and see.</span></span></h2>
+      <p class="lede rv"><span lang="zh-Hant">全家共用一份毛孩檔案。誰在幾點餵過、帶去散步、給了藥都記在一起，疫苗和驅蟲到期前先提醒。</span><span lang="en">One pet profile for the whole family. Who fed, walked or gave medicine and when, all in one place, with reminders before vaccines and deworming are due.</span></p>
+      <div class="cc-stage" data-stage>
+        <div class="phone" role="img" aria-label="寵寵欲動的今天畫面：麻糬的早餐已由爸爸 07:42 餵過，豆花的早餐還沒有人記，狂犬病疫苗 23 天後到期">
+          <div class="scr" aria-hidden="true">
+            <div class="scr__bar"><span>08:05</span><span class="scr__island"></span><span>●●●</span></div>
+            <div class="scr__body">
+              <p class="scr__date">11 月 2 日 星期一</p>
+              <p class="scr__title">今天</p>
+              <div class="pets"><span><i>麻</i>麻糬</span><span><i>豆</i>豆花</span></div>
+              <div class="task"><b>麻糬・早餐</b><small>07:00–09:00</small><div class="task__row"><span class="task__who">✓ 爸爸 07:42</span><small>已餵</small></div></div>
+              <div class="task"><b>豆花・早餐</b><small>07:00–09:00</small><div class="task__row"><small>還沒有人記</small><span class="task__btn">餵了</span></div></div>
+              <div class="task"><b>麻糬・狂犬病疫苗</b><small>依預設週期</small><div class="task__row"><span class="task__due">23 天後到期</span></div></div>
+              <div class="task"><b>麻糬・散步</b><small>17:00–19:00</small><div class="task__row"><small>負責：妹妹</small></div></div>
+            </div>
+            <div class="tabs"><span class="on">今天</span><span>毛孩</span><span>健康</span><span>家人</span></div>
           </div>
         </div>
-        <div class="art"><img class="icon" src="/whereto/icon.png" alt="" width="300" height="300" decoding="async"></div>
-      </article>
+        <div class="float-card fc-1"><small><span lang="zh-Hant">重複打卡提醒</span><span lang="en">Already logged</span></small><b><span lang="zh-Hant">已經餵過了</span><span lang="en">Already fed</span></b><span><span lang="zh-Hant">爸爸 07:42 記過。還要再記一筆嗎？</span><span lang="en">Dad logged it at 07:42. Log again?</span></span></div>
+        <div class="float-card fc-2"><small><span lang="zh-Hant">交接卡・給保母</span><span lang="en">Handover card · for the sitter</span></small><b><span lang="zh-Hant">麻糬（柴犬・5 歲）</span><span lang="en">Mochi (Shiba, 5)</span></b>
+          <dl><dt><span lang="zh-Hant">飼料</span><span lang="en">Food</span></dt><dd><span lang="zh-Hant">早晚各 80 g</span><span lang="en">80 g, morning and evening</span></dd><dt><span lang="zh-Hant">散步</span><span lang="en">Walk</span></dt><dd><span lang="zh-Hant">傍晚一次</span><span lang="en">Once, early evening</span></dd><dt><span lang="zh-Hant">支出</span><span lang="en">Costs</span></dt><dd class="no"><span lang="zh-Hant">不提供給臨時照顧者</span><span lang="en">Hidden from sitters</span></dd></dl></div>
+        <div class="float-card fc-3"><small><span lang="zh-Hant">用藥・每 12 小時</span><span lang="en">Medicine · every 12 h</span></small><b><span lang="zh-Hant">晚上這次 20:00</span><span lang="en">Evening dose, 20:00</span></b><span><span lang="zh-Hant">負責：爸爸・還有 1 小時 52 分</span><span lang="en">Dad’s turn · in 1 h 52 min</span></span></div>
+      </div>
+      <div class="feats" style="text-align:left">
+        <div class="feat rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></span>
+          <h3><span lang="zh-Hant">全家一起記</span><span lang="en">The whole family logs</span></h3>
+          <p><span lang="zh-Hant">用 iCloud 邀請家人，不用建帳號。只有你邀請的人看得到。</span><span lang="en">Invite family through iCloud, no accounts. Only people you invite can see it.</span></p></div>
+        <div class="feat rv" style="--d:1"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></span>
+          <h3><span lang="zh-Hant">到期前先提醒</span><span lang="en">Reminders before it’s due</span></h3>
+          <p><span lang="zh-Hant">依紀錄與預設週期推算，也能改成獸醫師交代的間隔。</span><span lang="en">Worked out from your records and default intervals, or the interval your vet gave.</span></p></div>
+        <div class="feat rv" style="--d:2"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10h6M7 14h4"/></svg></span>
+          <h3><span lang="zh-Hant">交接卡給保母</span><span lang="en">A card for the sitter</span></h3>
+          <p><span lang="zh-Hant">吃什麼、吃多少、要吃哪些藥；花費和理賠資料一律不出現。</span><span lang="en">What to feed, how much, which medicine. Costs and insurance never show.</span></p></div>
+      </div>
+      <div class="btns rv">
+        <a class="btn btn--orange" href="/chongchong/"><span lang="zh-Hant">認識寵寵欲動</span><span lang="en">Meet ChongChong</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
+        <a class="btn btn--ghost" href="/chongchong/#privacy"><span lang="zh-Hant">隱私權政策</span><span lang="en">Privacy policy (zh)</span></a>
+      </div>
+      <p class="price"><span lang="zh-Hant">預計 2027 年上架・iOS 17 以上的 iPhone</span><span lang="en">Coming to the App Store in 2027 · iPhone on iOS 17 or later</span></p>
+    </div>
+  </section>
 
-      <article class="panel cc rv" data-tilt data-paws>
-        <div class="txt">
-          <span class="idx">02 — iOS</span>
-          <h3><span class="zh-title">寵寵欲動</span><small lang="zh-Hant">ChongChong・全家一起照顧毛孩</small><small lang="en">ChongChong · Pet care for the whole family</small></h3>
-          <p class="desc">
-            <span lang="zh-Hant">今天餵了沒？疫苗何時到期？全家共用一份毛孩檔案，誰在什麼時候做了什麼，打開就知道，到期前先提醒。</span>
-            <span lang="en">Did anyone feed the dog? When is the next vaccine due? One shared pet profile for the whole family, with who did what and when, plus reminders before things are due.</span>
-          </p>
-          <ul class="tags">
-            <li class="status"><span lang="zh-Hant">開發中</span><span lang="en">In development</span></li>
-            <li>iPhone</li>
-            <li>SwiftUI・CloudKit</li>
+
+  <!-- web games -->
+  <section class="show show--gm sec" id="games" aria-labelledby="gm-h">
+    <span class="show__glow" aria-hidden="true"></span>
+    <div class="wrap center">
+      <p class="app-tag rv"><span class="pair"><img class="app-icon" src="img/music-icon-128.jpg" alt="" width="32" height="32" loading="lazy"><img class="app-icon" src="img/draw-icon-128.png" alt="" width="32" height="32" loading="lazy"></span><span lang="zh-Hant">網頁遊戲</span><span lang="en">Browser games</span></p>
+      <h2 class="h2 rv" id="gm-h" style="font-size:clamp(48px,7.4vw,96px)"><span lang="zh-Hant">打開網頁，<br><span class="grad-game">今晚開一桌。</span></span><span lang="en">Open a link<br><span class="grad-game">and start a game night.</span></span></h2>
+      <p class="lede rv"><span lang="zh-Hant">不用下載、不用註冊，手機和電腦都能玩。分享房間代碼，朋友就能加入同一局。</span><span lang="en">Nothing to download and no sign-up, on a phone or a computer. Share a room code and friends join the same round.</span></p>
+      <div class="games" data-stage>
+        <article class="game game--music rv">
+          <div class="head"><img class="app-icon" src="img/music-icon-384.jpg" alt="" width="64" height="64" loading="lazy"><div><h3><span lang="zh-Hant">音樂猜歌</span><span lang="en">Music Guess</span></h3><span class="slogan"><span lang="zh-Hant">聽見旋律，喊出歌名</span><span lang="en">Hear the melody, shout the title</span></span></div></div>
+          <p><span lang="zh-Hant">聽前奏、看歌詞或隨機一段，比誰先猜中。可以自己玩、開房間跟朋友搶答，或挑戰速通排行榜。</span><span lang="en">Guess from the intro, a lyric line or a random clip. Play alone, open a room and race your friends, or chase the speedrun board.</span></p>
+          <ul class="modes">
+            <li><span lang="zh-Hant">單機</span><span lang="en">Solo</span></li>
+            <li><span lang="zh-Hant">線上多人</span><span lang="en">Online rooms</span></li>
+            <li><span lang="zh-Hant">速通挑戰</span><span lang="en">Speedrun</span></li>
+            <li><span lang="zh-Hant">無限連勝</span><span lang="en">Endless streak</span></li>
           </ul>
-          <div class="links">
-            <a class="lk pri" href="/chongchong/"><span lang="zh-Hant">認識寵寵欲動</span><span lang="en">Meet ChongChong</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
-            <a class="lk sec" href="/chongchong/#privacy"><span lang="zh-Hant">隱私權政策</span><span lang="en">Privacy (zh)</span></a>
+          <div class="mock" role="img" aria-label="音樂猜歌的遊戲畫面：前奏猜歌第 3 題，唱片轉動中，四個選項其中一個答對" data-aria-en="Music Guess in play: intro round, question 3, record spinning, one of four answers correct">
+            <div class="mock__top" aria-hidden="true"><span><span lang="zh-Hant">前奏猜歌・第 <b>3</b> 題</span><span lang="en">Intro round · Q<b>3</b></span></span><span>⏱ <b>0:08</b></span></div>
+            <div class="spin" aria-hidden="true"><span class="vinyl"></span>
+              <div class="eq"><span style="--h:38%;--dl:-.2s"></span><span style="--h:70%;--dl:-.9s"></span><span style="--h:52%;--dl:-.4s"></span><span style="--h:90%;--dl:-.7s"></span><span style="--h:64%;--dl:-.1s"></span><span style="--h:100%;--dl:-.6s"></span><span style="--h:46%;--dl:-.3s"></span><span style="--h:80%;--dl:-.8s"></span><span style="--h:58%;--dl:-.5s"></span><span style="--h:88%;--dl:-.2s"></span><span style="--h:40%;--dl:-.75s"></span><span style="--h:72%;--dl:-.35s"></span></div>
+            </div>
+            <div class="opts" aria-hidden="true">
+              <span><span lang="zh-Hant">A・夏夜的風</span><span lang="en">A · Summer Night Wind</span></span>
+              <span class="ok"><span lang="zh-Hant">B・海邊的信</span><span lang="en">B · Letter by the Sea</span><em>+120</em></span>
+              <span><span lang="zh-Hant">C・不說再見</span><span lang="en">C · No Goodbyes</span></span>
+              <span><span lang="zh-Hant">D・慢慢走</span><span lang="en">D · Take It Slow</span></span>
+            </div>
           </div>
-        </div>
-        <div class="art">
-          <svg class="mark" viewBox="0 0 64 64" role="img" aria-label="寵寵欲動 icon"><rect width="64" height="64" rx="15" fill="#F97316"/><use href="#paw" x="12" y="12" width="40" height="40" style="color:#431407"/></svg>
-        </div>
-      </article>
+          <div class="play">
+            <a class="btn btn--gold" href="https://play-k7m2.marlonou.com/"><span lang="zh-Hant">玩音樂猜歌</span><span lang="en">Play Music Guess</span><svg aria-hidden="true"><use href="#ne"/></svg></a>
+            <small>play-k7m2.marlonou.com</small>
+          </div>
+        </article>
+        <article class="game game--draw rv" style="--d:1">
+          <div class="head"><img class="app-icon" src="img/draw-icon-384.png" alt="" width="64" height="64" loading="lazy"><div><h3><span lang="zh-Hant">畫圖猜謎派對</span><span lang="en">Draw &amp; Guess Party</span></h3><span class="slogan"><span lang="zh-Hant">一人畫、大家猜，手機就能玩</span><span lang="en">One draws, everyone guesses</span></span></div></div>
+          <p><span lang="zh-Hant">兩個人就能開玩。每一筆都即時出現在大家的手機上，越早猜中分數越高，畫的人也一起加分。</span><span lang="en">Two players is enough. Every stroke appears on everyone’s phone as it’s drawn; guess sooner for more points, and the artist scores too.</span></p>
+          <ul class="modes">
+            <li><span lang="zh-Hant">你畫我猜</span><span lang="en">Draw &amp; guess</span><small><span lang="zh-Hant">2 人起</span><span lang="en">2+</span></small></li>
+            <li><span lang="zh-Hant">畫圖接龍</span><span lang="en">Telephone</span><small><span lang="zh-Hant">3 人起</span><span lang="en">3+</span></small></li>
+            <li><span lang="zh-Hant">拼圖接畫</span><span lang="en">Half &amp; half</span><small><span lang="zh-Hant">4 人起</span><span lang="en">4+</span></small></li>
+          </ul>
+          <div class="mock" role="img" aria-label="畫圖猜謎派對的遊戲畫面：畫布上正在畫一隻貓，有人猜狗，另一人猜對貓咪" data-aria-en="Draw &amp; Guess Party in play: a cat being drawn, one player guesses dog, another gets cat right">
+            <div class="mock__top" aria-hidden="true"><span><span lang="zh-Hant">提示：＿＿（2 個字）</span><span lang="en">Hint: _ _ _ (3 letters)</span></span><span>⏱ <b>0:41</b></span></div>
+            <div class="canvas" aria-hidden="true">
+              <svg viewBox="0 0 200 170">
+                <path style="--len:420;--k:0" d="M52 150c-22-6-30-34-20-60 6-16 20-26 40-28 18-2 34 4 46 14 14 12 18 32 12 50-6 18-26 28-48 28-10 0-20-2-30-4z"/>
+                <path style="--len:120;--k:1" d="M44 74 36 30l30 26M118 66l20-38 4 46"/>
+                <path style="--len:60;--k:2" d="M62 96h.5M100 96h.5M76 112c4 4 10 4 14 0"/>
+                <path style="--len:140;--k:3" d="M44 114 14 108M46 122 18 128M120 114l34-6M118 122l32 8"/>
+                <path style="--len:160;--k:4" d="M130 150c26 2 44-8 50-26 4-14-2-26-12-28"/>
+              </svg>
+              <div class="chat">
+                <span style="--k:0"><b><span lang="zh-Hant">小安</span><span lang="en">Ann</span></b><span lang="zh-Hant">狗？</span><span lang="en">dog?</span></span>
+                <span style="--k:1"><b><span lang="zh-Hant">阿哲</span><span lang="en">Jay</span></b><span lang="zh-Hant">狐狸</span><span lang="en">fox</span></span>
+                <span class="hit" style="--k:2"><b><span lang="zh-Hant">小魚</span><span lang="en">Yu</span></b><span lang="zh-Hant">貓咪 ✓ +80</span><span lang="en">cat ✓ +80</span></span>
+              </div>
+            </div>
+            <div class="palette" aria-hidden="true"><i style="--c:#1e1b2e"></i><i style="--c:#ff6b4a"></i><i style="--c:#ffc53d"></i><i style="--c:#3ecf8e"></i><i style="--c:#4f6bff"></i><small><span lang="zh-Hant">輪到 Marlon 畫</span><span lang="en">Marlon is drawing</span></small></div>
+          </div>
+          <div class="play">
+            <a class="btn btn--coral" href="https://play-q4x9.marlonou.com/"><span lang="zh-Hant">玩畫圖猜謎派對</span><span lang="en">Play Draw &amp; Guess</span><svg aria-hidden="true"><use href="#ne"/></svg></a>
+            <small>play-q4x9.marlonou.com</small>
+          </div>
+        </article>
+      </div>
+      <p class="games-note rv"><span lang="zh-Hant">試玩入口只在開放時段進得去，其他時間會顯示「此入口目前未開放」。想知道下次開放時間，<a href="mailto:quchu.app@gmail.com?subject=%E8%A9%A6%E7%8E%A9%E6%99%82%E6%AE%B5">寫信問我</a>。</span><span lang="en">Playtest links only open during set time windows; outside them you’ll see a “not open” page. <a href="mailto:quchu.app@gmail.com?subject=Playtest%20times">Email me</a> to hear about the next one.</span></p>
     </div>
   </section>
 
-  <section class="wrap sec" id="how" aria-labelledby="how-h">
-    <div class="head rv">
-      <h2 id="how-h"><span lang="zh-Hant">我怎麼做 App</span><span lang="en">How I <i>build</i></span></h2>
-      <small><span lang="zh-Hant">三個原則</span><span lang="en">Three rules</span></small>
-    </div>
-    <ol class="rules">
-      <li class="rv">
-        <h3><span lang="zh-Hant">沒有我的伺服器</span><span lang="en">No servers of mine</span></h3>
-        <p><span lang="zh-Hant">照片、紀錄只在你的裝置與你自己的 iCloud。我拿不到，也不需要。</span><span lang="en">Photos and records live on your device and in your own iCloud. I can’t see them, and I don’t need to.</span></p>
-      </li>
-      <li class="rv">
-        <h3><span lang="zh-Hant">打開就能用</span><span lang="en">Open and go</span></h3>
-        <p><span lang="zh-Hant">不用註冊、不用登入。要跟家人共用，就用你已經有的 Apple 帳號。</span><span lang="en">No sign-up, no login. Sharing with family uses the Apple account you already have.</span></p>
-      </li>
-      <li class="rv">
-        <h3><span lang="zh-Hant">一次做好一件事</span><span lang="en">One job, done well</span></h3>
-        <p><span lang="zh-Hant">每個 App 只解決一個具體的麻煩：滿出來的相簿、忘了誰餵過的那一餐。</span><span lang="en">Each app fixes one specific annoyance: an overflowing camera roll, the meal nobody remembers serving.</span></p>
-      </li>
-    </ol>
-  </section>
-
-  <section class="wrap contact" id="contact" aria-labelledby="contact-h">
-    <p class="rv" id="contact-h"><span lang="zh-Hant">程式碼、進度與更新</span><span lang="en">Code, progress and updates</span></p>
-    <a class="big rv" style="--d:1" href="https://github.com/MarlonOu" rel="me">github/MarlonOu<svg aria-hidden="true"><use href="#ne"/></svg></a>
-    <div class="side rv" style="--d:2">
-      <span><span lang="zh-Hant">去處 App 問題：</span><span lang="en">Whereto support: </span><a href="mailto:quchu.app@gmail.com">quchu.app@gmail.com</a></span>
+  <section class="close" id="contact" aria-labelledby="close-h">
+    <span class="glow glow--c" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="duo-big rv" aria-hidden="true"><img class="app-icon" src="img/whereto-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/chongchong-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/music-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/draw-icon-128.png" alt="" width="84" height="84" loading="lazy"></div>
+      <h2 class="h2 rv" id="close-h"><span lang="zh-Hant">有問題或想法，<br>寫信給我。</span><span lang="en">Questions or ideas?<br>Write to me.</span></h2>
+      <div class="btns rv" style="margin-top:36px">
+        <a class="btn btn--white" href="mailto:quchu.app@gmail.com"><span lang="zh-Hant">寄信給我</span><span lang="en">Send an email</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
+        <a class="btn btn--ghost" href="https://github.com/MarlonOu" rel="me">GitHub<svg aria-hidden="true"><use href="#ne"/></svg></a>
+      </div>
+      <p class="contact-line rv"><span lang="zh-Hant">App 問題、遊戲試玩、合作都可以，信箱 quchu.app@gmail.com。去處的常見問題在<a href="/whereto/support.html">支援頁</a>。</span><span lang="en">App questions, playtests or collaborations: quchu.app@gmail.com. Whereto FAQs are on its <a href="/whereto/en/support.html">support page</a>.</span></p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Marlon Ou</span>
-    <span><span lang="zh-Hant">手寫 HTML，沒有追蹤碼。</span><span lang="en">Hand-written HTML. No trackers.</span></span>
+    <span>© 2026 Marlon Ou<span lang="zh-Hant">・手寫 HTML，沒有追蹤碼</span><span lang="en"> · Hand-written HTML, no trackers</span></span>
+    <nav aria-label="Footer">
+      <a href="/whereto/" data-href-en="/whereto/en/"><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></a>
+      <a href="/whereto/privacy.html" data-href-en="/whereto/en/privacy.html"><span lang="zh-Hant">去處隱私權</span><span lang="en">Whereto privacy</span></a>
+      <a href="/chongchong/"><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></a>
+      <a href="/chongchong/#privacy"><span lang="zh-Hant">寵寵欲動隱私權</span><span lang="en">ChongChong privacy</span></a>
+    </nav>
   </div>
 </footer>
 
@@ -334,80 +689,80 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 (() => {
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // name: one span per letter so each can lean into italic
-  const letters = document.getElementById('letters');
-  letters.innerHTML = [...letters.textContent].map((c, i) =>
-    c === ' ' ? '<span class="gap"></span>' : `<span class="l in-l" style="--i:${i}">${c}</span>`).join('');
-  letters.querySelectorAll('.l').forEach(l => {
-    l.addEventListener('pointerenter', () => { if (!reduce) l.classList.add('it'); });
-    l.addEventListener('pointerleave', () => setTimeout(() => l.classList.remove('it'), 700));
-  });
   const ready = () => document.body.classList.add('ready');
-  requestAnimationFrame(ready); setTimeout(ready, 100);
+  requestAnimationFrame(ready); setTimeout(ready, 120);
 
   // language
   const setLang = l => {
     root.dataset.lang = l; root.lang = l === 'en' ? 'en' : 'zh-Hant-TW';
-    document.title = l === 'en' ? 'Marlon Ou — Independent iOS developer' : 'Marlon Ou｜獨立 iOS 開發者';
+    document.title = l === 'en' ? 'Marlon Ou — Independent developer' : 'Marlon Ou｜獨立開發者';
     document.querySelectorAll('.tog button').forEach(b => b.setAttribute('aria-pressed', b.dataset.set === l));
     document.querySelectorAll('[data-href-en]').forEach(a => {
       a.dataset.hrefZh ??= a.getAttribute('href');
       a.setAttribute('href', l === 'en' ? a.dataset.hrefEn : a.dataset.hrefZh);
     });
-    document.getElementById('theme').setAttribute('aria-label', l === 'en' ? 'Toggle dark mode' : '切換深色模式');
+    document.querySelectorAll('[data-src-en]').forEach(img => {
+      img.dataset.srcZh ??= img.getAttribute('src'); img.dataset.altZh ??= img.getAttribute('alt');
+      img.setAttribute('src', l === 'en' ? img.dataset.srcEn : img.dataset.srcZh);
+      if (img.dataset.altEn) img.setAttribute('alt', l === 'en' ? img.dataset.altEn : img.dataset.altZh);
+    });
+    document.getElementById('clock').setAttribute('aria-label', l === 'en' ? 'Time in Taipei now' : '台北現在時間');
+    document.querySelectorAll('[data-aria-en]').forEach(el => {
+      el.dataset.ariaZh ??= el.getAttribute('aria-label');
+      el.setAttribute('aria-label', l === 'en' ? el.dataset.ariaEn : el.dataset.ariaZh);
+    });
   };
   setLang(root.dataset.lang);
   document.querySelectorAll('.tog button').forEach(b => b.addEventListener('click', () => {
     setLang(b.dataset.set); try { localStorage.setItem('mo-lang', b.dataset.set); } catch {}
   }));
 
-  // theme
-  const sysDark = matchMedia('(prefers-color-scheme: dark)');
-  document.getElementById('theme').addEventListener('click', () => {
-    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : sysDark.matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('mo-theme', root.dataset.theme); } catch {}
-  });
-
   // Taipei clock
   const clock = document.getElementById('clock');
   const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Taipei', hour: '2-digit', minute: '2-digit' });
-  const tick = () => { clock.textContent = fmt.format(new Date()); };
+  const tick = () => { const [h, m] = fmt.format(new Date()).split(':'); clock.innerHTML = `${h}<i>:</i>${m}`; };
   tick(); setInterval(tick, 15000);
 
-  // sticky header
-  const top = document.getElementById('top');
-  addEventListener('scroll', () => top.classList.toggle('stuck', scrollY > 8), { passive: true });
-
-  // reveals
+  // reveals: blocks, the screenshot stage and the ChongChong cards
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
-  }), { threshold: .15 });
-  document.querySelectorAll('.rv').forEach(el => reduce ? el.classList.add('on') : io.observe(el));
+  }), { threshold: .18 });
+  document.querySelectorAll('.rv, [data-stage]').forEach(el => reduce ? el.classList.add('on') : io.observe(el));
 
   if (reduce || !matchMedia('(hover: hover)').matches) return;
 
-  // panels: spotlight + gentle tilt of the art
-  document.querySelectorAll('[data-tilt]').forEach(p => {
-    let last = 0;
-    p.addEventListener('pointermove', e => {
-      const r = p.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      p.style.setProperty('--mx', x * 100 + '%'); p.style.setProperty('--my', y * 100 + '%');
-      p.style.setProperty('--ry', (x - .5) * 14 + 'deg'); p.style.setProperty('--rx', (.5 - y) * 14 + 'deg');
-      // ChongChong: leave fading paw prints, spaced out
-      if (p.hasAttribute('data-paws') && e.timeStamp - last > 140) {
-        last = e.timeStamp;
-        const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        s.setAttribute('class', 'print'); s.setAttribute('aria-hidden', 'true');
-        s.innerHTML = '<use href="#paw"/>';
-        s.style.left = e.clientX - r.left + 'px'; s.style.top = e.clientY - r.top + 'px';
-        s.style.setProperty('--r', (Math.random() * 50 - 25) + 'deg');
-        p.appendChild(s); s.addEventListener('animationend', () => s.remove());
-      }
-    });
-    p.addEventListener('pointerleave', () => { p.style.setProperty('--rx', '0deg'); p.style.setProperty('--ry', '0deg'); });
+  // bento tiles: a light that follows the pointer
+  document.querySelectorAll('[data-spot]').forEach(t => t.addEventListener('pointermove', e => {
+    const r = t.getBoundingClientRect();
+    t.style.setProperty('--mx', e.clientX - r.left + 'px'); t.style.setProperty('--my', e.clientY - r.top + 'px');
+  }));
+
+  // hero icons lean toward the pointer
+  const icons = document.querySelector('[data-tilt]');
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('pointermove', e => {
+    const r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    icons.querySelectorAll('a').forEach(a => { a.style.setProperty('--ry', x * 18 + 'deg'); a.style.setProperty('--rx', -y * 18 + 'deg'); });
   });
+  // ChongChong: paw prints follow the pointer, left and right feet in turn
+  const cc = document.querySelector('.show--cc');
+  let px = null, py = 0, foot = 1;
+  cc.addEventListener('pointermove', e => {
+    const r = cc.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    if (px === null) { px = x; py = y; return; }
+    const dx = x - px, dy = y - py, d = Math.hypot(dx, dy);
+    if (d < 56) return;
+    const a = Math.atan2(dy, dx), side = (foot = -foot) * 14;
+    const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'print'); s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = '<use href="#paw"/>';
+    s.style.left = x - Math.sin(a) * side + 'px'; s.style.top = y + Math.cos(a) * side + 'px';
+    s.style.setProperty('--r', a * 180 / Math.PI + 90 + 'deg');
+    cc.appendChild(s); s.addEventListener('animationend', () => s.remove());
+    px = x; py = y;
+  });
+  cc.addEventListener('pointerleave', () => { px = null; });
+  hero.addEventListener('pointerleave', () => icons.querySelectorAll('a').forEach(a => { a.style.setProperty('--ry', '0deg'); a.style.setProperty('--rx', '0deg'); }));
 })();
 </script>
 </body>
