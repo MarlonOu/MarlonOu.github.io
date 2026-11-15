@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>寵寵欲動｜全家一起照顧毛孩</title>
-<meta name="description" content="寵寵欲動：全家共用的毛孩照護檔案。誰餵過、誰散步、疫苗何時到期，一個 App 全家同步。資料只存在你的 iCloud。">
+<meta name="description" content="寵寵欲動：全家一起照顧毛孩的共用紀錄。誰餵過、誰負責、藥吃了沒，打開就知道；重複餵食先問你、鎖定畫面用藥倒數、長期照護、禁食過敏提醒、走失協尋海報。資料只存在你的 iCloud。">
 <meta name="theme-color" content="#FFF7ED" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1917" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="寵寵欲動｜全家一起照顧毛孩">
-<meta property="og:description" content="誰餵過、誰散步、疫苗何時到期，全家同步。">
+<meta property="og:description" content="誰餵過、誰負責、藥吃了沒，全家打開就知道。不會重複餵，也不會漏給藥。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F97316'/%3E%3Cpath d='M32 34c-7 0-13 6-13 12 0 4 3 6 7 6 2 0 4-1 6-1s4 1 6 1c4 0 7-2 7-6 0-6-6-12-13-12z' fill='%23431407'/%3E%3Ccircle cx='19' cy='29' r='5' fill='%23431407'/%3E%3Ccircle cx='27' cy='20' r='5' fill='%23431407'/%3E%3Ccircle cx='38' cy='18' r='5' fill='%23431407'/%3E%3Ccircle cx='46' cy='27' r='5' fill='%23431407'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,6 +246,17 @@ section{position:relative}
 .icon-lg{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:var(--tint);color:var(--brand)}
 .icon-lg svg{width:26px;height:26px}
 
+/* ---------- different + screens (site-only) ---------- */
+#c-diff em,#c-screens em{white-space:nowrap}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(40px,6vw,72px)}
+.diff{background:var(--card);border-radius:var(--r-l);padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+.diff h3{font:400 clamp(22px,2.2vw,28px)/1.25 var(--font-display);margin:6px 0 0;text-wrap:balance}
+.diff p{margin:0;opacity:.86}
+.shots{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:clamp(32px,5vw,56px) var(--gutter) 24px;
+  scroll-padding-inline:var(--gutter);-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.shots img{flex:0 0 auto;width:clamp(220px,24vw,300px);height:auto;border-radius:28px;box-shadow:var(--shadow);scroll-snap-align:start;background:var(--card)}
+@media (min-width:1260px){.shots{padding-inline:calc((100vw - var(--maxw)) / 2 + var(--gutter))}}
+
 /* ---------- chapter 3: privacy marquee ---------- */
 .dark-band{background:var(--band);color:#FFF7ED;box-shadow:inset 0 0 0 1px var(--band-line);border-radius:clamp(28px,4vw,56px);margin-inline:clamp(8px,1.5vw,20px)}
 .dark-band .kicker{color:rgba(255,247,237,.78)}
@@ -309,6 +320,7 @@ footer p{margin:0;max-width:44em}
   .chat{justify-self:start}
   .t-a{grid-column:span 6}.t-b,.t-c{grid-column:span 3}.t-d,.t-e{grid-column:span 3}
   .facts{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr 1fr}
   .policy h2{position:static}
 }
 @media (max-width:640px){
@@ -317,6 +329,7 @@ footer p{margin:0;max-width:44em}
   .tile{min-height:0;padding:24px}
   .who{grid-template-columns:1fr}
   .meaning{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:1fr}
   .phone{transform:none}
   .btn{width:100%;justify-content:center}
   .card-stack{height:240px}
@@ -352,6 +365,13 @@ footer p{margin:0;max-width:44em}
   <symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
   <symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M9 14h6M10 18h4"/></g></symbol>
+  <symbol id="bowl" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18a9 9 0 0 1-18 0zM8 7c0-2 2-2 2-4M13 7c0-2 2-2 2-4"/></g></symbol>
+  <symbol id="poster" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17h8"/></g></symbol>
+  <symbol id="trend" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></g></symbol>
+  <symbol id="box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5zM3 7.5 12 12l9-4.5M12 12v9"/></g></symbol>
+  <symbol id="vial" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="14" rx="2"/><path d="M8 3h8v4H8zM12 11v6M9 14h6"/></g></symbol>
+  <symbol id="search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></g></symbol>
 </svg>
 
 <header class="nav" id="nav">
@@ -362,6 +382,8 @@ footer p{margin:0;max-width:44em}
     </a>
     <nav class="nav-links" aria-label="主要">
       <a class="hide-sm" href="#features">功能</a>
+      <a class="hide-sm" href="#different">不一樣的地方</a>
+      <a class="hide-sm" href="#screens">畫面</a>
       <a class="hide-sm" href="#privacy-promise">隱私</a>
       <a class="hide-sm" href="#name">名字由來</a>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深色模式">
@@ -376,11 +398,11 @@ footer p{margin:0;max-width:44em}
   <section class="hero" id="top">
     <div class="wrap hero-grid">
       <div>
-        <span class="pill rv"><span class="dot" aria-hidden="true"></span>iOS App・2027 上架準備中</span>
+        <span class="pill rv"><span class="dot" aria-hidden="true"></span>iOS App・即將上架 App Store</span>
         <h1 class="title" aria-label="寵寵欲動">
           <span class="ch" aria-hidden="true">寵</span><span class="ch" aria-hidden="true">寵</span><span class="ch" aria-hidden="true">欲</span><span class="ch" aria-hidden="true">動</span>
         </h1>
-        <p class="lede rv" style="--i:1">全家共用一份毛孩檔案。<b>誰餵過、誰散步、疫苗何時到期</b>，打開就知道，到期前先提醒你。</p>
+        <p class="lede rv" style="--i:1">全家共用一份毛孩紀錄。<b>誰餵過、誰負責、藥吃了沒</b>，打開就知道。有人記過了再按會先問你，不會多餵一次。</p>
         <div class="cta-row rv" style="--i:2">
           <a class="btn" href="#features">看看怎麼用 <svg aria-hidden="true"><use href="#arrow"/></svg></a>
           <a class="btn ghost" href="#privacy">隱私權政策</a>
@@ -407,7 +429,7 @@ footer p{margin:0;max-width:44em}
                   <div><div class="name">麻糬・早餐</div><div class="meta">07:00–09:00</div></div>
                   <div class="done-line"><svg aria-hidden="true"><use href="#check"/></svg>已餵</div>
                 </div>
-                <div class="row"><span class="meta">爸爸 07:42</span><button class="link-btn" type="button" id="dupBtn">我也餵了？</button></div>
+                <div class="row"><span class="meta">爸爸 07:42・爸爸負責</span><button class="link-btn" type="button" id="dupBtn">我也餵了？</button></div>
               </div>
               <div class="task" style="--c:#60A5FA" id="feedTask">
                 <div class="row">
@@ -425,8 +447,8 @@ footer p{margin:0;max-width:44em}
             <div class="tabbar" aria-hidden="true">
               <span class="on"><svg><use href="#home"/></svg>今天</span>
               <span><svg><use href="#paw"/></svg>毛孩</span>
-              <span><svg><use href="#heart"/></svg>健康</span>
-              <span><svg><use href="#users"/></svg>家人</span>
+              <span><svg><use href="#box"/></svg>庫存</span>
+              <span><svg><use href="#search"/></svg>紀錄</span>
             </div>
             <div class="sheet-scrim" id="scrim"></div>
             <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
@@ -445,9 +467,9 @@ footer p{margin:0;max-width:44em}
   <section class="chapter" aria-labelledby="c1">
     <div class="wrap problem">
       <div>
-        <p class="kicker rv" data-n="01">每個家都有的問題</p>
+        <p class="kicker rv" data-n="01">你家是不是也這樣</p>
         <h2 class="h2 rv" id="c1" style="--i:1">「今天到底<br><em>餵了沒？</em>」</h2>
-        <p class="sub rv" style="--i:2">照顧一隻毛孩的是一整家人。訊息散在群組、疫苗卡收在抽屜、藥單記在誰的腦袋裡。漏一次是空肚子，重複一次是第三餐。</p>
+        <p class="sub rv" style="--i:2">照顧一隻毛孩的是一整家人。訊息散在群組、疫苗卡收在抽屜、藥單記在誰的腦袋裡。漏一次是空肚子，重複一次是第三餐；藥吃到哪、誰該帶去散步，也常常說不清。</p>
       </div>
       <div class="chat rv" style="--i:2" aria-label="家庭群組對話示意">
         <div class="chat-head"><span class="avatar" style="background:#FDBA74" aria-hidden="true">家</span><div>相親相愛一家人<small>4 位成員</small></div></div>
@@ -465,19 +487,19 @@ footer p{margin:0;max-width:44em}
   <!-- CHAPTER 2 -->
   <section class="chapter" id="features" aria-labelledby="c2" style="padding-top:0">
     <div class="wrap">
-      <p class="kicker rv" data-n="02">寵寵欲動怎麼幫忙</p>
+      <p class="kicker rv" data-n="02">幫你解決的事</p>
       <h2 class="h2 rv" id="c2" style="--i:1">一份檔案，<em>全家同步</em>。</h2>
-      <p class="sub rv" style="--i:2">日常交接和長期健康放在同一個地方。不必建帳號，用 iCloud 邀請家人就能一起記。</p>
+      <p class="sub rv" style="--i:2">每天的照顧、長期的健康，放在同一個地方。不必建帳號，用 iCloud 邀請家人就能一起記。</p>
 
       <div class="bento">
         <article class="tile t-a rv">
           <span class="tag">每日打卡</span>
           <h3>按一下「餵了」，全家都看得到是誰、幾點。</h3>
-          <p>同一個時段有人記過，再按會先問你一聲，不會悄悄覆蓋。</p>
+          <p>同一個時段有人記過，再按會先問你一聲。也可以指定誰負責、每天輪流，臨時有事找人代班。</p>
           <div class="vis who">
             <div><small>早餐</small><strong>爸爸</strong><span class="ok"><svg aria-hidden="true"><use href="#check"/></svg>07:42</span></div>
             <div><small>散步</small><strong>妹妹</strong><span class="ok"><svg aria-hidden="true"><use href="#check"/></svg>17:30</span></div>
-            <div><small>晚餐</small><strong>還沒有人</strong><span class="wait">18:00–20:00</span></div>
+            <div><small>晚餐</small><strong>媽媽負責</strong><span class="wait">18:00–20:00</span></div>
           </div>
         </article>
 
@@ -492,31 +514,31 @@ footer p{margin:0;max-width:44em}
         </article>
 
         <article class="tile t-c rv" style="--i:2">
-          <span class="tag">體重</span>
-          <h3 class="sr-only">體重曲線</h3>
+          <span class="tag">體重・量測</span>
+          <h3 class="sr-only">體重與量測曲線</h3>
           <div class="big-num">5.2<small>kg</small></div>
           <svg class="vis chart" viewBox="0 0 220 90" role="img" aria-label="最近 5 次體重：4.6、4.8、4.9、5.1、5.2 公斤">
             <path class="area" d="M10 70 L60 58 L110 52 L160 40 L210 34 L210 90 L10 90Z"/>
             <path class="line" d="M10 70 L60 58 L110 52 L160 40 L210 34"/>
             <circle cx="10" cy="70" r="4"/><circle cx="60" cy="58" r="4"/><circle cx="110" cy="52" r="4"/><circle cx="160" cy="40" r="4"/><circle cx="210" cy="34" r="5"/>
           </svg>
-          <p>每次量完記一筆，曲線一眼看懂。</p>
+          <p>體重、血糖、呼吸次數都畫成曲線，和平常不一樣時先提醒你。</p>
         </article>
 
         <article class="tile t-d rv" style="--i:1">
-          <span class="tag">用藥</span>
-          <h3>每 12 小時一次，漏了會說</h3>
+          <span class="tag">用藥・長期照護</span>
+          <h3>每一次都記得，漏了會說</h3>
           <div class="vis doses" aria-label="本週用藥：五次已服、一次未記錄">
             <i class="ok">一</i><i class="ok">二</i><i class="miss">三</i><i class="ok">四</i><i class="ok">五</i><i>六</i>
           </div>
-          <p>過了時段還沒人記，就通知負責的家人。</p>
+          <p>療程或天天要做的輸液、胰島素，記下實際給的量；過了時間還沒人記，通知全家。</p>
         </article>
 
         <article class="tile t-e rv" style="--i:2">
           <span class="tag">看診・附件</span>
           <span class="icon-lg" aria-hidden="true"><svg><use href="#handover"/></svg></span>
           <h3>收據、疫苗卡直接掃</h3>
-          <p>看診紀錄和附件跟著毛孩走，回診時翻得到。</p>
+          <p>看診紀錄和附件跟著毛孩走；回診時一頁摘要、一份照護報告就交代清楚。</p>
         </article>
 
         <article class="tile t-f rv">
@@ -544,21 +566,58 @@ footer p{margin:0;max-width:44em}
     </div>
   </section>
 
+  <!-- DIFFERENT -->
+  <section class="chapter" id="different" aria-labelledby="c-diff" style="padding-top:0">
+    <div class="wrap">
+      <p class="kicker rv" data-n="03">我們跟別人不一樣的地方</p>
+      <h2 class="h2 rv" id="c-diff" style="--i:1">不只記下來，<em>還幫你先想到</em>。</h2>
+      <p class="sub rv" style="--i:2">一般的寵物紀錄 App 幫你記；寵寵欲動在該注意的時候先開口。</p>
+      <div class="diff-grid">
+        <article class="diff rv"><span class="icon-lg" aria-hidden="true"><svg><use href="#phone"/></svg></span><h3>鎖定畫面就能給藥</h3><p>給藥前 2 小時，鎖定畫面和動態島開始倒數；餵完按「已給藥」，不用打開 App。</p></article>
+        <article class="diff rv" style="--i:1"><span class="icon-lg" aria-hidden="true"><svg><use href="#vial"/></svg></span><h3>長期照護天天不漏</h3><p>腎貓輸液、糖尿病胰島素、心臟藥：沒有結束日，記實際給的量，藥快吃完先提醒回診拿藥。</p></article>
+        <article class="diff rv" style="--i:2"><span class="icon-lg" aria-hidden="true"><svg><use href="#bowl"/></svg></span><h3>禁食、過敏，餵前先問</h3><p>處方飼料、過敏食物、零食上限、術前禁食。誰要餵不對的東西，記錄前先跳出來確認。</p></article>
+        <article class="diff rv"><span class="icon-lg" aria-hidden="true"><svg><use href="#trend"/></svg></span><h3>和平常不一樣，先告訴你</h3><p>嘔吐、軟便比前 4 週明顯變多，或量測值偏離平常，就在「需要留意」提醒。只寫次數與平均，不猜原因。</p></article>
+        <article class="diff rv" style="--i:1"><span class="icon-lg" aria-hidden="true"><svg><use href="#poster"/></svg></span><h3>走失時，海報一鍵做好</h3><p>照片、特徵、聯絡方式自動排版成 A4、社群方形、限時動態；目擊線索附照片和位置，全家同步。</p></article>
+        <article class="diff rv" style="--i:2"><span class="icon-lg" aria-hidden="true"><svg><use href="#box"/></svg></span><h3>飼料還能吃幾天</h3><p>餵食自動扣量，連家裡還沒開的備貨一起算；快用完前提醒，補貨時順手記金額和店家。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENS -->
+  <section class="chapter screens" id="screens" aria-labelledby="c-screens" style="padding-top:0">
+    <div class="wrap">
+      <p class="kicker rv" data-n="04">實際畫面</p>
+      <h2 class="h2 rv" id="c-screens" style="--i:1">打開就是<em>今天要做的事</em>。</h2>
+    </div>
+    <div class="shots" tabindex="0" aria-label="App 畫面，可以左右滑動">
+      <img src="shots/01-today.jpg" width="600" height="1304" loading="lazy" alt="今天：誰餵過、誰負責，一眼就知道">
+      <img src="shots/02-duplicate.jpg" width="600" height="1304" loading="lazy" alt="有人記過了，再按會先問：妹妹 08:20 已經散步過了">
+      <img src="shots/03-lockscreen.jpg" width="600" height="1304" loading="lazy" alt="鎖定畫面的用藥倒數，按一下就記好">
+      <img src="shots/04-chronic.jpg" width="600" height="1304" loading="lazy" alt="長期照護：心臟藥每次 1 顆，存量約 9 顆">
+      <img src="shots/05-attention.jpg" width="600" height="1304" loading="lazy" alt="需要留意：藥快吃完、嘔吐比平常多">
+      <img src="shots/06-diet.jpg" width="600" height="1304" loading="lazy" alt="禁食中按餵了，先問確定要記嗎">
+      <img src="shots/07-metrics.jpg" width="600" height="1304" loading="lazy" alt="睡眠呼吸次數曲線">
+      <img src="shots/08-lost.jpg" width="600" height="1304" loading="lazy" alt="走失協尋頁與協尋海報">
+      <img src="shots/09-vet-summary.jpg" width="600" height="1304" loading="lazy" alt="看診摘要，嘔吐標出比平常多">
+      <img src="shots/10-inventory.jpg" width="600" height="1304" loading="lazy" alt="庫存：飼料還能吃幾天，含未開封備貨">
+    </div>
+  </section>
+
   <!-- CHAPTER 3 -->
   <section class="chapter dark-band" id="privacy-promise" aria-labelledby="c3">
     <div class="wrap">
-      <p class="kicker rv" data-n="03">你的資料，留在你家</p>
+      <p class="kicker rv" data-n="05">你的資料，留在你家</p>
       <h2 class="h2 rv" id="c3" style="--i:1">我們沒有伺服器，<br>所以<em>什麼都拿不到</em>。</h2>
       <div class="facts">
         <div class="fact rv"><svg aria-hidden="true"><use href="#cloud"/></svg><strong>存在你的 iCloud</strong><p>紀錄透過 Apple CloudKit 同步，開發者無法讀取。</p></div>
         <div class="fact rv" style="--i:1"><svg aria-hidden="true"><use href="#eye-off"/></svg><strong>不追蹤、沒有廣告</strong><p>不放任何第三方分析或廣告 SDK。</p></div>
-        <div class="fact rv" style="--i:2"><svg aria-hidden="true"><use href="#bell"/></svg><strong>提醒在手機上排</strong><p>到期與時段提醒都是本機通知，離線也照常。</p></div>
+        <div class="fact rv" style="--i:2"><svg aria-hidden="true"><use href="#bell"/></svg><strong>提醒在手機上排</strong><p>到期與時段提醒都是本機通知，離線也照常。臨時照顧者看不到支出與理賠。</p></div>
       </div>
     </div>
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>今天餵了沒</span><span>誰帶去散步</span><span>疫苗快到期</span><span>藥吃了嗎</span><span>體重又胖了</span><span>交接給保母</span>
-        <span>今天餵了沒</span><span>誰帶去散步</span><span>疫苗快到期</span><span>藥吃了嗎</span><span>體重又胖了</span><span>交接給保母</span>
+        <span>今天餵了沒</span><span>今天輪到誰</span><span>藥吃了嗎</span><span>藥快吃完了</span><span>禁食中別餵</span><span>吐得比平常多</span><span>疫苗快到期</span><span>交接給保母</span>
+        <span>今天餵了沒</span><span>今天輪到誰</span><span>藥吃了嗎</span><span>藥快吃完了</span><span>禁食中別餵</span><span>吐得比平常多</span><span>疫苗快到期</span><span>交接給保母</span>
       </div>
     </div>
     <div style="height:clamp(64px,8vw,112px)"></div>
@@ -567,7 +626,7 @@ footer p{margin:0;max-width:44em}
   <!-- NAME -->
   <section class="chapter name-story" id="name" aria-labelledby="c4">
     <div class="wrap">
-      <p class="kicker rv" data-n="04" style="justify-content:center">名字由來</p>
+      <p class="kicker rv" data-n="06" style="justify-content:center">名字由來</p>
       <h2 class="sr-only" id="c4">寵寵欲動，取自蠢蠢欲動</h2>
       <div class="pun" id="pun" aria-hidden="true">
         <span class="sw"><span class="old">蠢</span><span class="new">寵</span></span><span class="sw"><span class="old">蠢</span><span class="new">寵</span></span><span>欲</span><span>動</span>
@@ -588,7 +647,7 @@ footer p{margin:0;max-width:44em}
         <svg style="--i:0;--r:-14deg"><use href="#paw"/></svg><svg style="--i:1;--r:10deg"><use href="#paw"/></svg><svg style="--i:2;--r:-12deg"><use href="#paw"/></svg><svg style="--i:3;--r:8deg"><use href="#paw"/></svg><svg style="--i:4;--r:-10deg"><use href="#paw"/></svg>
       </div>
       <h2 class="h2" id="c5">把毛孩的大小事，<em>交給全家一起記</em>。</h2>
-      <p class="sub" style="margin:0 auto 36px">寵寵欲動正在開發中，預計於 App Store 推出，支援 iOS 17 以上的 iPhone。</p>
+      <p class="sub" style="margin:0 auto 36px">寵寵欲動即將在 App Store 推出，免費下載，支援 iOS 17 以上的 iPhone。</p>
       <div class="cta-row"><a class="btn" href="#top">回去按一下「餵了」 <svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
     </div>
   </section>
