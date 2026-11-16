@@ -26,7 +26,7 @@
 :root{
   --bg:#000; --tile:#0e0e10; --tile-2:#151518; --line:rgba(255,255,255,.09);
   --ink:#f5f5f7; --ink-2:#a1a1a6; --ink-3:#6e6e73;
-  --amber:#f5a524; --orange:#fb7a2c; --coral:#ff6a55; --blue:#4c8dff; --gold:#f0c044; --coral2:#ff6b4a; --cream:#f7f0e1; --ink-d:#1e1b2e;
+  --amber:#f5a524; --cc:#DDB8A6; --cc-blush:#C98B77; --cc-blue:#B4CAD8; --coral:#ff6a55; --blue:#4c8dff; --gold:#f0c044; --coral2:#ff6b4a; --cream:#f7f0e1; --ink-d:#1e1b2e;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter Tight","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
   --gutter:clamp(20px,4vw,48px); --maxw:1200px;
@@ -73,14 +73,14 @@ img.app-icon[src*="draw-icon"]{border-radius:20%}
 .btn--ghost:hover{background:rgba(255,255,255,.08)}
 .btn--amber{background:linear-gradient(90deg,var(--amber),var(--coral));color:#1a1005}
 .btn--amber:hover{box-shadow:0 12px 44px -10px rgba(245,165,36,.6)}
-.btn--orange{background:var(--orange);color:#1c0a02}
-.btn--orange:hover{box-shadow:0 12px 44px -10px rgba(251,122,44,.6)}
+.btn--cc{background:var(--cc);color:#1F1916}
+.btn--cc:hover{box-shadow:0 12px 44px -10px rgba(221,184,166,.55)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:110px 0 72px;overflow:hidden;isolation:isolate}
 .glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none}
 .glow--a{width:620px;height:620px;left:calc(50% - 560px);top:4%;background:radial-gradient(circle,rgba(245,165,36,.75),transparent 65%);animation:drift 18s ease-in-out infinite alternate}
-.glow--b{width:560px;height:560px;left:calc(50% - 20px);top:10%;background:radial-gradient(circle,rgba(251,122,44,.6),transparent 65%);animation:drift 22s ease-in-out infinite alternate-reverse}
+.glow--b{width:560px;height:560px;left:calc(50% - 20px);top:10%;background:radial-gradient(circle,rgba(201,139,119,.5),transparent 65%);animation:drift 22s ease-in-out infinite alternate-reverse}
 .glow--c{width:720px;height:420px;left:calc(50% - 360px);bottom:-160px;background:radial-gradient(ellipse,rgba(76,141,255,.35),transparent 65%);animation:drift 26s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate3d(60px,-40px,0) scale(1.12)}}
 .hero__inner{position:relative;max-width:980px;padding-inline:var(--gutter)}
@@ -92,7 +92,7 @@ img.app-icon[src*="draw-icon"]{border-radius:20%}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .icons img{width:clamp(108px,12vw,164px);height:auto;transform:translateY(var(--lift,0));transition:transform .5s var(--ease)}
 .icons a:nth-child(1) img{box-shadow:0 30px 80px -20px rgba(245,165,36,.7),inset 0 0 0 1px rgba(255,255,255,.1)}
-.icons a:nth-child(2) img{box-shadow:0 30px 80px -20px rgba(251,122,44,.65),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(2) img{box-shadow:0 30px 80px -20px rgba(201,139,119,.6),inset 0 0 0 1px rgba(255,255,255,.1)}
 .icons a:nth-child(3) img{box-shadow:0 30px 80px -20px rgba(196,32,42,.7),inset 0 0 0 1px rgba(255,255,255,.1)}
 .icons a:nth-child(3) .float{animation-delay:-1.5s}
 .icons span{display:block;margin-top:14px;font-size:13px;color:var(--ink-2)}
@@ -144,16 +144,16 @@ a.tile:hover .go{transform:rotate(-45deg);background:rgba(255,255,255,.2)}
 .t-wt .body{margin-top:18px;max-width:15.5em}
 .t-wt .peek{position:absolute;right:24px;top:120px;width:44%;max-width:250px;transform:rotate(-8deg);transition:transform .8s var(--ease);border-radius:24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
 .t-wt:hover .peek{transform:rotate(-4deg) translateY(-24px)}
-.t-cc{grid-column:span 2;grid-row:span 2;background:radial-gradient(110% 90% at 90% 0%,#ffe3c4,#fff4e6 55%,#fde9d3);color:#431407;box-shadow:none}
-.t-cc p{color:#7c3a17}
-.t-cc .tag{background:#dbeafe;color:#1e3a8a;margin-bottom:0}
-.t-cc .go{background:rgba(67,20,7,.08)}
+.t-cc{grid-column:span 2;grid-row:span 2;background:radial-gradient(110% 90% at 90% 0%,#F5EFE9,#EAE1D8 55%,#DCCFC3);color:#3B3431;box-shadow:none}
+.t-cc p{color:#6B605A}
+.t-cc .tag{background:rgba(79,104,119,.14);color:#3E5563;margin-bottom:0}
+.t-cc .go{background:rgba(59,52,49,.08)}
 .t-cc .head{display:flex;align-items:center;gap:14px}
 .t-cc .head img{width:56px;height:56px}
-.t-cc .body{margin-top:18px;max-width:15em}
-.t-cc .mini{position:absolute;right:28px;top:110px;width:min(44%,240px);transform:rotate(6deg);transition:transform .8s var(--ease)}
+.t-cc .body{margin-top:18px;max-width:12.5em}
+.t-cc .mini{position:absolute;right:24px;top:120px;width:min(42%,240px);transform:rotate(6deg);transition:transform .8s var(--ease);border-radius:26px;border:5px solid #1F1916;box-shadow:0 30px 60px -20px rgba(59,52,49,.6)}
 .t-cc:hover .mini{transform:rotate(2deg) translateY(-20px)}
-.t-cc::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(251,122,44,.16),transparent 45%)}
+.t-cc::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(201,139,119,.22),transparent 45%)}
 .t-clock .time{font-size:clamp(56px,6vw,76px);font-weight:700;letter-spacing:-.05em;line-height:1;margin-top:auto;font-variant-numeric:tabular-nums}
 .t-clock .time i{font-style:normal;animation:blink 2s steps(1) infinite}
 @keyframes blink{50%{opacity:.25}}
@@ -169,7 +169,7 @@ a.tile:hover .go{transform:rotate(-45deg);background:rgba(255,255,255,.2)}
 .show{position:relative;overflow:hidden;isolation:isolate}
 .show__glow{position:absolute;z-index:-1;left:50%;top:38%;width:1100px;height:700px;transform:translateX(-50%);border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none}
 .show--wt .show__glow{background:radial-gradient(ellipse,var(--amber),transparent 65%)}
-.show--cc .show__glow{background:radial-gradient(ellipse,var(--orange),transparent 65%)}
+.show--cc .show__glow{background:radial-gradient(ellipse at 40% 50%,var(--cc-blush),transparent 60%),radial-gradient(ellipse at 70% 60%,#8299A8,transparent 60%)}
 .show--bf .show__glow{background:radial-gradient(ellipse at 50% 60%,#b3202a,transparent 62%);opacity:.42}
 .grad-felt{background:linear-gradient(90deg,#ffe3a6,#e9c47e 40%,#c48d3e);-webkit-background-clip:text;background-clip:text;color:transparent}
 .show--bf .feat .ic{background:rgba(233,196,126,.14);color:#e9c47e}
@@ -193,7 +193,7 @@ a.tile:hover .go{transform:rotate(-45deg);background:rgba(255,255,255,.2)}
 .app-tag{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;margin-bottom:18px}
 .app-tag img{width:32px;height:32px}
 .grad-amber{background:linear-gradient(90deg,#ffd27a,var(--amber) 40%,var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
-.grad-orange{background:linear-gradient(90deg,#ffc58f,var(--orange) 45%,#ff5d3a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-cc{background:linear-gradient(90deg,#F6D9CB,var(--cc) 45%,var(--cc-blush));-webkit-background-clip:text;background-clip:text;color:transparent}
 
 .stage{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,2.4vw,32px);margin-top:64px;min-height:clamp(420px,46vw,620px)}
 .stage .shot{width:clamp(150px,21vw,280px);border-radius:clamp(20px,2.4vw,34px);box-shadow:0 50px 100px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07)}
@@ -208,56 +208,20 @@ a.tile:hover .go{transform:rotate(-45deg);background:rgba(255,255,255,.2)}
 .feat .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px}
 .feat .ic svg{width:20px;height:20px}
 .show--wt .feat .ic{background:rgba(245,165,36,.16);color:#ffc96b}
-.show--cc .feat .ic{background:rgba(251,122,44,.16);color:#ffab73}
+.show--cc .feat .ic{background:rgba(221,184,166,.14);color:var(--cc)}
 .feat h3{font-size:19px;letter-spacing:-.015em;margin:0 0 6px;font-weight:700}
 .feat p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.55}
 .show .btns{margin-top:48px}
 .price{text-align:center;color:var(--ink-3);font-size:14px;margin:16px 0 0}
 
-/* ChongChong: a drawn phone with cards that slide out beside it */
-.cc-stage{position:relative;display:grid;place-items:center;margin-top:64px;min-height:640px}
-.phone{position:relative;z-index:2;width:300px;aspect-ratio:9/19;border-radius:52px;background:#1c1917;padding:11px;box-shadow:0 60px 120px -40px rgba(251,122,44,.55),0 0 0 1px rgba(255,255,255,.1)}
-.scr{height:100%;border-radius:42px;background:#fff7ed;text-align:left;overflow:hidden;display:flex;flex-direction:column;font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif;color:#431407;letter-spacing:0}
-.scr__bar{display:flex;justify-content:space-between;align-items:center;padding:14px 24px 0;font-size:12px;font-weight:600}
-.scr__island{width:86px;height:25px;border-radius:999px;background:#1c1917}
-.scr__body{flex:1;padding:12px 16px 0;overflow:hidden}
-.scr__date{font-size:11px;color:#9a3412;margin:6px 0 0}
-.scr__title{font-size:27px;font-weight:700;margin:0 0 10px}
-.pets{display:flex;gap:8px;margin-bottom:12px}
-.pets span{display:flex;align-items:center;gap:6px;font-size:12px;padding:4px 10px 4px 4px;border-radius:999px;background:#ffedd5}
-.pets span:first-child{background:#f97316;color:#1c0a02}
-.pets i{width:20px;height:20px;border-radius:50%;background:#fed7aa;display:grid;place-items:center;font-style:normal;font-size:10px;font-weight:700;color:#7c2d12}
-.task{background:#fff;border-radius:16px;padding:11px 12px;margin-bottom:9px;box-shadow:0 1px 0 #fde4c8,0 6px 16px -10px rgba(124,45,18,.25)}
-.task b{display:block;font-size:13px}
-.task small{display:block;font-size:11px;color:#9a3412;margin-top:1px}
-.task__row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px}
-.task__who{font-size:11px;color:#166534;background:#dcfce7;padding:3px 8px;border-radius:999px}
-.task__btn{font-size:12px;font-weight:600;color:#1c0a02;background:#f97316;padding:5px 12px;border-radius:999px}
-.task__due{font-size:11px;color:#92400e;background:#fef3c7;padding:3px 8px;border-radius:999px}
-.tabs{display:flex;justify-content:space-around;padding:10px 8px 18px;border-top:1px solid #fde4c8;background:#fffaf3;font-size:10px;color:#9a3412}
-.tabs span{display:grid;justify-items:center;gap:3px}
-.tabs span::before{content:"";width:18px;height:18px;border-radius:6px;background:#fed7aa}
-.tabs span.on{color:#c2410c;font-weight:600}
-.tabs span.on::before{background:#f97316}
-.float-card{position:absolute;z-index:3;width:250px;padding:16px 18px;border-radius:20px;background:rgba(28,22,18,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 30px 60px -20px rgba(0,0,0,.7);text-align:left;font-size:14px;line-height:1.45}
-.float-card small{display:block;color:#ffab73;font-size:12px;font-weight:600;margin-bottom:4px}
-.float-card b{display:block;font-size:17px;letter-spacing:-.01em}
-.float-card > span{color:var(--ink-2);font-size:13px}
-.float-card dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:8px 0 0;font-size:13px}
-.float-card dt{color:var(--ink-3)}
-.float-card dd{margin:0}
-.float-card .no{color:#ff9f7a}
-.fc-1{left:calc(50% - 470px);top:12%}
-.fc-2{right:calc(50% - 470px);top:30%}
-.fc-3{left:calc(50% - 430px);bottom:10%}
-.js .float-card{opacity:0}
-.js .fc-1,.js .fc-3{transform:translateX(60px)}
-.js .fc-2{transform:translateX(-60px)}
-.js .cc-stage.on .float-card{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
-.js .cc-stage.on .fc-2{transition-delay:.2s}
-.js .cc-stage.on .fc-3{transition-delay:.4s}
-.js .cc-stage .phone{opacity:0;transform:translateY(80px)}
-.js .cc-stage.on .phone{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+/* ChongChong: real screens, the pair from the icon hopping beside them */
+.cc-pals{position:absolute;right:calc(50% + min(35.4vw,472px) - 10px);bottom:-6px;width:clamp(110px,11vw,160px);z-index:3;pointer-events:none}
+.cc-pals svg{width:100%;height:auto;overflow:visible}
+.cc-hop{transform-box:fill-box;transform-origin:50% 100%}
+.stage.on .cc-hop{animation:cchop .9s var(--ease) 1.1s}
+.stage.on .cc-hop.late{animation-delay:1.22s}
+@keyframes cchop{12%{transform:scale(1.06,.9)}30%{transform:translateY(-22%) scale(.96,1.05)}46%{transform:scale(1.05,.93)}62%{transform:translateY(-12%) scale(.98,1.03)}80%{transform:scale(1.03,.97)}}
+.show--cc .stage .shot{border:6px solid #1F1916;box-sizing:content-box}
 
 /* ---------- close ---------- */
 .close{text-align:center;padding-block:clamp(110px,14vw,180px) 64px;position:relative;overflow:hidden;isolation:isolate}
@@ -296,7 +260,7 @@ footer a:hover{color:var(--ink)}
 .t-games:hover .pair img:last-child{transform:rotate(2deg) translateY(-4px)}
 
 /* ChongChong: paw prints that follow the pointer */
-.print{position:absolute;z-index:-1;width:28px;height:28px;color:var(--orange);pointer-events:none;opacity:0;animation:print 1.8s var(--ease) forwards}
+.print{position:absolute;z-index:-1;width:28px;height:28px;color:var(--cc);pointer-events:none;opacity:0;animation:print 1.8s var(--ease) forwards}
 @keyframes print{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(.5)}14%{opacity:.6;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--r)) scale(1)}}
 
 /* ---------- games ---------- */
@@ -386,11 +350,6 @@ footer a:hover{color:var(--ink)}
 }
 @media (max-width:760px){
   .feats{grid-template-columns:1fr}
-  .cc-stage{min-height:0;display:flex;flex-direction:column;gap:14px}
-  .float-card{position:relative;inset:auto;width:min(100%,340px)}
-  .js .float-card,.js .fc-1,.js .fc-2,.js .fc-3{transform:translateY(30px)}
-  .fc-1{order:2}.fc-2{order:3}.fc-3{order:4}
-  .phone{margin-bottom:20px}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -402,8 +361,7 @@ footer a:hover{color:var(--ink)}
   .stage{gap:8px;min-height:0}
   .stage .shot{width:28%;border-radius:16px}
   .stage .shot:nth-child(2){width:36%}
-  .phone{width:264px;border-radius:46px}
-  .scr{border-radius:37px}
+  .cc-pals{right:auto;left:-6px;bottom:-16px;width:64px}
   .btns .btn{flex:1 1 100%;justify-content:center}
   .icons{gap:9px}
   .icons img{width:52px}
@@ -422,7 +380,7 @@ footer a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition-duration:.001ms!important;transition-delay:0s!important}
-  .js .in,.js .rv,.js .stage .shot,.js .float-card,.js .cc-stage .phone,.js .chat > span{opacity:1;transform:none;filter:none}
+  .js .in,.js .rv,.js .stage .shot,.js .chat > span{opacity:1;transform:none;filter:none}
   .js .canvas path{stroke-dashoffset:0}
 }
 </style>
@@ -503,17 +461,9 @@ footer a:hover{color:var(--ink)}
       </div>
       <a class="tile t-cc rv" style="--d:1" href="#chongchong" data-spot>
         <div class="head"><img class="app-icon" src="img/chongchong-icon-128.jpg" alt="" width="56" height="56" loading="lazy"><div><h3><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></h3><span class="tag"><span lang="zh-Hant">已上架・1.0 版</span><span lang="en">On the App Store · 1.0</span></span></div></div>
-        <p class="body"><span lang="zh-Hant">全家共用一份毛孩檔案：誰餵過、誰散步、疫苗何時到期，打開就知道。</span><span lang="en">One shared pet profile: who fed, who walked, when the vaccine is due.</span></p>
+        <p class="body"><span lang="zh-Hant">全家共用一份毛孩紀錄：誰餵過、誰負責、藥吃了沒，打開就知道；有人記過再按會先問你。</span><span lang="en">One shared pet record: who fed, whose turn it is, whether the medicine was given. Log it twice and it asks first.</span></p>
         <span class="go" aria-hidden="true"><svg><use href="#arr"/></svg></span>
-        <div class="mini" aria-hidden="true">
-          <div class="phone" style="width:100%;border-radius:40px;padding:8px"><div class="scr" style="border-radius:33px">
-            <div class="scr__bar"><span>08:05</span><span class="scr__island" style="width:64px;height:20px"></span><span>●●</span></div>
-            <div class="scr__body"><p class="scr__title" style="font-size:22px;margin-top:8px">今天</p>
-              <div class="task"><b>麻糬・早餐</b><small>07:00–09:00</small><div class="task__row"><span class="task__who">✓ 爸爸 07:42</span></div></div>
-              <div class="task"><b>豆花・早餐</b><small>07:00–09:00</small><div class="task__row"><small>還沒有人記</small><span class="task__btn">餵了</span></div></div>
-              <div class="task"><b>麻糬・狂犬病疫苗</b><div class="task__row"><span class="task__due">23 天後到期</span></div></div>
-            </div></div></div>
-        </div>
+        <img class="mini" src="chongchong/img/01-today.jpg" alt="" width="552" height="1200" loading="lazy">
       </a>
       <div class="tile t-sign rv" style="--d:2" data-spot>
         <span class="lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 7.6-1.8"/></svg></span>
@@ -582,42 +532,27 @@ footer a:hover{color:var(--ink)}
     <span class="show__glow" aria-hidden="true"></span>
     <div class="wrap center">
       <p class="app-tag rv"><img class="app-icon" src="img/chongchong-icon-128.jpg" alt="" width="32" height="32" loading="lazy"><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></p>
-      <h2 class="h2 rv" id="cc-h" style="font-size:clamp(48px,7.4vw,96px)"><span lang="zh-Hant">今天餵了沒？<br><span class="grad-orange">打開就知道。</span></span><span lang="en">Did anyone feed the dog?<br><span class="grad-orange">Open it and see.</span></span></h2>
-      <p class="lede rv"><span lang="zh-Hant">全家共用一份毛孩檔案。誰在幾點餵過、帶去散步、給了藥都記在一起，疫苗和驅蟲到期前先提醒。</span><span lang="en">One pet profile for the whole family. Who fed, walked or gave medicine and when, all in one place, with reminders before vaccines and deworming are due.</span></p>
-      <div class="cc-stage" data-stage>
-        <div class="phone" role="img" aria-label="寵寵欲動的今天畫面：麻糬的早餐已由爸爸 07:42 餵過，豆花的早餐還沒有人記，狂犬病疫苗 23 天後到期">
-          <div class="scr" aria-hidden="true">
-            <div class="scr__bar"><span>08:05</span><span class="scr__island"></span><span>●●●</span></div>
-            <div class="scr__body">
-              <p class="scr__date">11 月 2 日 星期一</p>
-              <p class="scr__title">今天</p>
-              <div class="pets"><span><i>麻</i>麻糬</span><span><i>豆</i>豆花</span></div>
-              <div class="task"><b>麻糬・早餐</b><small>07:00–09:00</small><div class="task__row"><span class="task__who">✓ 爸爸 07:42</span><small>已餵</small></div></div>
-              <div class="task"><b>豆花・早餐</b><small>07:00–09:00</small><div class="task__row"><small>還沒有人記</small><span class="task__btn">餵了</span></div></div>
-              <div class="task"><b>麻糬・狂犬病疫苗</b><small>依預設週期</small><div class="task__row"><span class="task__due">23 天後到期</span></div></div>
-              <div class="task"><b>麻糬・散步</b><small>17:00–19:00</small><div class="task__row"><small>負責：妹妹</small></div></div>
-            </div>
-            <div class="tabs"><span class="on">今天</span><span>毛孩</span><span>健康</span><span>家人</span></div>
-          </div>
-        </div>
-        <div class="float-card fc-1"><small><span lang="zh-Hant">重複打卡提醒</span><span lang="en">Already logged</span></small><b><span lang="zh-Hant">已經餵過了</span><span lang="en">Already fed</span></b><span><span lang="zh-Hant">爸爸 07:42 記過。還要再記一筆嗎？</span><span lang="en">Dad logged it at 07:42. Log again?</span></span></div>
-        <div class="float-card fc-2"><small><span lang="zh-Hant">交接卡・給保母</span><span lang="en">Handover card · for the sitter</span></small><b><span lang="zh-Hant">麻糬（柴犬・5 歲）</span><span lang="en">Mochi (Shiba, 5)</span></b>
-          <dl><dt><span lang="zh-Hant">飼料</span><span lang="en">Food</span></dt><dd><span lang="zh-Hant">早晚各 80 g</span><span lang="en">80 g, morning and evening</span></dd><dt><span lang="zh-Hant">散步</span><span lang="en">Walk</span></dt><dd><span lang="zh-Hant">傍晚一次</span><span lang="en">Once, early evening</span></dd><dt><span lang="zh-Hant">支出</span><span lang="en">Costs</span></dt><dd class="no"><span lang="zh-Hant">不提供給臨時照顧者</span><span lang="en">Hidden from sitters</span></dd></dl></div>
-        <div class="float-card fc-3"><small><span lang="zh-Hant">用藥・每 12 小時</span><span lang="en">Medicine · every 12 h</span></small><b><span lang="zh-Hant">晚上這次 20:00</span><span lang="en">Evening dose, 20:00</span></b><span><span lang="zh-Hant">負責：爸爸・還有 1 小時 52 分</span><span lang="en">Dad’s turn · in 1 h 52 min</span></span></div>
+      <h2 class="h2 rv" id="cc-h" style="font-size:clamp(48px,7.4vw,96px)"><span lang="zh-Hant">今天餵了沒？<br><span class="grad-cc">打開就知道。</span></span><span lang="en">Did anyone feed the dog?<br><span class="grad-cc">Open it and see.</span></span></h2>
+      <p class="lede rv"><span lang="zh-Hant">全家共用一份毛孩紀錄。誰在幾點餵過、散步、給了藥都記在一起；有人記過了再按，會先問你一聲，不會多餵一頓。</span><span lang="en">One pet record for the whole family. Who fed, walked or gave medicine and when, all in one place. Tap again after someone already logged it and it asks first, so nobody feeds twice.</span></p>
+      <div class="stage" data-stage>
+        <img class="shot" src="chongchong/img/02-duplicate.jpg" data-src-en="chongchong/img/02-duplicate.jpg" alt="寵寵欲動的確認視窗：妹妹 08:20 已經散步過了，要再記一筆嗎" data-alt-en="ChongChong asks first: Sis already logged the walk at 08:20" width="552" height="1200" loading="lazy">
+        <img class="shot" src="chongchong/img/01-today.jpg" data-src-en="chongchong/img/01-today.jpg" alt="寵寵欲動的今天分頁：咪咪與豆豆誰餵過、誰負責" data-alt-en="ChongChong's Today tab: who fed each pet and whose turn it is" width="552" height="1200" loading="lazy">
+        <img class="shot" src="chongchong/img/11-lockscreen.jpg" data-src-en="chongchong/img/11-lockscreen.jpg" alt="鎖定畫面的用藥倒數，附已給藥按鈕" data-alt-en="A medicine countdown on the Lock Screen with a Given button" width="552" height="1200" loading="lazy">
+        <div class="cc-pals" aria-hidden="true"><svg viewBox="150 200 720 700"><g class="cc-hop"><path d="M202 718C170 670 158 600 172 548C188 492 230 466 275 468C330 470 370 515 383 580C390 615 390 645 387 667C330 698 260 718 202 718Z" fill="#8299A8"/><rect x="230" y="551" width="29" height="50" rx="14.5" transform="rotate(-12 245 576)" fill="#FDF5EE"/><rect x="302" y="533" width="29" height="50" rx="14.5" transform="rotate(-12 317 558)" fill="#FDF5EE"/><ellipse cx="223" cy="625" rx="16" ry="8.5" transform="rotate(-10 223 625)" fill="#E2B3A3"/><ellipse cx="359" cy="591" rx="16" ry="8.5" transform="rotate(-10 359 591)" fill="#E2B3A3"/></g><g class="cc-hop late"><path d="M466 686C418 600 408 470 440 380C475 280 545 216 632 216C735 214 805 300 830 420C845 490 842 560 830 625C730 676 590 700 466 686Z" fill="#5E4B44"/><rect x="543" y="373" width="57" height="94" rx="28.5" transform="rotate(-7 571 420)" fill="#FDF5EE"/><rect x="685" y="353" width="56" height="93" rx="28" transform="rotate(-7 713 400)" fill="#FDF5EE"/><ellipse cx="520" cy="510" rx="31" ry="16" transform="rotate(-10 520 510)" fill="#C98B77"/><ellipse cx="786" cy="473" rx="31" ry="16" transform="rotate(-10 786 473)" fill="#C98B77"/></g></svg></div>
       </div>
       <div class="feats" style="text-align:left">
         <div class="feat rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></span>
           <h3><span lang="zh-Hant">全家一起記</span><span lang="en">The whole family logs</span></h3>
           <p><span lang="zh-Hant">用 iCloud 邀請家人，不用建帳號。只有你邀請的人看得到。</span><span lang="en">Invite family through iCloud, no accounts. Only people you invite can see it.</span></p></div>
         <div class="feat rv" style="--d:1"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></span>
-          <h3><span lang="zh-Hant">到期前先提醒</span><span lang="en">Reminders before it’s due</span></h3>
-          <p><span lang="zh-Hant">依紀錄與預設週期推算，也能改成獸醫師交代的間隔。</span><span lang="en">Worked out from your records and default intervals, or the interval your vet gave.</span></p></div>
+          <h3><span lang="zh-Hant">鎖定畫面就能給藥</span><span lang="en">Dose from the Lock Screen</span></h3>
+          <p><span lang="zh-Hant">給藥前 2 小時開始倒數，按「已給藥」就記好；長期療程依紀錄扣存量。</span><span lang="en">A countdown starts 2 hours before each dose. Tap Given and it’s logged; long-term meds count down the supply.</span></p></div>
         <div class="feat rv" style="--d:2"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 10h6M7 14h4"/></svg></span>
           <h3><span lang="zh-Hant">交接卡給保母</span><span lang="en">A card for the sitter</span></h3>
           <p><span lang="zh-Hant">吃什麼、吃多少、要吃哪些藥；花費和理賠資料一律不出現。</span><span lang="en">What to feed, how much, which medicine. Costs and insurance never show.</span></p></div>
       </div>
       <div class="btns rv">
-        <a class="btn btn--orange" href="https://apps.apple.com/tw/app/id6833570274"><span lang="zh-Hant">在 App Store 下載</span><span lang="en">Get it on the App Store</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
+        <a class="btn btn--cc" href="https://apps.apple.com/tw/app/id6833570274"><span lang="zh-Hant">在 App Store 下載</span><span lang="en">Get it on the App Store</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
         <a class="btn btn--ghost" href="/chongchong/"><span lang="zh-Hant">認識寵寵欲動</span><span lang="en">Meet ChongChong (zh)</span></a>
       </div>
       <p class="price"><span lang="zh-Hant">免費下載・沒有廣告・iOS 17 以上的 iPhone</span><span lang="en">Free to download · no ads · iPhone on iOS 17 or later</span></p>
