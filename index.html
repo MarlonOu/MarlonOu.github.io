@@ -93,6 +93,8 @@ img.app-icon[src*="draw-icon"]{border-radius:20%}
 .icons img{width:clamp(108px,12vw,164px);height:auto;transform:translateY(var(--lift,0));transition:transform .5s var(--ease)}
 .icons a:nth-child(1) img{box-shadow:0 30px 80px -20px rgba(245,165,36,.7),inset 0 0 0 1px rgba(255,255,255,.1)}
 .icons a:nth-child(2) img{box-shadow:0 30px 80px -20px rgba(251,122,44,.65),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(3) img{box-shadow:0 30px 80px -20px rgba(196,32,42,.7),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(3) .float{animation-delay:-1.5s}
 .icons span{display:block;margin-top:14px;font-size:13px;color:var(--ink-2)}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);margin:0 0 18px}
 .eyebrow .live{width:7px;height:7px;border-radius:50%;background:#30d158;box-shadow:0 0 0 0 rgba(48,209,88,.6);animation:pulse 2.4s infinite}
@@ -168,6 +170,26 @@ a.tile:hover .go{transform:rotate(-45deg);background:rgba(255,255,255,.2)}
 .show__glow{position:absolute;z-index:-1;left:50%;top:38%;width:1100px;height:700px;transform:translateX(-50%);border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none}
 .show--wt .show__glow{background:radial-gradient(ellipse,var(--amber),transparent 65%)}
 .show--cc .show__glow{background:radial-gradient(ellipse,var(--orange),transparent 65%)}
+.show--bf .show__glow{background:radial-gradient(ellipse at 50% 60%,#b3202a,transparent 62%);opacity:.42}
+.grad-felt{background:linear-gradient(90deg,#ffe3a6,#e9c47e 40%,#c48d3e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.show--bf .feat .ic{background:rgba(233,196,126,.14);color:#e9c47e}
+.btn--felt{background:linear-gradient(180deg,#f6d899,#e9c47e 45%,#c48d3e);color:#2a1a06}
+.btn--felt:hover{box-shadow:0 12px 44px -10px rgba(233,196,126,.6)}
+.t-bf{grid-column:1/-1;flex-direction:row;align-items:center;gap:32px;min-height:240px;background:radial-gradient(60% 130% at 88% 50%,rgba(30,107,64,.55),transparent 62%),radial-gradient(80% 140% at 10% 0%,rgba(126,26,31,.55),transparent 60%),#120b0b}
+.t-bf .txt{flex:1;max-width:30em}
+.t-bf .head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.t-bf .head img{width:56px;height:56px}
+.t-bf .tag{background:rgba(233,196,126,.16);color:#f0d49a;margin-bottom:0}
+.t-bf .pips{display:flex;gap:14px;margin:0 72px 0 auto}
+.t-bf .pips i{width:64px;height:64px;border-radius:15px;background:linear-gradient(145deg,#fbf8f2,#ddd7cc);box-shadow:0 18px 30px -12px rgba(0,0,0,.8);display:grid;place-items:center;transition:transform .7s var(--ease)}
+.t-bf .pips i::after{content:"";width:16px;height:16px;border-radius:50%;background:#d3263b}
+.t-bf .pips i:nth-child(1){transform:rotate(-12deg) translateY(6px)}
+.t-bf .pips i:nth-child(2){transform:rotate(6deg) translateY(-8px)}
+.t-bf .pips i:nth-child(3){transform:rotate(18deg) translateY(4px)}
+.t-bf:hover .pips i:nth-child(1){transform:rotate(-200deg) translateY(-6px)}
+.t-bf:hover .pips i:nth-child(2){transform:rotate(190deg) translateY(-18px)}
+.t-bf:hover .pips i:nth-child(3){transform:rotate(-160deg) translateY(-4px)}
+.t-bf::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(233,196,126,.14),transparent 45%)}
 .app-tag{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;margin-bottom:18px}
 .app-tag img{width:32px;height:32px}
 .grad-amber{background:linear-gradient(90deg,#ffd27a,var(--amber) 40%,var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -254,11 +276,11 @@ footer a:hover{color:var(--ink)}
 
 
 /* hero: four icons on wide screens */
-.icons img{width:clamp(76px,9.5vw,136px)}
-.icons a:nth-child(4) img{box-shadow:0 30px 80px -20px rgba(240,192,68,.55),inset 0 0 0 1px rgba(255,255,255,.1)}
-.icons a:nth-child(5) img{box-shadow:0 30px 80px -20px rgba(255,107,74,.6),inset 0 0 0 1px rgba(255,255,255,.1)}
-.icons a:nth-child(4) .float{animation-delay:-1.5s}
-.icons a:nth-child(5) .float{animation-delay:-4.5s}
+.icons img{width:clamp(76px,8.4vw,128px)}
+.icons a:nth-child(5) img{box-shadow:0 30px 80px -20px rgba(240,192,68,.55),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(6) img{box-shadow:0 30px 80px -20px rgba(255,107,74,.6),inset 0 0 0 1px rgba(255,255,255,.1)}
+.icons a:nth-child(5) .float{animation-delay:-.8s}
+.icons a:nth-child(6) .float{animation-delay:-4.5s}
 .icons .sep{align-self:center;width:1px;height:56px;background:linear-gradient(transparent,rgba(255,255,255,.25),transparent);margin-bottom:28px}
 .glow--d{width:520px;height:520px;right:calc(50% - 600px);top:30%;background:radial-gradient(circle,rgba(240,192,68,.4),transparent 65%);animation:drift 24s ease-in-out infinite alternate-reverse}
 
@@ -351,6 +373,7 @@ footer a:hover{color:var(--ink)}
 .games-note a{color:var(--ink-2);text-underline-offset:4px}
 .close .duo-big img:nth-child(3){transform:rotate(-4deg)}
 .close .duo-big img:nth-child(4){transform:rotate(10deg)}
+.close .duo-big img:nth-child(5){transform:rotate(-8deg)}
 .close .duo-big img + img{margin-left:-18px;box-shadow:0 0 0 4px #000}
 
 /* ---------- responsive ---------- */
@@ -382,13 +405,16 @@ footer a:hover{color:var(--ink)}
   .phone{width:264px;border-radius:46px}
   .scr{border-radius:37px}
   .btns .btn{flex:1 1 100%;justify-content:center}
-  .icons{gap:12px}
-  .icons img{width:64px}
+  .icons{gap:9px}
+  .icons img{width:52px}
   .icons span{font-size:12px}
   .icons .sep{height:40px}
   .t-games{flex-direction:column-reverse;align-items:flex-start;gap:24px}
   .t-games .pair{margin:0}
   .t-games .pair img{width:84px;height:84px}
+  .t-bf{flex-direction:column-reverse;align-items:flex-start;gap:24px}
+  .t-bf .pips{margin:0}
+  .t-bf .pips i{width:52px;height:52px;border-radius:12px}
   .close .duo-big img{width:64px;height:64px}
   .chat{width:56%}
   .canvas svg{left:4%;width:46%}
@@ -418,6 +444,7 @@ footer a:hover{color:var(--ink)}
       <a href="#overview"><span lang="zh-Hant">概覽</span><span lang="en">Overview</span></a>
       <a href="#whereto"><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></a>
       <a href="#chongchong"><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></a>
+      <a href="#bluffrog"><span lang="zh-Hant">膨風盅</span><span lang="en">Bluffrog</span></a>
       <a href="#games"><span lang="zh-Hant">遊戲</span><span lang="en">Games</span></a>
       <a href="#contact"><span lang="zh-Hant">聯絡</span><span lang="en">Contact</span></a>
       <div class="tog" role="group" aria-label="Language / 語言">
@@ -436,6 +463,7 @@ footer a:hover{color:var(--ink)}
       <div class="icons in" style="--i:0" data-tilt>
         <a href="#whereto"><div class="float"><img class="app-icon" src="img/whereto-icon-384.jpg" alt="" width="384" height="384" fetchpriority="high"></div><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></a>
         <a href="#chongchong"><div class="float"><img class="app-icon" src="img/chongchong-icon-384.jpg" alt="" width="384" height="384" fetchpriority="high"></div><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></a>
+        <a href="#bluffrog"><div class="float"><img class="app-icon" src="img/bluffrog-icon-384.jpg" alt="" width="384" height="384"></div><span lang="zh-Hant">膨風盅</span><span lang="en">Bluffrog</span></a>
         <i class="sep" aria-hidden="true"></i>
         <a href="#games"><div class="float"><img class="app-icon" src="img/music-icon-384.jpg" alt="" width="120" height="120"></div><span lang="zh-Hant">音樂猜歌</span><span lang="en">Music Guess</span></a>
         <a href="#games"><div class="float"><img class="app-icon" src="img/draw-icon-384.png" alt="" width="120" height="120"></div><span lang="zh-Hant">畫圖猜謎</span><span lang="en">Draw &amp; Guess</span></a>
@@ -443,8 +471,8 @@ footer a:hover{color:var(--ink)}
       <p class="eyebrow in" style="--i:1"><span class="live" aria-hidden="true"></span><span lang="zh-Hant">Marlon Ou・台北的獨立開發者</span><span lang="en">Marlon Ou · independent developer in Taipei</span></p>
       <h1 id="hero-h" class="in" style="--i:2"><span lang="zh-Hant">寫 iPhone App，<br>也寫網頁遊戲。</span><span lang="en">I make iPhone apps<br>and browser games.</span></h1>
       <p class="hero__sub in" style="--i:3">
-        <span lang="zh-Hant"><b>去處</b>幫你整理相簿，<b>寵寵欲動</b>讓全家一起照顧毛孩，兩款都不用帳號。<b>音樂猜歌</b>和<b>畫圖猜謎派對</b>則是打開網頁就能和朋友玩的遊戲。</span>
-        <span lang="en"><b>Whereto</b> sorts your camera roll and <b>ChongChong</b> lets a whole family care for one pet, both with no sign-up. <b>Music Guess</b> and <b>Draw &amp; Guess Party</b> are games you play with friends in a browser.</span>
+        <span lang="zh-Hant"><b>去處</b>幫你整理相簿，<b>寵寵欲動</b>讓全家一起照顧毛孩，<b>膨風盅</b>把骰盅放進口袋，三款都不用帳號。<b>音樂猜歌</b>和<b>畫圖猜謎派對</b>則是打開網頁就能和朋友玩的遊戲。</span>
+        <span lang="en"><b>Whereto</b> sorts your camera roll, <b>ChongChong</b> lets a whole family care for one pet, and <b>Bluffrog</b> puts a dice cup in your pocket, all with no sign-up. <b>Music Guess</b> and <b>Draw &amp; Guess Party</b> are games you play with friends in a browser.</span>
       </p>
       <div class="btns in" style="--i:4">
         <a class="btn btn--white" href="https://apps.apple.com/app/id6830008884"><span lang="zh-Hant">在 App Store 下載去處</span><span lang="en">Get Whereto on the App Store</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
@@ -455,7 +483,7 @@ footer a:hover{color:var(--ink)}
 
   <!-- bento: everything at a glance -->
   <section class="wrap sec" id="overview" aria-labelledby="overview-h" style="padding-top:clamp(48px,6vw,80px)">
-    <h2 class="h2 rv" id="overview-h"><span lang="zh-Hant">兩款 App、兩個遊戲，<span class="dim">一個人做的。</span></span><span lang="en">Two apps and two games, <span class="dim">made by one person.</span></span></h2>
+    <h2 class="h2 rv" id="overview-h"><span lang="zh-Hant">三款 App、兩個遊戲，<span class="dim">一個人做的。</span></span><span lang="en">Three apps and two games, <span class="dim">made by one person.</span></span></h2>
     <div class="bento">
       <a class="tile t-wt rv" href="#whereto" data-spot>
         <div class="head"><img class="app-icon" src="img/whereto-icon-128.jpg" alt="" width="56" height="56" loading="lazy"><div><h3><span lang="zh-Hant">去處</span><span lang="en">Whereto</span></h3><span class="tag"><span lang="zh-Hant">已上架・1.3 版</span><span lang="en">On the App Store · 1.3</span></span></div></div>
@@ -497,6 +525,14 @@ footer a:hover{color:var(--ink)}
         <span class="go" aria-hidden="true"><svg><use href="#ne"/></svg></span>
         <p style="margin:0"><span lang="zh-Hant">程式碼與進度</span><span lang="en">Code and progress</span></p>
         <p class="handle">MarlonOu</p>
+      </a>
+      <a class="tile t-bf rv" href="#bluffrog" data-spot>
+        <div class="txt">
+          <div class="head"><img class="app-icon" src="img/bluffrog-icon-128.jpg" alt="" width="56" height="56" loading="lazy"><div><h3><span lang="zh-Hant">膨風盅</span><span lang="en">Bluffrog</span></h3><span class="tag"><span lang="zh-Hant">上架準備中</span><span lang="en">Coming soon</span></span></div></div>
+          <p><span lang="zh-Hant">搖手機擲骰、掀盅邊偷瞇、上滑開盅。大話骰 AI 對手，朋友在場還能全桌同步開盅。</span><span lang="en">Shake to roll, lift the rim to peek, swipe up to reveal. Liar’s Dice AI, and a nearby mode that opens every cup at once.</span></p>
+        </div>
+        <div class="pips" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="go" aria-hidden="true"><svg><use href="#arr"/></svg></span>
       </a>
       <a class="tile t-games rv" href="#games" data-spot>
         <div class="txt">
@@ -589,6 +625,37 @@ footer a:hover{color:var(--ink)}
   </section>
 
 
+  <!-- Bluffrog showcase -->
+  <section class="show show--bf sec" id="bluffrog" aria-labelledby="bf-h">
+    <span class="show__glow" aria-hidden="true"></span>
+    <div class="wrap center">
+      <p class="app-tag rv"><img class="app-icon" src="img/bluffrog-icon-128.jpg" alt="" width="32" height="32" loading="lazy"><span lang="zh-Hant">膨風盅</span><span lang="en">Bluffrog</span></p>
+      <h2 class="h2 rv" id="bf-h" style="font-size:clamp(48px,7.4vw,96px)"><span lang="zh-Hant">搖、瞇、開，<br><span class="grad-felt">膨風到底。</span></span><span lang="en">Shake, peek, reveal.<br><span class="grad-felt">Bluff all the way.</span></span></h2>
+      <p class="lede rv"><span lang="zh-Hant">放在口袋裡的骰盅。拿起手機搖一搖，骰子在盅裡滾；掀起盅邊偷瞇一眼，上滑開盅，點數自動算好。</span><span lang="en">A dice cup in your pocket. Shake the phone and the dice rattle; lift the rim for a peek, swipe up to reveal, and the count is done for you.</span></p>
+      <div class="stage" data-stage>
+        <img class="shot" src="bluffrog/img/02-peek.jpg" alt="膨風盅的瞇骰：盅掀起一角，露出幾顆骰子" data-alt-en="Bluffrog peeking under the cup" width="552" height="1200" loading="lazy">
+        <img class="shot" src="bluffrog/img/03-revealed.jpg" alt="膨風盅開盅：綠色氈面上的骰子與點數統計" data-alt-en="Bluffrog revealed: dice on green felt with the count" width="552" height="1200" loading="lazy">
+        <img class="shot" src="bluffrog/img/06-result.jpg" alt="膨風盅同桌模式：開盅後顯示你贏了" data-alt-en="Bluffrog table mode: you win" width="552" height="1200" loading="lazy">
+      </div>
+      <div class="feats" style="text-align:left">
+        <div class="feat rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/></svg></span>
+          <h3><span lang="zh-Hant">像真的骰盅</span><span lang="en">Feels like a real cup</span></h3>
+          <p><span lang="zh-Hant">碰撞聲和震動跟著力道走，1 到 12 顆骰子隨時調。</span><span lang="en">Rattle and haptics follow how hard you shake. 1 to 12 dice.</span></p></div>
+        <div class="feat rv" style="--d:1"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18c0-4 3.5-7 8-7s8 3 8 7"/><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/></svg></span>
+          <h3><span lang="zh-Hant">跟 AI 對吹</span><span lang="en">Bluff against AI</span></h3>
+          <p><span lang="zh-Hant">大話骰規則自動判定，膨風水雞陪你練膽，三種難度。</span><span lang="en">Liar’s Dice rules checked for you, three difficulty levels.</span></p></div>
+        <div class="feat rv" style="--d:2"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="7" height="12" rx="1.6"/><rect x="14.5" y="6" width="7" height="12" rx="1.6"/><path d="M10.5 10.5h3M10.5 13.5h3"/></svg></span>
+          <h3><span lang="zh-Hant">全桌同步開盅</span><span lang="en">Reveal the whole table</span></h3>
+          <p><span lang="zh-Hant">2 到 8 支手機一桌，任何人開盅，全桌同時開、自動判輸贏。</span><span lang="en">2 to 8 phones at one table. One reveal opens every cup and settles the bid.</span></p></div>
+      </div>
+      <div class="btns rv">
+        <a class="btn btn--felt" href="/bluffrog/"><span lang="zh-Hant">認識膨風盅</span><span lang="en">Meet Bluffrog</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
+        <a class="btn btn--ghost" href="/bluffrog/#privacy"><span lang="zh-Hant">隱私權政策</span><span lang="en">Privacy policy (zh)</span></a>
+      </div>
+      <p class="price"><span lang="zh-Hant">準備上架 App Store・免費・沒有廣告・iOS 17 以上的 iPhone 與 iPad</span><span lang="en">Coming to the App Store · free, no ads · iPhone and iPad on iOS 17 or later</span></p>
+    </div>
+  </section>
+
   <!-- web games -->
   <section class="show show--gm sec" id="games" aria-labelledby="gm-h">
     <span class="show__glow" aria-hidden="true"></span>
@@ -662,7 +729,7 @@ footer a:hover{color:var(--ink)}
   <section class="close" id="contact" aria-labelledby="close-h">
     <span class="glow glow--c" aria-hidden="true"></span>
     <div class="wrap">
-      <div class="duo-big rv" aria-hidden="true"><img class="app-icon" src="img/whereto-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/chongchong-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/music-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/draw-icon-128.png" alt="" width="84" height="84" loading="lazy"></div>
+      <div class="duo-big rv" aria-hidden="true"><img class="app-icon" src="img/whereto-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/chongchong-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/bluffrog-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/music-icon-128.jpg" alt="" width="84" height="84" loading="lazy"><img class="app-icon" src="img/draw-icon-128.png" alt="" width="84" height="84" loading="lazy"></div>
       <h2 class="h2 rv" id="close-h"><span lang="zh-Hant">有問題或想法，<br>寫信給我。</span><span lang="en">Questions or ideas?<br>Write to me.</span></h2>
       <div class="btns rv" style="margin-top:36px">
         <a class="btn btn--white" href="mailto:quchu.app@gmail.com"><span lang="zh-Hant">寄信給我</span><span lang="en">Send an email</span><svg aria-hidden="true"><use href="#arr"/></svg></a>
@@ -681,6 +748,8 @@ footer a:hover{color:var(--ink)}
       <a href="/whereto/privacy.html" data-href-en="/whereto/en/privacy.html"><span lang="zh-Hant">去處隱私權</span><span lang="en">Whereto privacy</span></a>
       <a href="/chongchong/"><span lang="zh-Hant">寵寵欲動</span><span lang="en">ChongChong</span></a>
       <a href="/chongchong/#privacy"><span lang="zh-Hant">寵寵欲動隱私權</span><span lang="en">ChongChong privacy</span></a>
+      <a href="/bluffrog/"><span lang="zh-Hant">膨風盅</span><span lang="en">Bluffrog</span></a>
+      <a href="/bluffrog/#privacy"><span lang="zh-Hant">膨風盅隱私權</span><span lang="en">Bluffrog privacy</span></a>
     </nav>
   </div>
 </footer>
