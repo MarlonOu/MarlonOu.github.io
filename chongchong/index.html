@@ -393,6 +393,7 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}
 }
+.new-tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;line-height:1.6;vertical-align:2px;color:var(--brand);background:color-mix(in srgb,var(--brand) 14%,transparent)}
 </style>
 </head>
 <body>
@@ -424,6 +425,9 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
   <symbol id="syringe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4M17 7l3-3M19 9 8.7 19.3a2.4 2.4 0 0 1-3.4 0l-.6-.6a2.4 2.4 0 0 1 0-3.4L15 5M9 11l4 4M5 19l-3 3M14 4l6 6"/></g></symbol>
   <symbol id="card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h6M7 17h4"/></g></symbol>
   <symbol id="poster" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17h8"/></g></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="8.5" cy="14.5" r=".9" fill="currentColor"/><circle cx="12" cy="14.5" r=".9" fill="currentColor"/><circle cx="15.5" cy="14.5" r="1.6"/></g></symbol>
+<symbol id="widget" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2"/><rect x="3.5" y="13" width="17" height="7.5" rx="2"/></g></symbol>
+<symbol id="hello" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="6.5"/><path d="M9.5 10v1M14.5 10v1M9.8 13.6a3 3 0 0 0 4.4 0"/><path d="M8 20.5h8"/></g></symbol>
   <symbol id="scan" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 9h8M8 12h8M8 15h5"/></g></symbol>
   <symbol id="trend" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></g></symbol>
   <symbol id="cloud" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.3 12 3.5 3.5 0 0 0 6.5 19h11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
@@ -604,6 +608,9 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
         <div class="rv"><svg aria-hidden="true"><use href="#box"/></svg><p style="margin:0"><b>飼料還能吃幾天</b><span>餵食自動扣量，連沒開封的備貨一起算，快用完前提醒補貨。</span></p></div>
         <div class="rv" style="--i:1"><svg aria-hidden="true"><use href="#scan"/></svg><p style="margin:0"><b>看診紀錄與掃描</b><span>收據、疫苗卡直接掃；回診時一頁摘要就交代清楚。</span></p></div>
         <div class="rv" style="--i:2"><svg aria-hidden="true"><use href="#trend"/></svg><p style="margin:0"><b>體重與自訂量測</b><span>體重、血糖、飲水量都畫成曲線，存成公克與整數，不怕誤差累積。</span></p></div>
+        <div class="rv"><svg aria-hidden="true"><use href="#cal"/></svg><p style="margin:0"><b>紀錄月曆<span class="new-tag">1.1 新增</span></b><span>每天用毛孩的顏色標出誰有紀錄，點一下看那天全家記了什麼；疫苗驅蟲到期、療程最後一天先標好。</span></p></div>
+        <div class="rv" style="--i:1"><svg aria-hidden="true"><use href="#widget"/></svg><p style="margin:0"><b>主畫面小工具<span class="new-tag">1.1 新增</span></b><span>不用打開 App，主畫面就看得到今天還有哪些事；「開始使用」一步一步帶你加。</span></p></div>
+        <div class="rv" style="--i:2"><svg aria-hidden="true"><use href="#hello"/></svg><p style="margin:0"><b>開場換上你家毛孩<span class="new-tag">1.1 新增</span></b><span>上傳了照片的毛孩，打開 App 時會跳出來說早安；不喜歡也能在設定換回或關掉。</span></p></div>
       </div>
     </div>
   </section>
@@ -658,6 +665,7 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
       <figure><img src="img/01-today.jpg" alt="今天分頁，咪咪與豆豆各自的待辦與完成狀況" width="552" height="1200" loading="lazy"><figcaption><b>今天</b>誰餵過、誰負責</figcaption></figure>
       <figure><img src="img/02-duplicate.jpg" alt="提醒視窗：妹妹 08:20 已經散步過了，要再記一筆嗎" width="552" height="1200" loading="lazy"><figcaption><b>先問你</b>有人記過，不會重複</figcaption></figure>
       <figure><img src="img/11-lockscreen.jpg" alt="鎖定畫面的即時動態：豆豆心臟藥倒數 38 分鐘，附已給藥按鈕" width="552" height="1200" loading="lazy"><figcaption><b>鎖定畫面</b>用藥倒數，按一下就記好</figcaption></figure>
+      <figure><img src="img/12-calendar.jpg" alt="紀錄月曆：每天以毛孩顏色的圓點標出紀錄，11 月 21 日以空心圓標出已排定" width="552" height="1199" loading="lazy"><figcaption><b>紀錄月曆</b>一個月，一眼看完</figcaption></figure>
       <figure><img src="img/05-chronic.jpg" alt="長期療程：心臟藥每天 2 次，存量約 9 顆" width="552" height="1200" loading="lazy"><figcaption><b>長期照護</b>存量快沒了先說</figcaption></figure>
       <figure><img src="img/03-attention.jpg" alt="需要留意清單：藥快吃完、嘔吐比平常多、睡眠呼吸次數偏高" width="552" height="1200" loading="lazy"><figcaption><b>需要留意</b>和平常不一樣才開口</figcaption></figure>
       <figure><img src="img/04-diet.jpg" alt="禁食中按下餵了，先跳出確認" width="552" height="1200" loading="lazy"><figcaption><b>飲食限制</b>禁食、過敏，餵前先問</figcaption></figure>
