@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>膨風盅 Bluffrog｜搖、瞇、開，膨風到底</title>
-<meta name="description" content="膨風盅是放在口袋裡的骰盅：搖手機擲骰、掀盅邊偷瞇、上滑開盅，點數自動算好。內建大話骰規則與 AI 對手，朋友在場還能全桌同步開盅。沒有廣告，不收集任何資料。">
+<meta name="description" content="膨風盅是放在口袋裡的骰盅：搖手機擲骰、掀盅邊偷瞇、上滑開盅，點數自動算好。內建大話骰規則與 AI 對手，朋友在場還能全桌同步開盅。沒有廣告，不收集任何資料，已在 App Store 免費下載。">
 <meta name="theme-color" content="#120B0B">
 <meta property="og:title" content="膨風盅 Bluffrog｜搖、瞇、開，膨風到底">
-<meta property="og:description" content="搖手機擲骰、掀盅邊偷瞇、上滑開盅。大話骰 AI 對手、全桌同步開盅，沒有廣告也不收集資料。">
+<meta property="og:description" content="搖手機擲骰、掀盅邊偷瞇、上滑開盅。大話骰 AI 對手、全桌同步開盅，沒有廣告也不收集資料。App Store 免費下載。">
 <meta property="og:image" content="https://marlonou.github.io/img/bluffrog-icon-384.jpg">
 <link rel="icon" href="/bluffrog/favicon.png">
 <link rel="apple-touch-icon" href="/bluffrog/icon.png">
@@ -57,7 +57,9 @@ main,header,footer{position:relative;z-index:1}
 .nav a{text-decoration:none;font-size:14px;color:var(--muted);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
 .nav a:hover{color:var(--cream);background:rgba(255,255,255,.06)}
 .nav .home{border:1px solid var(--line);margin-left:8px}
-@media (max-width:760px){.nav a:not(.home){display:none}.brand small{display:none}}
+.nav .get{background:var(--gold);color:var(--gold-ink);font-weight:700}
+.nav .get:hover{background:#F6D899;color:var(--gold-ink)}
+@media (max-width:760px){.nav a:not(.home):not(.get){display:none}.brand small{display:none}}
 
 /* ---------- type ---------- */
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin:0 0 20px}
@@ -309,6 +311,21 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 footer nav{display:flex;gap:20px}
 footer a{text-decoration:none}footer a:hover{color:var(--cream)}
 
+/* ---------- version history ---------- */
+.log{list-style:none;margin:56px 0 0;padding:0;max-width:860px}
+.log > li{position:relative;display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 40px;padding:32px 0;border-top:1px solid var(--line)}
+.log > li:last-child{border-bottom:1px solid var(--line)}
+.log .ver{margin:0;font-family:var(--font-latin);font-weight:800;font-size:34px;line-height:1.1;color:var(--cream)}
+.log time{display:block;margin-top:6px;font-size:14px;color:var(--faint)}
+.log .now{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:.12em;color:var(--gold-ink);background:var(--gold);padding:3px 10px;border-radius:999px;font-weight:700}
+.log li:not(.latest) .ver{color:var(--muted)}
+.log h3{font-family:var(--font-display);font-size:22px;margin:0 0 10px;line-height:1.35}
+.log ul{margin:0;padding:0;list-style:none;color:var(--muted);font-size:16px}
+.log ul li{position:relative;padding:4px 0 4px 20px}
+.log ul li::before{content:"";position:absolute;left:2px;top:15px;width:7px;height:7px;border-radius:2px;background:var(--gold-2);transform:rotate(45deg)}
+.log .note{margin:14px 0 0;padding:12px 16px;border-radius:14px;background:rgba(233,196,126,.08);border:1px solid rgba(233,196,126,.25);color:var(--cream);font-size:15px}
+@media (max-width:700px){.log > li{grid-template-columns:1fr;gap:16px}.log .ver{font-size:28px}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}
@@ -333,8 +350,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <a href="#modes">三種玩法</a>
       <a href="#fair">公平</a>
       <a href="#privacy-promise">隱私</a>
-      <a href="#support">支援</a>
+      <a href="#versions">更新</a>
+<a href="#support">支援</a>
       <a class="home" href="/">Marlon Ou</a>
+      <a class="get" href="https://apps.apple.com/tw/app/%E8%86%A8%E9%A2%A8%E7%9B%85/id6835320625">App Store</a>
     </nav>
   </div>
 </header>
@@ -348,11 +367,11 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <h1 id="hero-h" class="rv" style="--i:1"><span class="nw">搖、瞇、開，</span><br><span class="nw"><em>膨風到底</em>。</span></h1>
         <p class="lede rv" style="--i:2">膨風盅是放在口袋裡的骰盅。拿起手機搖一搖，骰子就在盅裡滾；掀起盅邊偷瞇一眼，上滑開盅，點數自動算好。</p>
         <div class="hero__cta rv" style="--i:3">
-          <a class="btn btn--gold" href="#ritual">看怎麼玩<svg aria-hidden="true"><use href="#arr"/></svg></a>
-          <a class="btn btn--ghost" href="#modes">三種玩法</a>
+          <a class="btn btn--gold" href="https://apps.apple.com/tw/app/%E8%86%A8%E9%A2%A8%E7%9B%85/id6835320625">在 App Store 免費下載<svg aria-hidden="true"><use href="#arr"/></svg></a>
+          <a class="btn btn--ghost" href="#ritual">看怎麼玩</a>
         </div>
         <ul class="facts rv" style="--i:4">
-          <li>1 到 12 顆骰子</li><li>沒有廣告</li><li>不收集任何資料</li><li>iOS 17 以上</li>
+          <li>免費</li><li>1 到 12 顆骰子</li><li>沒有廣告</li><li>不收集任何資料</li><li>iOS 17 以上</li>
         </ul>
       </div>
       <div class="table rv" style="--i:2" id="table">
@@ -449,7 +468,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
           <span class="tag">搖相呼應</span>
           <h3>全桌一起開盅</h3>
           <p>2 到 8 支手機圍成一桌，任何人開盅，全桌同時開。</p>
-          <ul><li>輸入桌號就加入，不用帳號</li><li>輪到你才能喊，也能用喊的叫骰</li><li>自動統計全桌點數、判定輸贏</li></ul>
+          <ul><li>輸入桌號或掃 QR code 就加入，不用帳號</li><li>沒有 Wi-Fi 也能在 1 秒左右連上</li><li>輪到你才能喊，也能用喊的叫骰</li><li>自動統計全桌點數、判定輸贏</li></ul>
           <div class="shot-wrap"><img class="shot" src="img/06-result.jpg" alt="搖相呼應：開盅後顯示「你贏了」，以及全桌各點數的統計" width="552" height="1200" loading="lazy"></div>
         </article>
       </div>
@@ -535,7 +554,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <figure><img src="img/02-peek.jpg" alt="骰盅掀起一角，露出幾顆骰子" width="552" height="1200" loading="lazy"><figcaption><b>瞇</b>掀起一角偷看</figcaption></figure>
       <figure><img src="img/03-revealed.jpg" alt="開盅後綠色氈面上的骰子，下方列出每個點數的數量與合計" width="552" height="1200" loading="lazy"><figcaption><b>開</b>點數自動算好</figcaption></figure>
       <figure><img src="img/04-liar.jpg" alt="大話骰對局畫面" width="552" height="1200" loading="lazy"><figcaption><b>大話骰</b>跟 AI 對吹</figcaption></figure>
-      <figure><img src="img/05-table.jpg" alt="搖相呼應的同桌畫面，顯示桌號與在場玩家" width="552" height="1200" loading="lazy"><figcaption><b>搖相呼應</b>輸入桌號就加入</figcaption></figure>
+      <figure><img src="img/05-table.jpg" alt="搖相呼應的同桌畫面，顯示桌號與在場玩家" width="552" height="1200" loading="lazy"><figcaption><b>搖相呼應</b>輸入桌號或掃碼加入</figcaption></figure>
       <figure><img src="img/06-result.jpg" alt="同桌開盅結果：你贏了" width="552" height="1200" loading="lazy"><figcaption><b>輸贏</b>一開盅就知道</figcaption></figure>
     </div>
     <div class="reel-ctl"><button type="button" data-dir="-1" aria-label="上一張"><svg><use href="#left"/></svg></button><button type="button" data-dir="1" aria-label="下一張"><svg><use href="#right"/></svg></button></div>
@@ -550,7 +569,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <h2 class="h2 rv" id="pv-h" style="--i:1">沒有帳號，沒有廣告，<br><em>什麼都不收</em>。</h2>
         <ul class="plist">
           <li class="rv"><b>紀錄只在你的手機</b><span>設定和回合紀錄存在裝置上，刪掉 App 就一起刪除。</span></li>
-          <li class="rv" style="--i:1"><b>同桌直接連線</b><span>同一個 Wi-Fi 或藍牙範圍內，手機之間加密直連，不經過伺服器。</span></li>
+          <li class="rv" style="--i:1"><b>同桌直接連線</b><span>附近的手機之間加密直連，沒有 Wi-Fi 也能連，不經過伺服器。</span></li>
           <li class="rv" style="--i:2"><b>聲控在手機上辨識</b><span>喊「五個六」叫骰時，聲音不會錄下，也不會上傳。</span></li>
           <li class="rv" style="--i:3"><b>沒有真錢</b><span>不含下注、籌碼或任何可兌換的虛擬貨幣。</span></li>
         </ul>
@@ -571,16 +590,53 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
     </div>
   </section>
 
+  <!-- version history -->
+  <section class="sec" id="versions" aria-labelledby="ver-h" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow rv">版本紀錄</p>
+      <h2 class="h2 rv" id="ver-h" style="--i:1">每一版，<em>改了什麼</em>。</h2>
+      <ol class="log" reversed>
+        <li class="latest rv">
+          <div><p class="ver">1.1.0</p><time datetime="2026-11-20">2026 年 11 月 20 日</time><span class="now">目前版本</span></div>
+          <div>
+            <h3>同桌加入快很多，還能掃碼</h3>
+            <ul>
+              <li>「搖相呼應」加入快很多：沒有 Wi-Fi 也能在 1 秒左右連上</li>
+              <li>開桌後可以顯示 QR code，朋友用相機一掃就加入</li>
+              <li>聲控叫骰喊的不合規則時，會告訴你原因</li>
+              <li>修正開啟「放大顯示」時畫面超出螢幕</li>
+              <li>遊玩時螢幕不會自動變暗或鎖定</li>
+            </ul>
+            <p class="note">同桌模式需要大家都更新到 1.1.0 才能一起玩。</p>
+          </div>
+        </li>
+        <li class="rv" style="--i:1">
+          <div><p class="ver">1.0.0</p><time datetime="2026-11-19">2026 年 11 月 19 日</time></div>
+          <div>
+            <h3>第一版上架</h3>
+            <ul>
+              <li>搖手機擲骰、拖曳盅緣瞇骰、上滑開盅，1 到 12 顆骰子</li>
+              <li>大話骰規則引擎，和 1 到 5 位 AI 對戰，三種難度</li>
+              <li>「搖相呼應」同桌模式：2 到 8 支手機輪流叫骰、全桌同步開盅、自動判輸贏</li>
+              <li>聲控叫骰，完全在手機上辨識</li>
+              <li>沒有廣告、不收集任何資料</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <!-- final -->
   <section class="sec final" aria-labelledby="final-h">
     <div class="wrap">
       <img class="rv" src="/img/bluffrog-icon-384.jpg" alt="膨風盅 App 圖示" width="112" height="112" loading="lazy">
       <h2 class="h2 rv" id="final-h" style="--i:1">下次聚會，<br>骰盅<em>放在口袋裡</em>。</h2>
       <div class="btns rv" style="--i:2">
-        <a class="btn btn--gold" href="mailto:quchu.app@gmail.com?subject=%E8%86%A8%E9%A2%A8%E7%9B%85%20%E4%B8%8A%E6%9E%B6%E9%80%9A%E7%9F%A5">上架時通知我<svg aria-hidden="true"><use href="#mail"/></svg></a>
+        <a class="btn btn--gold" href="https://apps.apple.com/tw/app/%E8%86%A8%E9%A2%A8%E7%9B%85/id6835320625">在 App Store 免費下載<svg aria-hidden="true"><use href="#arr"/></svg></a>
         <a class="btn btn--ghost" href="#support">支援與隱私權</a>
       </div>
-      <small class="rv" style="--i:3">準備上架 App Store・iOS 17 以上的 iPhone 與 iPad・免費</small>
+      <small class="rv" style="--i:3">已在 App Store 上架・1.1 版・免費・4 歲以上・iOS 17 以上的 iPhone 與 iPad</small>
     </div>
   </section>
 
@@ -591,13 +647,15 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <h2>支援</h2>
         <p class="meta">遇到問題或有建議，寫信到 <a href="mailto:quchu.app@gmail.com?subject=%E8%86%A8%E9%A2%A8%E7%9B%85%20%E5%95%8F%E9%A1%8C%E5%9B%9E%E5%A0%B1">quchu.app@gmail.com</a>，通常兩天內回覆。</p>
         <details><summary>搖手機沒有反應？</summary><p>到 App 的「設定」把搖晃靈敏度調高，或直接按畫面下方的「搖」。大話骰叫骰階段不能重搖，這是規則。</p></details>
-        <details><summary>同桌模式找不到桌子？</summary><p>所有手機需在同一個 Wi-Fi，或彼此在藍牙範圍內，並允許膨風盅使用「區域網路」。開桌的人把四位數桌號告訴大家，其他人輸入即可加入。</p></details>
+        <details><summary>同桌模式找不到桌子？</summary><p>先確認大家都更新到 1.1.0 以上（1.1 換了新的連線方式，和 1.0 不相通），並允許膨風盅使用「區域網路」。手機靠近一點、打開 Wi-Fi 即可，不一定要連上同一個網路；連上同一個 Wi-Fi 最快。開桌的人把四位數桌號告訴大家，或顯示 QR code 讓朋友掃。</p></details>
+        <details><summary>掃 QR code 沒有反應？</summary><p>用 iPhone 內建的「相機」掃開桌畫面上的 QR code，點跳出的連結就會打開膨風盅並加入那一桌。掃的人要先裝好膨風盅；還沒裝的話，先到 App Store 下載。</p></details>
         <details><summary>聲控叫骰怎麼用？</summary><p>在同桌畫面打開麥克風開關，輪到你時直接喊「五個六」就會自動叫骰。需要支援裝置端語音辨識的 iPhone，不支援時不會出現這個開關。</p></details>
         <details><summary>可以只用按鈕玩嗎？</summary><p>可以。搖、瞇、開都有對應按鈕，也支援 VoiceOver。</p></details>
+        <details><summary>玩的時候螢幕會自己變暗嗎？</summary><p>從 1.1 版開始，膨風盅開在前景時螢幕不會變暗或自動鎖定；切到別的 App 就恢復系統設定。</p></details>
       </article>
       <article class="doc rv" style="--i:1" id="privacy">
         <h2>隱私權政策</h2>
-        <p class="meta">最後更新：2026 年 11 月 16 日</p>
+        <p class="meta">最後更新：2026 年 11 月 20 日</p>
         <p>膨風盅（以下稱「本 App」）不收集、不儲存於伺服器、也不與任何第三方分享你的個人資料。本 App 沒有帳號、沒有廣告，也沒有任何分析或追蹤工具。</p>
         <h3>我們收集的資料</h3>
         <p>沒有。本 App 不會把任何資料傳送給開發者或第三方。</p>
@@ -605,7 +663,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <ul><li>你的設定（骰子數、規則選項、音效與震動開關等）</li><li>回合紀錄（最多保留最近 200 筆）</li><li>你在同桌模式輸入的暱稱</li></ul>
         <p>以上資料只存在你的手機或平板上，刪除 App 即一併刪除。</p>
         <h3>同桌模式「搖相呼應」</h3>
-        <p>這個模式會透過 Wi-Fi 或藍牙，在附近的裝置之間直接傳送暱稱、桌規、叫骰與骰值。這些資料只在同桌的裝置之間以加密連線傳送，不經過任何伺服器，開發者無法取得。</p>
+        <p>這個模式會透過區域網路或點對點 Wi-Fi，在附近的裝置之間直接傳送暱稱、桌規、叫骰與骰值。這些資料只在同桌的裝置之間以加密連線傳送，不經過任何伺服器，開發者無法取得。</p>
         <h3>權限</h3>
         <ul><li><b>區域網路</b>：同桌模式搜尋並連接附近的裝置。</li><li><b>麥克風與語音辨識</b>：只用於你主動開啟的聲控叫骰，完全在裝置上辨識，不錄音、不儲存、不上傳。</li><li><b>動作感測</b>：偵測搖晃手機來擲骰，數據只在當下使用，不會儲存。</li></ul>
         <p>你可以隨時在系統「設定」中關閉上述權限，所有功能仍可用按鈕與手動輸入操作。</p>
@@ -621,7 +679,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
 <footer>
   <div class="wrap">
     <span>© 2026 膨風盅 Bluffrog・Marlon Ou</span>
-    <nav aria-label="頁尾"><a href="#support">支援</a><a href="#privacy">隱私權政策</a><a href="/">其他作品</a></nav>
+    <nav aria-label="頁尾"><a href="#support">支援</a><a href="#privacy">隱私權政策</a><a href="https://apps.apple.com/tw/app/%E8%86%A8%E9%A2%A8%E7%9B%85/id6835320625">App Store</a><a href="/">其他作品</a></nav>
   </div>
 </footer>
 
