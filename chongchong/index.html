@@ -393,6 +393,21 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}
 }
+/* version history */
+.log{list-style:none;margin:56px 0 0;padding:0;max-width:880px}
+.log > li{display:grid;grid-template-columns:180px minmax(0,1fr);gap:8px 40px;padding:32px 0;border-top:1px solid var(--line)}
+.log > li:last-child{border-bottom:1px solid var(--line)}
+.log .ver{margin:0;font-family:var(--font-latin);font-weight:800;font-size:34px;line-height:1.1;color:var(--ink)}
+.log li:not(.latest) .ver{color:var(--muted)}
+.log time{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+.log .state{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--brand);background:var(--chip)}
+.log .state.now{color:var(--on-brand);background:var(--brand)}
+.log h3{font-family:var(--font-display);font-weight:400;font-size:22px;margin:0 0 10px;line-height:1.35}
+.log ul{margin:0;padding:0;list-style:none;color:var(--muted);font-size:16px}
+.log ul li{position:relative;padding:4px 0 4px 20px}
+.log ul li::before{content:"";position:absolute;left:3px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--brand)}
+.log .note{margin:14px 0 0;padding:12px 16px;border-radius:14px;background:var(--chip);color:var(--ink);font-size:15px}
+@media (max-width:700px){.log > li{grid-template-columns:1fr;gap:14px}.log .ver{font-size:28px}}
 .new-tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;line-height:1.6;vertical-align:2px;color:var(--brand);background:color-mix(in srgb,var(--brand) 14%,transparent)}
 </style>
 </head>
@@ -447,6 +462,7 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
       <a href="#features">功能</a>
       <a href="#screens">畫面</a>
       <a href="#privacy-promise">隱私</a>
+      <a href="#versions">更新</a>
       <a href="#support">支援</a>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="切換深色模式"><svg aria-hidden="true"><use href="#moon"/></svg></button>
       <a class="home" href="/" aria-label="回到 Marlon Ou 首頁"><svg aria-hidden="true"><use href="#house"/></svg>Marlon Ou</a>
@@ -695,6 +711,55 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
     </div>
   </section>
 
+  <!-- version history -->
+  <section class="sec" id="versions" aria-labelledby="ver-h">
+    <div class="wrap">
+      <p class="eyebrow rv">版本紀錄</p>
+      <h2 class="h2 rv" id="ver-h" style="--i:1">每一版，<em>改了什麼</em>。</h2>
+      <ol class="log" reversed>
+        <li class="rv">
+          <div><p class="ver">1.2.0</p><time datetime="2026-11-20">2026 年 11 月</time><span class="state">即將推出</span></div>
+          <div>
+            <h3>家人加入更順，庫存更好用</h3>
+            <ul>
+              <li>點家人傳來的邀請連結就直接加入，不用先新增毛孩；加入失敗時會說明原因，可以再試一次</li>
+              <li>固定時間的事項可以設定每隔幾天做一次，例如每 3 天洗耳朵；沒輪到的日子不顯示也不提醒</li>
+              <li>餵食可以設定不扣庫存，只記下有餵</li>
+              <li>庫存新增「非耗材」：牽繩、碗、外出籠也能記下數量，不會提醒補貨</li>
+              <li>修正刪除庫存等資料、關閉邀請連結時可能閃退</li>
+            </ul>
+            <p class="note">Apple 審核通過後，就能在 App Store 更新。</p>
+          </div>
+        </li>
+        <li class="latest rv" style="--i:1">
+          <div><p class="ver">1.1.0</p><time datetime="2026-11-18">2026 年 11 月 18 日</time><span class="state now">目前版本</span></div>
+          <div>
+            <h3>紀錄月曆與主畫面小工具</h3>
+            <ul>
+              <li>「紀錄」可以切換成月曆，每天用毛孩的顏色標出誰有紀錄，點一下看那天全家記了什麼</li>
+              <li>疫苗驅蟲到期、療程最後一天會先標在月曆上</li>
+              <li>「開始使用」多了加入主畫面小工具的步驟，不打開 App 也看得到今天還有哪些事</li>
+              <li>上傳了照片的毛孩，會在打開 App 時跟你打招呼；也能在設定換回原本的動畫或關掉</li>
+            </ul>
+          </div>
+        </li>
+        <li class="rv" style="--i:2">
+          <div><p class="ver">1.0.0</p><time datetime="2026-11-17">2026 年 11 月 17 日</time></div>
+          <div>
+            <h3>第一版上架</h3>
+            <ul>
+              <li>全家共用的「今天」：誰餵過、誰散步、藥吃了沒，有人記過再按會先問你</li>
+              <li>用藥提醒、鎖定畫面倒數，長期照護與量測曲線</li>
+              <li>疫苗驅蟲到期提醒、飲食限制與禁食、分工輪值</li>
+              <li>飼料與用品庫存、補貨提醒，走失協尋海報、保母交接卡</li>
+              <li>不用帳號、沒有廣告，資料只在你和家人的 iCloud</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <!-- final -->
   <section class="sec final" aria-labelledby="final-h">
     <div class="wrap">
@@ -714,7 +779,7 @@ footer .note{flex-basis:100%;margin:0;font-size:13px}
       <article class="doc rv" id="support">
         <h2>支援</h2>
         <p class="meta">遇到問題或有建議，寫信到 <a href="mailto:quchu.app@gmail.com?subject=%E5%AF%B5%E5%AF%B5%E6%AC%B2%E5%8B%95%20%E5%95%8F%E9%A1%8C%E5%9B%9E%E5%A0%B1">quchu.app@gmail.com</a>，通常幾天內回覆。</p>
-        <details><summary>怎麼邀請家人一起記？</summary><p>到「家與家人」按「邀請」，把連結傳給家人。對方需要 iPhone 或 iPad、登入 iCloud 並安裝寵寵欲動；不一定要是家庭成員，朋友也可以。</p></details>
+        <details><summary>怎麼邀請家人一起記？</summary><p>到「家與家人」按「邀請」，把連結傳給家人。對方需要 iPhone 或 iPad、登入 iCloud 並安裝寵寵欲動；不一定要是家庭成員，朋友也可以。從 1.2 起，家人第一次打開 App 就點連結也能直接加入，不用先新增毛孩。</p></details>
         <details><summary>家人用 Android 可以加入嗎？</summary><p>目前沒辦法。臨時請對方幫忙照顧時，可以在毛孩頁傳「保母交接卡」給他。</p></details>
         <details><summary>保母只幫忙幾天，會看到花費嗎？</summary><p>點成員設為「臨時照顧者」：可以打卡、記錄，但畫面上看不到支出與理賠，期間最後一天早上 9 點提醒你移除。不想讓金額離開這個家，改傳「保母交接卡」，不要邀請加入。</p></details>
         <details><summary>時段過了還沒人記，會怎樣？</summary><p>到你設定的時間還沒人記錄，會通知全家。指定了負責人或代班，通知會寫出這次由誰負責；誰記錄都算完成。</p></details>
