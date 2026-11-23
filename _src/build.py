@@ -11,17 +11,17 @@ LANGS = {
     "zh": {"dir": "whereto/", "html": "zh-Hant-TW", "brand": "去處", "nav": ["首頁", "支援", "隱私權"], "navlabel": "網站",
            "links": ["功能", "隱私", "價格"], "footer": ["支援", "隱私權政策"], "copy": "© 2026 去處 Whereto", "switch": "語言",
            "skip": "跳到主要內容", "get": "下載", "store": "在 App Store 查看",
-           "theme": ["切換深色模式", "切換淺色模式"], "tagline": "每張照片，都有去處。",
+           "theme": ["切換深色模式", "切換淺色模式"], "tagline": "每張照片，都有去處。", "homeLabel": "回到 Marlon Ou 首頁", "more": "其他作品",
            "fonts": "family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Serif+TC:wght@500;700;900"},
     "en": {"dir": "whereto/en/", "html": "en", "brand": "Whereto", "nav": ["Home", "Support", "Privacy"], "navlabel": "Site",
            "links": ["Features", "Privacy", "Pricing"], "footer": ["Support", "Privacy Policy"], "copy": "© 2026 Whereto", "switch": "Language",
            "skip": "Skip to content", "get": "Get the app", "store": "View on the App Store",
-           "theme": ["Switch to dark mode", "Switch to light mode"], "tagline": "Every photo has somewhere to go.",
+           "theme": ["Switch to dark mode", "Switch to light mode"], "tagline": "Every photo has somewhere to go.", "homeLabel": "Back to Marlon Ou home", "more": "More apps",
            "fonts": "family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400"},
     "ja": {"dir": "whereto/ja/", "html": "ja", "brand": "Whereto", "nav": ["ホーム", "サポート", "プライバシー"], "navlabel": "サイト",
            "links": ["機能", "プライバシー", "価格"], "footer": ["サポート", "プライバシーポリシー"], "copy": "© 2026 Whereto", "switch": "言語",
            "skip": "本文へ移動", "get": "入手", "store": "App Store で見る",
-           "theme": ["ダークモードに切り替え", "ライトモードに切り替え"], "tagline": "すべての写真に、行き先を。",
+           "theme": ["ダークモードに切り替え", "ライトモードに切り替え"], "tagline": "すべての写真に、行き先を。", "homeLabel": "Marlon Ou のホームへ", "more": "ほかの作品",
            "fonts": "family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Serif+JP:wght@500;700;900"},
 }
 APP_STORE = "https://apps.apple.com/app/id6830008884"
@@ -102,6 +102,7 @@ if(l.indexOf('zh')!==0){location.replace(l.indexOf('ja')===0?'/whereto/ja/':'/wh
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
       </button>
       <a class="btn btn-sm" href="{APP_STORE}">{L["get"]}</a>
+      <a class="home-link" href="/" aria-label="{L["homeLabel"]}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z"/></svg><span>Marlon Ou</span></a>
     </div>
   </div>
 </header>
@@ -119,6 +120,7 @@ if(l.indexOf('zh')!==0){location.replace(l.indexOf('ja')===0?'/whereto/ja/':'/wh
       <a href="{url(lang, "privacy")}">{L["footer"][1]}</a>
       <a href="{APP_STORE}">{L["store"]}</a>
       <a href="mailto:quchu.app@gmail.com">quchu.app@gmail.com</a>
+      <a href="/">{L["more"]}</a>
     </nav>
     <p class="foot-copy">{L["copy"]}</p>
   </div>

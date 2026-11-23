@@ -6,7 +6,7 @@
     <div class="beam" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow rv"><span class="exif"><i></i>v1.3・App Store</span>照片整理與傳輸・iPhone 與 iPad</p>
+        <p class="eyebrow rv"><span class="exif"><i></i>v1.4・App Store</span>照片整理與傳輸・iPhone 與 iPad</p>
         <h1 class="display" data-in>
           <span class="line"><span>每張照片，</span></span>
           <span class="line" style="--i:1"><span>都有<em>去處</em>。</span></span>
@@ -105,6 +105,7 @@
           <p>照片一張一張出現。左滑刪、右滑留，往上滑放進相簿，邊整理邊分類。滑錯了，按一下就復原。</p>
           <dl class="specs">
             <dt>方向</dt><dd>← 刪除・↑ 相簿・→ 保留</dd>
+            <dt>提醒</dt><dd>往年今天有照片時，中午提醒你回來看看；時間可以調整</dd>
             <dt>範圍</dt><dd>隨機、那年今日；完整版可一次勾好幾個月</dd>
             <dt>卡片</dt><dd>標示原況、連拍、喜好與檔案大小，影片直接播放</dd>
             <dt>安全</dt><dd>確認之前都不會刪除，刪掉的照片 30 天內可從「最近刪除」救回</dd>
@@ -203,7 +204,7 @@
       </article>
 
       <div class="details">
-        <div class="rv"><b>那年今日</b><p>免費版也能整理往年今天拍的照片。</p></div>
+        <div class="rv"><b>那年今日</b><p>免費版也能整理往年今天拍的照片，中午還會提醒你。</p></div>
         <div class="rv" style="--i:1"><b>喜好多問一次</b><p>標了喜好的照片，刪除前會再確認。</p></div>
         <div class="rv" style="--i:2"><b>依年月回顧</b><p>整理結果依年月分組，可以多選一次改。</p></div>
         <div class="rv" style="--i:3"><b>iPhone 與 iPad</b><p>App 跟著系統語言，支援繁中、英文與日文。</p></div>
@@ -272,21 +273,40 @@
   </section>
 
   <!-- 06 -->
-  <section class="chapter" aria-labelledby="c6" style="padding-top:0">
+  <section class="chapter" id="versions" aria-labelledby="c6" style="padding-top:0">
     <div class="wrap news">
       <div class="stick">
-        <p class="kicker rv" data-n="06">1.3 版</p>
-        <h2 class="h2 rv" id="c6" style="--i:1">這一版，<br>多了<em>這些</em>。</h2>
-        <p class="sub rv mono" style="--i:2">2026.11・iOS 26 以上</p>
+        <p class="kicker rv" data-n="06">版本紀錄</p>
+        <h2 class="h2 rv" id="c6" style="--i:1">每一版，<br>改了<em>什麼</em>。</h2>
+        <p class="sub rv mono" style="--i:2">目前 1.4 版・iOS 26 以上</p>
       </div>
-      <ol>
-        <li class="rv"><b>上滑放進相簿</b><p>整理時往上滑，邊整理邊分類，也能一次放進好幾個相簿。</p></li>
-        <li class="rv"><b>那年今日、一次整理好幾個月</b><p>免費版也能整理往年的今天；完整版可以一次勾好幾個月。</p></li>
-        <li class="rv"><b>卡片資訊更多</b><p>標示原況照片、連拍、喜好與檔案大小，影片直接在卡片上播放；喜好的照片刪除前會再問一次；在相似結果裡的照片會標出「相似 N 張」。</p></li>
-        <li class="rv"><b>整理結果依年月分組</b><p>可以多選，一次取消標記、改成保留或刪除。</p></li>
-        <li class="rv"><b>相似更好用</b><p>新增「可能模糊」，並排比較兩張同時放大；刪除副本時，相簿與喜好會轉給留下的那張。</p></li>
-        <li class="rv"><b>看大圖</b><p>可以播放原況照片，手機切到靜音時影片也有聲音。</p></li>
-        <li class="rv"><b>傳輸網頁</b><p>HEIC 照片可以轉成 JPG，沒下載到的項目會列出來、可以重試。</p></li>
+      <ol class="vlog">
+        <li class="rv latest">
+          <div class="vhead"><p class="ver">1.4.0</p><time datetime="2026-11-23">2026 年 11 月 23 日</time><span class="state">目前版本</span></div>
+          <div>
+            <h3>那年今日，會記得提醒你</h3>
+            <ul>
+              <li>往年的今天有還沒整理的照片時，中午提醒你：「8 年前的今天，相簿裡有 11 項回憶」</li>
+              <li>點提醒直接打開那天的照片；當天已經打開過 App 就不會再提醒</li>
+              <li>在「整理範圍」可以改提醒時間，或把提醒關掉</li>
+            </ul>
+          </div>
+        </li>
+        <li class="rv" style="--i:1">
+          <div class="vhead"><p class="ver">1.3.0</p><time datetime="2026-11-07">2026 年 11 月 7 日</time></div>
+          <div>
+            <h3>第一版上架</h3>
+            <ul>
+              <li><b>上滑放進相簿</b>整理時往上滑，邊整理邊分類，也能一次放進好幾個相簿。</li>
+              <li><b>那年今日、一次整理好幾個月</b>免費版也能整理往年的今天；完整版可以一次勾好幾個月。</li>
+              <li><b>卡片資訊更多</b>標示原況照片、連拍、喜好與檔案大小，影片直接在卡片上播放；喜好的照片刪除前會再問一次；在相似結果裡的照片會標出「相似 N 張」。</li>
+              <li><b>整理結果依年月分組</b>可以多選，一次取消標記、改成保留或刪除。</li>
+              <li><b>相似更好用</b>新增「可能模糊」，並排比較兩張同時放大；刪除副本時，相簿與喜好會轉給留下的那張。</li>
+              <li><b>看大圖</b>可以播放原況照片，手機切到靜音時影片也有聲音。</li>
+              <li><b>傳輸網頁</b>HEIC 照片可以轉成 JPG，沒下載到的項目會列出來、可以重試。</li>
+            </ul>
+          </div>
+        </li>
       </ol>
     </div>
   </section>

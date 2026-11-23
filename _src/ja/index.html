@@ -6,7 +6,7 @@
     <div class="beam" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow rv"><span class="exif"><i></i>v1.3・App Store</span>写真の整理と転送・iPhone と iPad</p>
+        <p class="eyebrow rv"><span class="exif"><i></i>v1.4・App Store</span>写真の整理と転送・iPhone と iPad</p>
         <h1 class="display" data-in>
           <span class="line"><span>すべての<wbr>写真に、</span></span>
           <span class="line" style="--i:1"><span><em>行き先</em>を。</span></span>
@@ -105,6 +105,7 @@
           <p>写真が1枚ずつ表示されます。左で削除、右で残す、上にスワイプでアルバムへ。整理しながら分類できます。間違えても、ワンタップで取り消せます。</p>
           <dl class="specs">
             <dt>方向</dt><dd>← 削除・↑ アルバム・→ 残す</dd>
+            <dt>通知</dt><dd>過去の今日の写真があるとお昼にお知らせ。時刻は変更できます</dd>
             <dt>範囲</dt><dd>ランダム、あの日の今日。完全版なら複数の月をまとめて選択</dd>
             <dt>カード</dt><dd>Live Photos・連写・お気に入り・ファイルサイズを表示し、ビデオはそのまま再生</dd>
             <dt>安心</dt><dd>確定するまで削除されず、削除した写真も「最近削除した項目」から30日以内なら復元できます</dd>
@@ -203,7 +204,7 @@
       </article>
 
       <div class="details">
-        <div class="rv"><b>あの日の今日</b><p>無料版でも、過去の今日に撮った写真を整理できます。</p></div>
+        <div class="rv"><b>あの日の今日</b><p>無料版でも、過去の今日に撮った写真を整理できます。お昼にお知らせも。</p></div>
         <div class="rv" style="--i:1"><b>お気に入りは再確認</b><p>お気に入りの写真は、削除の前にもう一度確認します。</p></div>
         <div class="rv" style="--i:2"><b>年月ごとに振り返り</b><p>整理の結果は年月ごとにまとまり、複数選択で一度に変更できます。</p></div>
         <div class="rv" style="--i:3"><b>iPhone と iPad</b><p>アプリはシステムの言語に合わせて日本語・英語・繁体字中国語で表示。</p></div>
@@ -269,21 +270,40 @@
   </section>
 
   <!-- 06 -->
-  <section class="chapter" aria-labelledby="c6" style="padding-top:0">
+  <section class="chapter" id="versions" aria-labelledby="c6" style="padding-top:0">
     <div class="wrap news">
       <div class="stick">
-        <p class="kicker rv" data-n="06">バージョン 1.3</p>
-        <h2 class="h2 rv" id="c6" style="--i:1">今回の<br><em>新機能</em>。</h2>
-        <p class="sub rv mono" style="--i:2">2026.11・iOS 26 以降</p>
+        <p class="kicker rv" data-n="06">バージョン履歴</p>
+        <h2 class="h2 rv" id="c6" style="--i:1">バージョンごとの<br><em>変更点</em>。</h2>
+        <p class="sub rv mono" style="--i:2">現在 1.4・iOS 26 以降</p>
       </div>
-      <ol>
-        <li class="rv"><b>上にスワイプで<wbr>アルバムへ</b><p>整理しながら分類でき、複数のアルバムにまとめて追加することもできます。</p></li>
-        <li class="rv"><b>あの日の今日・<wbr>複数の月を<wbr>まとめて</b><p>無料版でも過去の今日の写真を整理できます。完全版は複数の月をまとめて選べます。</p></li>
-        <li class="rv"><b>カードの情報が充実</b><p>Live Photos・連写・お気に入り・ファイルサイズを表示し、ビデオはカード上で再生。お気に入りは削除前にもう一度確認し、類似の結果に入っている写真には「似ている写真 N 枚」と表示します。</p></li>
-        <li class="rv"><b>整理の結果を<wbr>年月ごとに</b><p>複数選択して、まとめて取り消し・残す・削除ができます。</p></li>
-        <li class="rv"><b>類似スキャンが<wbr>もっと便利に</b><p>「ブレているかも」と、2枚を同時に拡大できる並べて比較を追加。コピーを削除すると、アルバムとお気に入りは残した写真に引き継がれます。</p></li>
-        <li class="rv"><b>大きく表示</b><p>Live Photos を再生でき、消音モードでもビデオの音が出ます。</p></li>
-        <li class="rv"><b>転送ページ</b><p>HEIC を JPG に変換でき、ダウンロードできなかった項目は再試行できます。</p></li>
+      <ol class="vlog">
+        <li class="rv latest">
+          <div class="vhead"><p class="ver">1.4.0</p><time datetime="2026-11-23">2026年11月23日</time><span class="state">最新</span></div>
+          <div>
+            <h3>あの日の今日を、お知らせ</h3>
+            <ul>
+              <li>過去の今日に未整理の写真があると、お昼に「8年前の今日：過去の今日の思い出が11件」とお知らせ</li>
+              <li>通知をタップするとその日の写真をすぐに表示。その日にすでにアプリを開いていればお知らせしません</li>
+              <li>「整理する範囲」から通知時刻の変更やオフができます</li>
+            </ul>
+          </div>
+        </li>
+        <li class="rv" style="--i:1">
+          <div class="vhead"><p class="ver">1.3.0</p><time datetime="2026-11-07">2026年11月7日</time></div>
+          <div>
+            <h3>App Store で配信開始</h3>
+            <ul>
+              <li><b>上にスワイプで<wbr>アルバムへ</b>整理しながら分類でき、複数のアルバムにまとめて追加することもできます。</li>
+              <li><b>あの日の今日・<wbr>複数の月を<wbr>まとめて</b>無料版でも過去の今日の写真を整理できます。完全版は複数の月をまとめて選べます。</li>
+              <li><b>カードの情報が充実</b>Live Photos・連写・お気に入り・ファイルサイズを表示し、ビデオはカード上で再生。お気に入りは削除前にもう一度確認し、類似の結果に入っている写真には「似ている写真 N 枚」と表示します。</li>
+              <li><b>整理の結果を<wbr>年月ごとに</b>複数選択して、まとめて取り消し・残す・削除ができます。</li>
+              <li><b>類似スキャンが<wbr>もっと便利に</b>「ブレているかも」と、2枚を同時に拡大できる並べて比較を追加。コピーを削除すると、アルバムとお気に入りは残した写真に引き継がれます。</li>
+              <li><b>大きく表示</b>Live Photos を再生でき、消音モードでもビデオの音が出ます。</li>
+              <li><b>転送ページ</b>HEIC を JPG に変換でき、ダウンロードできなかった項目は再試行できます。</li>
+            </ul>
+          </div>
+        </li>
       </ol>
     </div>
   </section>
