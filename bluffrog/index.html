@@ -469,7 +469,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
           <span class="tag">搖相呼應</span>
           <h3>全桌一起開盅</h3>
           <p>2 到 8 支手機圍成一桌，任何人開盅，全桌同時開。</p>
-          <ul><li>輸入桌號或掃 QR code 就加入，不用帳號</li><li>沒有 Wi-Fi 也能在 1 秒左右連上</li><li>輪到你才能喊，也能用喊的叫骰</li><li>自動統計全桌點數、判定輸贏</li></ul>
+          <ul><li>輸入桌號或掃 QR code 就加入，不用帳號</li><li>沒有 Wi-Fi 也能在 1 秒左右連上</li><li>按住麥克風喊「四個四」叫骰、喊「開」開盅</li><li>骰數、誰先喊、開新局，桌上誰都能按</li><li>自動統計全桌點數、判定輸贏</li></ul>
           <div class="shot-wrap"><img class="shot" src="img/06-result.jpg" alt="搖相呼應：開盅後顯示「你贏了」，以及全桌各點數的統計" width="552" height="1200" loading="lazy"></div>
         </article>
       </div>
@@ -508,7 +508,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <div>
         <p class="eyebrow rv">吉祥物</p>
         <h2 class="h2 rv" id="frog-h" style="--i:1">叫得越大，<br>水雞<em>鼓得越大</em>。</h2>
-        <p class="lede rv" style="--i:2">膨風水雞是大話骰裡陪你吹牛的青蛙。叫骰越喊越多，牠的喉嚨就越鼓；被人一把抓包，當場洩氣。</p>
+        <p class="lede rv" style="--i:2">膨風水雞是陪你吹牛的青蛙，大話骰和同桌都在。叫骰越喊越多，牠的喉嚨就越鼓；被人一把抓包，當場洩氣。</p>
         <div class="bid rv" style="--i:3">
           <div class="bid__row"><label for="qty">拖動來叫骰</label><p class="bid__say" aria-live="polite"><span class="num" id="qtyOut">3</span> 個 6</p></div>
           <input type="range" id="qty" min="1" max="10" value="3" aria-describedby="bidStatus">
@@ -555,8 +555,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <figure><img src="img/02-peek.jpg" alt="骰盅掀起一角，露出幾顆骰子" width="552" height="1200" loading="lazy"><figcaption><b>瞇</b>掀起一角偷看</figcaption></figure>
       <figure><img src="img/03-revealed.jpg" alt="開盅後綠色氈面上的骰子，下方列出每個點數的數量與合計" width="552" height="1200" loading="lazy"><figcaption><b>開</b>點數自動算好</figcaption></figure>
       <figure><img src="img/04-liar.jpg" alt="大話骰對局畫面" width="552" height="1200" loading="lazy"><figcaption><b>大話骰</b>跟 AI 對吹</figcaption></figure>
-      <figure><img src="img/05-table.jpg" alt="搖相呼應的同桌畫面，顯示桌號與在場玩家" width="552" height="1200" loading="lazy"><figcaption><b>搖相呼應</b>輸入桌號或掃碼加入</figcaption></figure>
-      <figure><img src="img/06-result.jpg" alt="同桌開盅結果：你贏了" width="552" height="1200" loading="lazy"><figcaption><b>輸贏</b>一開盅就知道</figcaption></figure>
+      <figure><img src="img/05-table.jpg" alt="搖相呼應的同桌畫面：桌號、在場玩家，輪到你叫骰" width="552" height="1200" loading="lazy"><figcaption><b>搖相呼應</b>輸入桌號或掃碼加入</figcaption></figure>
+      <figure><img src="img/06-result.jpg" alt="同桌開盅結果：膨風水雞旁顯示你贏了，下方列出全桌點數" width="552" height="1200" loading="lazy"><figcaption><b>輸贏</b>一開盅就知道</figcaption></figure>
     </div>
     <div class="reel-ctl"><button type="button" data-dir="-1" aria-label="上一張"><svg><use href="#left"/></svg></button><button type="button" data-dir="1" aria-label="下一張"><svg><use href="#right"/></svg></button></div>
   </section>
@@ -571,7 +571,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <ul class="plist">
           <li class="rv"><b>紀錄只在你的手機</b><span>設定和回合紀錄存在裝置上，刪掉 App 就一起刪除。</span></li>
           <li class="rv" style="--i:1"><b>同桌直接連線</b><span>附近的手機之間加密直連，沒有 Wi-Fi 也能連，不經過伺服器。</span></li>
-          <li class="rv" style="--i:2"><b>聲控在手機上辨識</b><span>喊「五個六」叫骰時，聲音不會錄下，也不會上傳。</span></li>
+          <li class="rv" style="--i:2"><b>聲控在手機上辨識</b><span>只在按住麥克風時聽，聲音不會錄下，也不會上傳。</span></li>
           <li class="rv" style="--i:3"><b>沒有真錢</b><span>不含下注、籌碼或任何可兌換的虛擬貨幣。</span></li>
         </ul>
       </div>
@@ -597,8 +597,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <p class="eyebrow rv">版本紀錄</p>
       <h2 class="h2 rv" id="ver-h" style="--i:1">每一版，<em>改了什麼</em>。</h2>
       <ol class="log" reversed>
-        <li class="rv">
-          <div><p class="ver">1.2.0</p><time datetime="2026-11">2026 年 11 月</time><span class="soon">即將推出</span></div>
+        <li class="latest rv">
+          <div><p class="ver">1.2.0</p><time datetime="2026-11-25">2026 年 11 月 25 日</time><span class="now">目前版本</span></div>
           <div>
             <h3>「搖相呼應」大更新</h3>
             <ul>
@@ -611,11 +611,11 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
               <li>小螢幕手機版面更寬鬆，暱稱最多 6 個字</li>
               <li>修正新局搖骰時骰子飛出骰盅</li>
             </ul>
-            <p class="note">同桌模式需要大家都更新到 1.2.0 才能一起玩。Apple 審核通過後，就能在 App Store 更新。</p>
+            <p class="note">同桌模式需要大家都更新到 1.2.0 才能一起玩。</p>
           </div>
         </li>
-        <li class="latest rv" style="--i:1">
-          <div><p class="ver">1.1.1</p><time datetime="2026-11-24">2026 年 11 月 24 日</time><span class="now">目前版本</span></div>
+        <li class="rv" style="--i:1">
+          <div><p class="ver">1.1.1</p><time datetime="2026-11-24">2026 年 11 月 24 日</time></div>
           <div>
             <h3>iOS 17 也能順利同桌</h3>
             <ul>
@@ -664,7 +664,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <a class="btn btn--gold" href="https://apps.apple.com/tw/app/%E8%86%A8%E9%A2%A8%E7%9B%85/id6835320625">在 App Store 免費下載<svg aria-hidden="true"><use href="#arr"/></svg></a>
         <a class="btn btn--ghost" href="#support">支援與隱私權</a>
       </div>
-      <small class="rv" style="--i:3">已在 App Store 上架・1.1.1 版・免費・4 歲以上・iOS 17 以上的 iPhone 與 iPad</small>
+      <small class="rv" style="--i:3">已在 App Store 上架・1.2 版・免費・4 歲以上・iOS 17 以上的 iPhone 與 iPad</small>
     </div>
   </section>
 
@@ -675,9 +675,9 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <h2>支援</h2>
         <p class="meta">遇到問題或有建議，寫信到 <a href="mailto:quchu.app@gmail.com?subject=%E8%86%A8%E9%A2%A8%E7%9B%85%20%E5%95%8F%E9%A1%8C%E5%9B%9E%E5%A0%B1">quchu.app@gmail.com</a>，通常兩天內回覆。</p>
         <details><summary>搖手機沒有反應？</summary><p>到 App 的「設定」把搖晃靈敏度調高，或直接按畫面下方的「搖」。大話骰叫骰階段不能重搖，這是規則。</p></details>
-        <details><summary>同桌模式找不到桌子？</summary><p>先確認大家都更新到 1.1.0 以上（1.1 換了新的連線方式，和 1.0 不相通），並允許膨風盅使用「區域網路」。手機靠近一點、打開 Wi-Fi 即可，不一定要連上同一個網路；連上同一個 Wi-Fi 最快。開桌的人把四位數桌號告訴大家，或顯示 QR code 讓朋友掃。iOS 17 的手機請更新到 1.1.1，連不上時畫面會直接寫出原因。</p></details>
-        <details><summary>掃 QR code 沒有反應？</summary><p>用 iPhone 內建的「相機」掃開桌畫面上的 QR code，點跳出的連結就會打開膨風盅並加入那一桌。掃的人要先裝好膨風盅；還沒裝的話，先到 App Store 下載。</p></details>
-        <details><summary>聲控叫骰怎麼用？</summary><p>在同桌畫面打開麥克風開關，輪到你時直接喊「五個六」就會自動叫骰。需要支援裝置端語音辨識的 iPhone，不支援時不會出現這個開關。</p></details>
+        <details><summary>同桌模式找不到桌子？</summary><p>先確認大家都更新到 1.2.0（不同版本的同桌模式不相通），並允許膨風盅使用「區域網路」。手機靠近一點、打開 Wi-Fi 即可，不一定要連上同一個網路；連上同一個 Wi-Fi 最快。開桌的人把四位數桌號告訴大家，或顯示 QR code 讓朋友掃。連不上時畫面會直接寫出原因。</p></details>
+        <details><summary>怎麼掃 QR code 加入？</summary><p>在膨風盅的加入畫面按「掃 QR code 加入」，對準開桌那支手機上的 QR code 就會加入（第一次會詢問相機權限）。也可以用 iPhone 內建的「相機」掃，點跳出的連結就會打開膨風盅；掃的人要先裝好膨風盅。</p></details>
+        <details><summary>聲控叫骰怎麼用？</summary><p>在同桌畫面按住麥克風說話，放開就送出：說「四個四」叫骰，說「開」「抓」「不信」「騙人」開盅。說的不合規則時會告訴你原因。用喊的開盅可以在房間設定關掉；需要支援裝置端語音辨識的 iPhone，不支援時不會出現麥克風。</p></details>
         <details><summary>可以只用按鈕玩嗎？</summary><p>可以。搖、瞇、開都有對應按鈕，也支援 VoiceOver。</p></details>
         <details><summary>玩的時候螢幕會自己變暗嗎？</summary><p>從 1.1 版開始，膨風盅開在前景時螢幕不會變暗或自動鎖定；切到別的 App 就恢復系統設定。</p></details>
       </article>
