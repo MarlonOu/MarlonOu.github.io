@@ -597,7 +597,21 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <p class="eyebrow rv">版本紀錄</p>
       <h2 class="h2 rv" id="ver-h" style="--i:1">每一版，<em>改了什麼</em>。</h2>
       <ol class="log" reversed>
-        <li class="latest rv">
+        <li class="rv">
+          <div><p class="ver">1.3.0</p><span class="soon">即將推出</span></div>
+          <div>
+            <h3>膨風水雞大改版</h3>
+            <ul>
+              <li>膨風水雞重新畫過，App 圖示也換上新造型</li>
+              <li>同桌新增表情：嘲諷、大笑、生氣、得意、哭哭、嚇到，點桌號旁的笑臉就能丟給全桌</li>
+              <li>每局結算公布「膨風水雞王」，看誰手上沒幾顆卻喊最大</li>
+              <li>新增「聲控訓練」（設定 → 聲控）：念幾句，聲控就聽得懂你的口音</li>
+              <li>按住麥克風一碰就開始聽，開頭也比較不會被吃掉</li>
+            </ul>
+            <p class="note">表情與膨風水雞王需要大家都更新到 1.3.0。Apple 審核通過後，就能在 App Store 更新。</p>
+          </div>
+        </li>
+        <li class="latest rv" style="--i:1">
           <div><p class="ver">1.2.0</p><time datetime="2026-11-25">2026 年 11 月 25 日</time><span class="now">目前版本</span></div>
           <div>
             <h3>「搖相呼應」大更新</h3>
@@ -614,7 +628,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
             <p class="note">同桌模式需要大家都更新到 1.2.0 才能一起玩。</p>
           </div>
         </li>
-        <li class="rv" style="--i:1">
+        <li class="rv" style="--i:2">
           <div><p class="ver">1.1.1</p><time datetime="2026-11-24">2026 年 11 月 24 日</time></div>
           <div>
             <h3>iOS 17 也能順利同桌</h3>
@@ -624,7 +638,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
             </ul>
           </div>
         </li>
-        <li class="rv" style="--i:2">
+        <li class="rv" style="--i:3">
           <div><p class="ver">1.1.0</p><time datetime="2026-11-20">2026 年 11 月 20 日</time></div>
           <div>
             <h3>同桌加入快很多，還能掃碼</h3>
@@ -638,7 +652,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
             <p class="note">同桌模式需要大家都更新到 1.1.0 才能一起玩。</p>
           </div>
         </li>
-        <li class="rv" style="--i:3">
+        <li class="rv" style="--i:4">
           <div><p class="ver">1.0.0</p><time datetime="2026-11-19">2026 年 11 月 19 日</time></div>
           <div>
             <h3>第一版上架</h3>
@@ -683,7 +697,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       </article>
       <article class="doc rv" style="--i:1" id="privacy">
         <h2>隱私權政策</h2>
-        <p class="meta">最後更新：2026 年 11 月 25 日</p>
+        <p class="meta">最後更新：2026 年 11 月 26 日</p>
         <p>膨風盅（以下稱「本 App」）不收集、不儲存於伺服器、也不與任何第三方分享你的個人資料。本 App 沒有帳號、沒有廣告，也沒有任何分析或追蹤工具。</p>
         <h3>我們收集的資料</h3>
         <p>沒有。本 App 不會把任何資料傳送給開發者或第三方。</p>
@@ -693,7 +707,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <h3>同桌模式「搖相呼應」</h3>
         <p>這個模式會透過區域網路或點對點 Wi-Fi，在附近的裝置之間直接傳送暱稱、桌規、叫骰與骰值。這些資料只在同桌的裝置之間以加密連線傳送，不經過任何伺服器，開發者無法取得。</p>
         <h3>權限</h3>
-        <ul><li><b>區域網路</b>：同桌模式搜尋並連接附近的裝置。</li><li><b>麥克風與語音辨識</b>：只用於同桌模式中你按住麥克風時的聲控，認出「幾個幾」「開」這類叫骰與開盅；完全在裝置上辨識，不錄音、不儲存、不上傳。</li><li><b>相機</b>：只用於你在同桌模式按「掃 QR code 加入」時，認出別人手機上的桌號 QR code；畫面只在裝置上辨識，不拍照、不錄影、不儲存也不上傳。</li><li><b>動作感測</b>：偵測搖晃手機來擲骰，數據只在當下使用，不會儲存。</li></ul>
+        <ul><li><b>區域網路</b>：同桌模式搜尋並連接附近的裝置。</li><li><b>麥克風與語音辨識</b>：只用於同桌模式中你按住麥克風時的聲控，認出「幾個幾」「開」這類叫骰與開盅；完全在裝置上辨識，不錄音、不儲存、不上傳。使用「聲控訓練」時，只在這支手機的設定裡記下辨識結果與正確說法的文字對照（例如「是 → 四」），不保存聲音，可以隨時在設定中清除。</li><li><b>相機</b>：只用於你在同桌模式按「掃 QR code 加入」時，認出別人手機上的桌號 QR code；畫面只在裝置上辨識，不拍照、不錄影、不儲存也不上傳。</li><li><b>動作感測</b>：偵測搖晃手機來擲骰，數據只在當下使用，不會儲存。</li></ul>
         <p>你可以隨時在系統「設定」中關閉上述權限，所有功能仍可用按鈕與手動輸入操作。</p>
         <h3>兒童隱私</h3>
         <p>本 App 不收集任何人的個人資料，包括兒童。</p>
