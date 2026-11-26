@@ -220,6 +220,12 @@ h1 em,.h2 em{font-style:normal;background:linear-gradient(100deg,#FFE3A6 0%,var(
 .frog__stage.busted #sac{transition:transform .9s cubic-bezier(.3,1.8,.4,1);transform:scale(.18)}
 .frog__stage.busted #frogBody{transform:scale(.97) translateY(4px)}
 .frog__stage.busted .sweat{opacity:1;transform:translateY(0)}
+#shades{transform-box:fill-box;transform-origin:50% 50%;transition:transform .6s var(--ease-spring)}
+.frog__stage .m-down,.frog__stage .brows{opacity:0;transition:opacity .3s}
+.frog__stage .m-up{transition:opacity .3s}
+.frog__stage.busted .m-up{opacity:0}
+.frog__stage.busted .m-down,.frog__stage.busted .brows{opacity:1}
+.frog__stage.busted #shades{transform:translateY(13px) rotate(-9deg)}
 .sweat{opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .4s}
 .bid{margin-top:36px;padding:24px;border-radius:var(--r-m);background:var(--card);border:1px solid var(--line)}
 .bid__row{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
@@ -469,7 +475,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
           <span class="tag">搖相呼應</span>
           <h3>全桌一起開盅</h3>
           <p>2 到 8 支手機圍成一桌，任何人開盅，全桌同時開。</p>
-          <ul><li>輸入桌號或掃 QR code 就加入，不用帳號</li><li>沒有 Wi-Fi 也能在 1 秒左右連上</li><li>按住麥克風喊「四個四」叫骰、喊「開」開盅</li><li>骰數、誰先喊、開新局，桌上誰都能按</li><li>自動統計全桌點數、判定輸贏</li></ul>
+          <ul><li>輸入桌號或掃 QR code 就加入，不用帳號</li><li>沒有 Wi-Fi 也能在 1 秒左右連上</li><li>按住麥克風喊「四個四」叫骰、喊「開」開盅</li><li>點桌號旁的笑臉，丟表情給全桌</li><li>自動判輸贏，再公布「膨風水雞王」</li></ul>
           <div class="shot-wrap"><img class="shot" src="img/06-result.jpg" alt="搖相呼應：開盅後顯示「你贏了」，以及全桌各點數的統計" width="552" height="1200" loading="lazy"></div>
         </article>
       </div>
@@ -480,35 +486,57 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
   <section class="sec" id="frog" aria-labelledby="frog-h" style="padding-top:0">
     <div class="wrap frog">
       <div class="frog__stage rv" id="frogStage">
-        <svg viewBox="0 0 300 300" role="img" aria-label="吉祥物膨風水雞：戴著墨鏡、打著領結的青蛙，喉嚨會隨叫骰鼓起來">
-          <ellipse cx="150" cy="282" rx="96" ry="12" fill="rgba(0,0,0,.45)"/>
+        <svg viewBox="0 0 300 300" role="img" aria-label="吉祥物膨風水雞：梳油頭、戴金框墨鏡、打著領結的青蛙，下巴的聲囊會隨叫骰鼓起來">
+          <defs>
+            <linearGradient id="fSkin" x1="0" y1="30" x2="0" y2="285" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#86CC63"/><stop offset="1" stop-color="#3F8F37"/></linearGradient>
+            <radialGradient id="fSac" cx="141" cy="175" r="78" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFF4D2"/><stop offset="1" stop-color="#E2B65A"/></radialGradient>
+            <linearGradient id="fLens" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34343E"/><stop offset="1" stop-color="#121216"/></linearGradient>
+            <linearGradient id="fRim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBBD62"/><stop offset="1" stop-color="#B8862E"/></linearGradient>
+            <clipPath id="fShape"><ellipse cx="150" cy="135" rx="120" ry="69"/><ellipse cx="99" cy="81" rx="43.5" ry="40.5"/><ellipse cx="201" cy="81" rx="43.5" ry="40.5"/><ellipse cx="150" cy="213" rx="99" ry="72"/></clipPath>
+            <clipPath id="fJaw"><path d="M0 157.5 Q150 172.5 300 157.5 L300 300 L0 300Z"/></clipPath>
+            <clipPath id="fLensL"><rect x="61.5" y="58.5" width="75" height="51" rx="16.5"/></clipPath>
+            <clipPath id="fLensR"><rect x="163.5" y="58.5" width="75" height="51" rx="16.5"/></clipPath>
+          </defs>
+          <ellipse cx="150" cy="289" rx="92" ry="10" fill="rgba(0,0,0,.45)"/>
           <g id="frogBody">
-            <circle cx="100" cy="92" r="38" fill="var(--frog)"/>
-            <circle cx="200" cy="92" r="38" fill="var(--frog)"/>
-            <path d="M150 74 C112 74 98 84 98 84 L202 84 C202 84 188 74 150 74Z" fill="#141416"/>
-            <ellipse cx="150" cy="170" rx="122" ry="88" fill="var(--frog)"/>
-            <ellipse cx="150" cy="190" rx="100" ry="58" fill="#86CF6C" opacity=".45"/>
-            <!-- sunglasses -->
-            <rect x="62" y="96" width="76" height="52" rx="16" fill="#18181B" stroke="var(--gold)" stroke-width="6"/>
-            <rect x="162" y="96" width="76" height="52" rx="16" fill="#18181B" stroke="var(--gold)" stroke-width="6"/>
-            <path d="M138 112 H162" stroke="var(--gold)" stroke-width="6"/>
-            <rect x="74" y="106" width="26" height="9" rx="4.5" fill="rgba(255,255,255,.28)"/>
-            <rect x="174" y="106" width="26" height="9" rx="4.5" fill="rgba(255,255,255,.28)"/>
-            <path d="M104 186 Q150 214 196 182" stroke="var(--frog-2)" stroke-width="8" stroke-linecap="round" fill="none"/>
-            <g class="sweat"><path d="M252 112 C246 124 246 132 252 136 C258 132 258 124 252 112Z" fill="#9BD3FF"/></g>
-          </g>
-          <!-- vocal sac: the "puff" -->
-          <ellipse id="sac" cx="150" cy="226" rx="66" ry="44" fill="#E9F3C8" stroke="#C9DF9C" stroke-width="3"/>
-          <g>
-            <path d="M118 248 L144 260 L118 272Z M182 248 L156 260 L182 272Z" fill="#141416"/>
-            <rect x="142" y="252" width="16" height="16" rx="4" fill="var(--gold)"/>
+            <!-- outline, then fill on top so only the outer edge shows -->
+            <g fill="#1F4A1C" stroke="#1F4A1C" stroke-width="13.2"><ellipse cx="150" cy="135" rx="120" ry="69"/><ellipse cx="99" cy="81" rx="43.5" ry="40.5"/><ellipse cx="201" cy="81" rx="43.5" ry="40.5"/><ellipse cx="150" cy="213" rx="99" ry="72"/></g>
+            <rect width="300" height="300" fill="url(#fSkin)" clip-path="url(#fShape)"/>
+            <ellipse cx="126" cy="99" rx="48" ry="15" fill="rgba(255,255,255,.18)"/>
+            <ellipse cx="150" cy="237" rx="75" ry="48" fill="#E8E4B4" opacity=".85" clip-path="url(#fShape)"/>
+            <!-- slicked hair -->
+            <path d="M114 75 C117 24 183 24 186 75 Q174 81 150 93 Q126 81 114 75Z" fill="#121216"/>
+            <path d="M129 51 Q144 36 165 42" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="4.2" stroke-linecap="round"/>
+            <!-- bow tie -->
+            <path d="M150 198 L195 181.5 Q202.5 198 195 214.5Z M150 198 L105 181.5 Q97.5 198 105 214.5Z" fill="#121216"/>
+            <rect x="139.5" y="187.5" width="21" height="21" rx="4.5" fill="#EBBD62"/>
+            <!-- vocal sac: grows from under the chin -->
+            <g clip-path="url(#fJaw)"><g id="sac">
+              <ellipse cx="150" cy="193" rx="60" ry="42" fill="url(#fSac)" stroke="#A97A22" stroke-width="6.6"/>
+              <path d="M112 182 A33 33 0 0 1 130 163" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="4.8" stroke-linecap="round"/>
+            </g></g>
+            <!-- mouth: smirk, deflated when busted -->
+            <g fill="none" stroke="#1F4A1C" stroke-width="7.8" stroke-linecap="round" stroke-linejoin="round">
+              <path class="m-up" d="M99 150 C126 168 180 163.5 210 142.5 L214.5 148.5"/>
+              <path class="m-down" d="M108 162 C132 147 168 147 192 160.5"/>
+            </g>
+            <!-- gold-rimmed shades -->
+            <g id="shades">
+              <rect x="61.5" y="58.5" width="75" height="51" rx="16.5" fill="url(#fLens)" stroke="url(#fRim)" stroke-width="6"/>
+              <rect x="163.5" y="58.5" width="75" height="51" rx="16.5" fill="url(#fLens)" stroke="url(#fRim)" stroke-width="6"/>
+              <path d="M75 58.5 H90 L70.5 109.5 H55.5Z" fill="rgba(255,255,255,.14)" clip-path="url(#fLensL)"/>
+              <path d="M177 58.5 H192 L172.5 109.5 H157.5Z" fill="rgba(255,255,255,.14)" clip-path="url(#fLensR)"/>
+              <path d="M136.5 76.35 Q150 63.6 163.5 76.35" fill="none" stroke="#EBBD62" stroke-width="6" stroke-linecap="round"/>
+            </g>
+            <path class="brows" d="M69 60 L126 45 M231 60 L174 45" fill="none" stroke="#121216" stroke-width="9" stroke-linecap="round"/>
+            <g class="sweat"><path d="M258 81 Q267 93 268.5 103.5 A10.5 10.5 0 0 1 247.5 103.5 Q249 93 258 81Z" fill="#7CCBFF" stroke="#2E7BB5" stroke-width="2.4"/></g>
           </g>
         </svg>
       </div>
       <div>
         <p class="eyebrow rv">吉祥物</p>
         <h2 class="h2 rv" id="frog-h" style="--i:1">叫得越大，<br>水雞<em>鼓得越大</em>。</h2>
-        <p class="lede rv" style="--i:2">膨風水雞是陪你吹牛的青蛙，大話骰和同桌都在。叫骰越喊越多，牠的喉嚨就越鼓；被人一把抓包，當場洩氣。</p>
+        <p class="lede rv" style="--i:2">膨風水雞是陪你吹牛的青蛙，大話骰和同桌都在。叫骰越喊越多，牠的下巴就越鼓；被人一把抓包，當場洩氣。同桌還能丟牠的表情給大家，每局結算公布手上沒幾顆卻喊最大的「膨風水雞王」。</p>
         <div class="bid rv" style="--i:3">
           <div class="bid__row"><label for="qty">拖動來叫骰</label><p class="bid__say" aria-live="polite"><span class="num" id="qtyOut">3</span> 個 6</p></div>
           <input type="range" id="qty" min="1" max="10" value="3" aria-describedby="bidStatus">
@@ -556,7 +584,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <figure><img src="img/03-revealed.jpg" alt="開盅後綠色氈面上的骰子，下方列出每個點數的數量與合計" width="552" height="1200" loading="lazy"><figcaption><b>開</b>點數自動算好</figcaption></figure>
       <figure><img src="img/04-liar.jpg" alt="大話骰對局畫面" width="552" height="1200" loading="lazy"><figcaption><b>大話骰</b>跟 AI 對吹</figcaption></figure>
       <figure><img src="img/05-table.jpg" alt="搖相呼應的同桌畫面：桌號、在場玩家，輪到你叫骰" width="552" height="1200" loading="lazy"><figcaption><b>搖相呼應</b>輸入桌號或掃碼加入</figcaption></figure>
-      <figure><img src="img/06-result.jpg" alt="同桌開盅結果：膨風水雞旁顯示你贏了，下方列出全桌點數" width="552" height="1200" loading="lazy"><figcaption><b>輸贏</b>一開盅就知道</figcaption></figure>
+      <figure><img src="img/06-result.jpg" alt="同桌開盅結果：膨風水雞旁顯示你贏了，下方公布本局膨風水雞王與全桌點數" width="552" height="1200" loading="lazy"><figcaption><b>輸贏</b>一開盅就知道</figcaption></figure>
     </div>
     <div class="reel-ctl"><button type="button" data-dir="-1" aria-label="上一張"><svg><use href="#left"/></svg></button><button type="button" data-dir="1" aria-label="下一張"><svg><use href="#right"/></svg></button></div>
   </section>
@@ -597,8 +625,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
       <p class="eyebrow rv">版本紀錄</p>
       <h2 class="h2 rv" id="ver-h" style="--i:1">每一版，<em>改了什麼</em>。</h2>
       <ol class="log" reversed>
-        <li class="rv">
-          <div><p class="ver">1.3.0</p><span class="soon">即將推出</span></div>
+        <li class="latest rv">
+          <div><p class="ver">1.3.0</p><time datetime="2026-11-26">2026 年 11 月 26 日</time><span class="now">目前版本</span></div>
           <div>
             <h3>膨風水雞大改版</h3>
             <ul>
@@ -608,11 +636,11 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
               <li>新增「聲控訓練」（設定 → 聲控）：念幾句，聲控就聽得懂你的口音</li>
               <li>按住麥克風一碰就開始聽，開頭也比較不會被吃掉</li>
             </ul>
-            <p class="note">表情與膨風水雞王需要大家都更新到 1.3.0。Apple 審核通過後，就能在 App Store 更新。</p>
+            <p class="note">表情與膨風水雞王需要大家都更新到 1.3.0。</p>
           </div>
         </li>
-        <li class="latest rv" style="--i:1">
-          <div><p class="ver">1.2.0</p><time datetime="2026-11-25">2026 年 11 月 25 日</time><span class="now">目前版本</span></div>
+        <li class="rv" style="--i:1">
+          <div><p class="ver">1.2.0</p><time datetime="2026-11-25">2026 年 11 月 25 日</time></div>
           <div>
             <h3>「搖相呼應」大更新</h3>
             <ul>
@@ -678,7 +706,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <a class="btn btn--gold" href="https://apps.apple.com/tw/app/%E8%86%A8%E9%A2%A8%E7%9B%85/id6835320625">在 App Store 免費下載<svg aria-hidden="true"><use href="#arr"/></svg></a>
         <a class="btn btn--ghost" href="#support">支援與隱私權</a>
       </div>
-      <small class="rv" style="--i:3">已在 App Store 上架・1.2 版・免費・4 歲以上・iOS 17 以上的 iPhone 與 iPad</small>
+      <small class="rv" style="--i:3">已在 App Store 上架・1.3 版・免費・4 歲以上・iOS 17 以上的 iPhone 與 iPad</small>
     </div>
   </section>
 
@@ -691,7 +719,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--cream)}
         <details><summary>搖手機沒有反應？</summary><p>到 App 的「設定」把搖晃靈敏度調高，或直接按畫面下方的「搖」。大話骰叫骰階段不能重搖，這是規則。</p></details>
         <details><summary>同桌模式找不到桌子？</summary><p>先確認大家都更新到 1.2.0（不同版本的同桌模式不相通），並允許膨風盅使用「區域網路」。手機靠近一點、打開 Wi-Fi 即可，不一定要連上同一個網路；連上同一個 Wi-Fi 最快。開桌的人把四位數桌號告訴大家，或顯示 QR code 讓朋友掃。連不上時畫面會直接寫出原因。</p></details>
         <details><summary>怎麼掃 QR code 加入？</summary><p>在膨風盅的加入畫面按「掃 QR code 加入」，對準開桌那支手機上的 QR code 就會加入（第一次會詢問相機權限）。也可以用 iPhone 內建的「相機」掃，點跳出的連結就會打開膨風盅；掃的人要先裝好膨風盅。</p></details>
-        <details><summary>聲控叫骰怎麼用？</summary><p>在同桌畫面按住麥克風說話，放開就送出：說「四個四」叫骰，說「開」「抓」「不信」「騙人」開盅。說的不合規則時會告訴你原因。用喊的開盅可以在房間設定關掉；需要支援裝置端語音辨識的 iPhone，不支援時不會出現麥克風。</p></details>
+        <details><summary>聲控叫骰怎麼用？</summary><p>在同桌畫面按住麥克風說話，放開就送出：說「四個四」叫骰，說「開」「抓」「不信」「騙人」開盅。說的不合規則時會告訴你原因；常聽錯的話，到「設定 → 聲控」做聲控訓練，念幾句就會記住你的口音。用喊的開盅可以在房間設定關掉；需要支援裝置端語音辨識的 iPhone，不支援時不會出現麥克風。</p></details>
         <details><summary>可以只用按鈕玩嗎？</summary><p>可以。搖、瞇、開都有對應按鈕，也支援 VoiceOver。</p></details>
         <details><summary>玩的時候螢幕會自己變暗嗎？</summary><p>從 1.1 版開始，膨風盅開在前景時螢幕不會變暗或自動鎖定；切到別的 App 就恢復系統設定。</p></details>
       </article>
